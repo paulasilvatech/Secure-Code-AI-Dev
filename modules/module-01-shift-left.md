@@ -400,33 +400,3 @@ Ready to dive deeper? Continue to [Module 02: GitHub Advanced Security Fundament
 | [🚀 Quick Start Guide](../docs/QUICK_START.md) | [📚 All Modules](../README.md#-learning-path) | [Module 02: GitHub Advanced Security →](module-02-ghas.md) |
 
 **Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🛡️ Security FAQ](../docs/workshop-faq.md)
-
-## 📦 Module Resources
-
-This module includes several resources to help you implement shift-left security:
-
-### Available Templates & Scripts
-
-```bash
-resources/module-01-shift-left/
-├── scripts/
-│   ├── pre-commit-security.sh    # Pre-commit security hooks
-│   └── git-secrets-setup.sh      # Configure git-secrets
-├── templates/
-│   ├── security-policy.md        # Security policy template
-│   └── threat-model.md           # Threat modeling template
-└── workflows/
-    └── shift-left-checks.yml     # Basic security checks workflow
-```
-
-### Quick Setup
-
-```bash
-# Install pre-commit hooks
-./resources/module-01-shift-left/scripts/pre-commit-security.sh
-
-# Set up git-secrets
-./resources/module-01-shift-left/scripts/git-secrets-setup.sh
-```
-
-## 🎯 Summary
