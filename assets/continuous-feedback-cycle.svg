@@ -1,71 +1,115 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background and main container -->
-  <rect width="800" height="500" fill="#f8f9fa" rx="5" ry="5" />
+<svg width="700" height="700" viewBox="0 0 700 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cycleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <title id="title">Continuous Security Feedback Cycle</title>
+  <desc id="desc">Diagram showing continuous feedback cycle for AI-powered security development</desc>
   
   <!-- Title -->
-  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Continuous Security Feedback Cycle</text>
+  <text x="350" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">Continuous Security Feedback Cycle</text>
+  <text x="350" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">AI-Enhanced Security Development Loop</text>
   
-  <!-- Main diagram container -->
-  <g transform="translate(50, 80)">
-    <!-- Diagram background -->
-    <rect width="700" height="360" fill="#fff" stroke="#ddd" stroke-width="1" rx="5" ry="5" />
-    
-    <!-- GitHub Development Environment -->
-    <rect x="50" y="50" width="250" height="120" fill="#f0f7ff" stroke="#0366d6" stroke-width="2" rx="5" ry="5" />
-    <text x="175" y="85" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#0366d6">GitHub</text>
-    <text x="175" y="110" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#555">Code Generation &amp; Scanning</text>
-    
-    <!-- Microsoft Security Environment -->
-    <rect x="400" y="50" width="250" height="120" fill="#f0fff0" stroke="#107c10" stroke-width="2" rx="5" ry="5" />
-    <text x="525" y="85" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#107c10">Microsoft Security</text>
-    <text x="525" y="110" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#555">Threat Detection &amp; Response</text>
-    
-    <!-- Integration Layer -->
-    <rect x="150" y="230" width="400" height="80" fill="#f5f0ff" stroke="#5e2ca5" stroke-width="2" rx="5" ry="5" />
-    <text x="350" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#5e2ca5">Multi-Model AI Verification</text>
-    <text x="350" y="285" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#555">Cross-platform security intelligence</text>
-    
-    <!-- Flow Arrows -->
-    <!-- GitHub to Microsoft -->
-    <path d="M 300 90 C 325 90, 375 90, 400 90" fill="none" stroke="#0366d6" stroke-width="2" />
-    <polygon points="400,90 390,85 390,95" fill="#0366d6" />
-    
-    <!-- Microsoft to GitHub -->
-    <path d="M 400 130 C 375 130, 325 130, 300 130" fill="none" stroke="#107c10" stroke-width="2" />
-    <polygon points="300,130 310,125 310,135" fill="#107c10" />
-    
-    <!-- GitHub to Integration -->
-    <path d="M 175 170 C 175 200, 275 230, 300 230" fill="none" stroke="#0366d6" stroke-width="2" />
-    <polygon points="300,230 290,225 290,235" fill="#0366d6" />
-    
-    <!-- Microsoft to Integration -->
-    <path d="M 525 170 C 525 200, 425 230, 400 230" fill="none" stroke="#107c10" stroke-width="2" />
-    <polygon points="400,230 410,225 410,235" fill="#107c10" />
-    
-    <!-- Integration to GitHub -->
-    <path d="M 300 310 C 275 310, 225 330, 225 340 C 225 350, 175 350, 175 340 C 175 300, 175 200, 175 170" fill="none" stroke="#5e2ca5" stroke-width="2" />
-    <polygon points="175,170 170,180 180,180" fill="#5e2ca5" />
-    
-    <!-- Integration to Microsoft -->
-    <path d="M 400 310 C 425 310, 475 330, 475 340 C 475 350, 525 350, 525 340 C 525 300, 525 200, 525 170" fill="none" stroke="#5e2ca5" stroke-width="2" />
-    <polygon points="525,170 520,180 530,180" fill="#5e2ca5" />
+  <!-- Central Hub -->
+  <circle cx="350" cy="350" r="80" fill="url(#cycleGradient)" filter="url(#shadow)"/>
+  <text x="350" y="340" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Security</text>
+  <text x="350" y="360" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Intelligence</text>
+  <text x="350" y="380" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Hub</text>
+  
+  <!-- Cycle Components -->
+  <!-- 1. Code Development -->
+  <g transform="translate(350,150)">
+    <circle cx="0" cy="0" r="60" fill="#4078c0" filter="url(#shadow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="14" fill="white" font-weight="bold">Code</text>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Development</text>
+    <text x="0" y="-80" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">1. Write Secure Code</text>
+  </g>
+  
+  <!-- 2. AI Analysis -->
+  <g transform="translate(530,240)">
+    <circle cx="0" cy="0" r="60" fill="#7c3aed" filter="url(#shadow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="14" fill="white" font-weight="bold">AI</text>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Analysis</text>
+    <text x="80" y="0" text-anchor="start" font-family="Arial" font-size="12" fill="#333">2. Copilot Review</text>
+  </g>
+  
+  <!-- 3. Security Scanning -->
+  <g transform="translate(530,460)">
+    <circle cx="0" cy="0" r="60" fill="#dc2626" filter="url(#shadow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="14" fill="white" font-weight="bold">Security</text>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Scanning</text>
+    <text x="80" y="0" text-anchor="start" font-family="Arial" font-size="12" fill="#333">3. GHAS/SAST</text>
+  </g>
+  
+  <!-- 4. Incident Response -->
+  <g transform="translate(350,550)">
+    <circle cx="0" cy="0" r="60" fill="#0078d4" filter="url(#shadow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="14" fill="white" font-weight="bold">Incident</text>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Response</text>
+    <text x="0" y="80" text-anchor="middle" font-family="Arial" font-size="12" fill="#333">4. Sentinel/SOAR</text>
+  </g>
+  
+  <!-- 5. Remediation -->
+  <g transform="translate(170,460)">
+    <circle cx="0" cy="0" r="60" fill="#059669" filter="url(#shadow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="14" fill="white" font-weight="bold">Auto</text>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Remediation</text>
+    <text x="-80" y="0" text-anchor="end" font-family="Arial" font-size="12" fill="#333">5. Fix & Deploy</text>
+  </g>
+  
+  <!-- 6. Monitoring -->
+  <g transform="translate(170,240)">
+    <circle cx="0" cy="0" r="60" fill="#f59e0b" filter="url(#shadow)"/>
+    <text x="0" y="-5" text-anchor="middle" font-family="Arial" font-size="14" fill="white" font-weight="bold">Continuous</text>
+    <text x="0" y="10" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Monitoring</text>
+    <text x="-80" y="0" text-anchor="end" font-family="Arial" font-size="12" fill="#333">6. Dashboards</text>
+  </g>
+  
+  <!-- Cycle Arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Arrow paths (clockwise) -->
+  <path d="M 380,200 Q 450,200 470,280" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 530,310 Q 530,380 530,390" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 480,490 Q 420,520 400,520" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 300,520 Q 240,490 220,490" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 170,390 Q 170,320 170,310" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 220,210 Q 280,180 320,200" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Inner connections to hub -->
+  <line x1="350" y1="210" x2="350" y2="270" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="470" y1="240" x2="420" y2="290" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="470" y1="460" x2="420" y2="410" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="350" y1="490" x2="350" y2="430" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="230" y1="460" x2="280" y2="410" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="230" y1="240" x2="280" y2="290" stroke="#ccc" stroke-width="1" stroke-dasharray="3,3"/>
+  
+  <!-- Metrics -->
+  <g id="metrics">
+    <rect x="50" y="620" width="600" height="60" rx="5" fill="#f8f9fa" stroke="#dee2e6"/>
+    <text x="100" y="645" font-family="Arial" font-size="14" font-weight="bold">Cycle Metrics:</text>
+    <text x="100" y="665" font-family="Arial" font-size="12" fill="#666">⚡ Avg Cycle Time: 30 min</text>
+    <text x="300" y="665" font-family="Arial" font-size="12" fill="#666">🔒 Issues Fixed: 95%</text>
+    <text x="500" y="665" font-family="Arial" font-size="12" fill="#666">🤖 AI Accuracy: 92%</text>
   </g>
   
   <!-- Legend -->
-  <g transform="translate(50, 450)">
-    <rect x="0" y="0" width="15" height="15" fill="#f0f7ff" stroke="#0366d6" stroke-width="2" />
-    <text x="25" y="12" font-family="Arial, sans-serif" font-size="12" fill="#333">GitHub Security</text>
-    
-    <rect x="150" y="0" width="15" height="15" fill="#f0fff0" stroke="#107c10" stroke-width="2" />
-    <text x="175" y="12" font-family="Arial, sans-serif" font-size="12" fill="#333">Microsoft Security</text>
-    
-    <rect x="320" y="0" width="15" height="15" fill="#f5f0ff" stroke="#5e2ca5" stroke-width="2" />
-    <text x="345" y="12" font-family="Arial, sans-serif" font-size="12" fill="#333">Multi-Model Verification</text>
+  <g id="legend">
+    <text x="550" y="100" font-family="Arial" font-size="14" font-weight="bold">Key Benefits:</text>
+    <text x="550" y="120" font-family="Arial" font-size="12" fill="#666">• Automated detection</text>
+    <text x="550" y="140" font-family="Arial" font-size="12" fill="#666">• AI-powered fixes</text>
+    <text x="550" y="160" font-family="Arial" font-size="12" fill="#666">• Continuous learning</text>
+    <text x="550" y="180" font-family="Arial" font-size="12" fill="#666">• Rapid response</text>
   </g>
-  
-  <!-- Footer text with attribution -->
-  <text x="400" y="485" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">
-    Security-Nexus-Playbook
-  </text>
 </svg>

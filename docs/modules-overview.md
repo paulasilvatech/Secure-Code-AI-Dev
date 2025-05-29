@@ -15,6 +15,10 @@ Leverage AI tools for secure development and automation.
 ### 🟣 Enterprise Track (Modules 7-10)
 Implement advanced security patterns and monitoring.
 
+## 🔄 Continuous Learning Approach
+
+![Continuous Security Feedback Cycle](../assets/continuous-feedback-cycle.svg)
+
 ---
 
 ## 📋 Complete Module List

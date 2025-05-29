@@ -318,6 +318,10 @@ class CustomSecurityConnector:
 
 ## Analytics and Detection
 
+Understanding how security alerts flow through the system is crucial for effective monitoring:
+
+![Security Alert Flow](../assets/security-alert-flow.svg)
+
 ### Detection Rules
 
 ```kusto

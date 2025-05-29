@@ -15,173 +15,163 @@
       text { fill: #fff; }
     }
   </style>
-  <title id="title">Api Integration Flow</title>
-  <desc id="desc">Diagram showing Api Integration Flow for Nexus Shield Security Playbook</desc>>
+  <defs>
+    <linearGradient id="githubGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4078c0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#24292e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="azureGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#005a9e;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4c1d95;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <title id="title">API Integration Flow</title>
+  <desc id="desc">Diagram showing API Integration Flow for Secure Code AI Workshop</desc>
+  
   <!-- Title -->
-  <text x="450" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">API Integration Flow</text>
-  <text x="450" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#666666">GitHub and Microsoft Security Platform Integration</text>
+  <text x="450" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">API & Integration Architecture</text>
+  <text x="450" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Secure Multi-Service Communication</text>
   
-  <!-- Background -->
-  <rect x="50" y="100" width="350" height="450" rx="10" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
-  <text x="225" y="130" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#24292e">GitHub Platform</text>
+  <!-- GitHub APIs Section -->
+  <g id="github-apis">
+    <rect x="50" y="100" width="200" height="200" rx="10" fill="url(#githubGradient)" filter="url(#shadow)"/>
+    <text x="150" y="130" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">GitHub APIs</text>
+    
+    <rect x="70" y="150" width="160" height="30" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="150" y="170" text-anchor="middle" font-family="Arial" font-size="12" fill="white">REST API v3</text>
+    
+    <rect x="70" y="190" width="160" height="30" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="150" y="210" text-anchor="middle" font-family="Arial" font-size="12" fill="white">GraphQL API v4</text>
+    
+    <rect x="70" y="230" width="160" height="30" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="150" y="250" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Webhooks</text>
+    
+    <text x="150" y="280" text-anchor="middle" font-family="Arial" font-size="10" fill="white">Rate Limit: 5000/hr</text>
+  </g>
   
-  <rect x="500" y="100" width="350" height="450" rx="10" fill="#f0f1ff" stroke="#d0d7de" stroke-width="1"/>
-  <text x="675" y="130" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#0078d4">Microsoft Platform</text>
+  <!-- API Gateway -->
+  <g id="api-gateway">
+    <rect x="350" y="150" width="200" height="100" rx="10" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" filter="url(#shadow)"/>
+    <text x="450" y="180" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">API Gateway</text>
+    <text x="450" y="200" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Azure API Management</text>
+    <text x="450" y="220" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">• Authentication</text>
+    <text x="450" y="235" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">• Rate Limiting</text>
+  </g>
   
-  <!-- GitHub API Gateway -->
-  <rect x="150" y="170" width="200" height="60" rx="5" fill="#ffffff" stroke="#0366d6" stroke-width="2"/>
-  <text x="250" y="205" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#0366d6">GitHub API Gateway</text>
+  <!-- Azure Services -->
+  <g id="azure-services">
+    <rect x="650" y="100" width="200" height="200" rx="10" fill="url(#azureGradient)" filter="url(#shadow)"/>
+    <text x="750" y="130" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Azure Services</text>
+    
+    <rect x="670" y="150" width="160" height="30" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="750" y="170" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Logic Apps</text>
+    
+    <rect x="670" y="190" width="160" height="30" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="750" y="210" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Key Vault API</text>
+    
+    <rect x="670" y="230" width="160" height="30" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="750" y="250" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Sentinel API</text>
+    
+    <text x="750" y="280" text-anchor="middle" font-family="Arial" font-size="10" fill="white">OAuth 2.0 / MSI</text>
+  </g>
   
-  <!-- GitHub Components -->
-  <rect x="100" y="270" width="120" height="50" rx="5" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="160" y="300" text-anchor="middle" font-family="Arial" font-size="14" fill="#24292e">Advanced Security</text>
+  <!-- AI Services -->
+  <g id="ai-services">
+    <rect x="200" y="350" width="200" height="150" rx="10" fill="url(#aiGradient)" filter="url(#shadow)"/>
+    <text x="300" y="380" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">AI Services</text>
+    
+    <rect x="220" y="400" width="160" height="25" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="300" y="418" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Copilot API</text>
+    
+    <rect x="220" y="435" width="160" height="25" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="300" y="453" text-anchor="middle" font-family="Arial" font-size="12" fill="white">OpenAI API</text>
+    
+    <rect x="220" y="470" width="160" height="25" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="300" y="488" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Azure Cognitive</text>
+  </g>
   
-  <rect x="100" y="340" width="120" height="50" rx="5" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="160" y="370" text-anchor="middle" font-family="Arial" font-size="14" fill="#24292e">Repositories</text>
+  <!-- Event Bus -->
+  <g id="event-bus">
+    <rect x="500" y="350" width="200" height="150" rx="10" fill="#6366f1" filter="url(#shadow)"/>
+    <text x="600" y="380" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Event Bus</text>
+    
+    <rect x="520" y="400" width="160" height="25" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="600" y="418" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Service Bus</text>
+    
+    <rect x="520" y="435" width="160" height="25" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="600" y="453" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Event Grid</text>
+    
+    <rect x="520" y="470" width="160" height="25" rx="5" fill="rgba(255,255,255,0.2)"/>
+    <text x="600" y="488" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Queue Storage</text>
+  </g>
   
-  <rect x="100" y="410" width="120" height="50" rx="5" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="160" y="440" text-anchor="middle" font-family="Arial" font-size="14" fill="#24292e">Actions</text>
+  <!-- Connection Lines -->
+  <!-- GitHub to Gateway -->
+  <path d="M250,200 L350,200" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="300" y="195" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">Webhooks</text>
   
-  <rect x="100" y="480" width="120" height="50" rx="5" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="160" y="510" text-anchor="middle" font-family="Arial" font-size="14" fill="#24292e">Issues</text>
+  <!-- Gateway to Azure -->
+  <path d="M550,200 L650,200" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="600" y="195" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">REST/SOAP</text>
   
-  <!-- GitHub Webhooks -->
-  <rect x="280" y="270" width="120" height="50" rx="5" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="340" y="300" text-anchor="middle" font-family="Arial" font-size="14" fill="#24292e">Webhooks</text>
+  <!-- Gateway to AI -->
+  <path d="M450,250 L300,350" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="375" y="295" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">AI Requests</text>
   
-  <rect x="280" y="340" width="120" height="50" rx="5" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="340" y="370" text-anchor="middle" font-family="Arial" font-size="14" fill="#24292e">Authentication</text>
+  <!-- Gateway to Event Bus -->
+  <path d="M450,250 L600,350" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="525" y="295" text-anchor="middle" font-family="Arial" font-size="10" fill="#666">Events</text>
   
-  <rect x="280" y="410" width="120" height="50" rx="5" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="340" y="440" text-anchor="middle" font-family="Arial" font-size="14" fill="#24292e">Event Types</text>
+  <!-- Event Bus to Azure (bidirectional) -->
+  <path d="M700,425 L750,300" stroke="#333" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  <path d="M750,300 L700,425" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
   
-  <rect x="280" y="480" width="120" height="50" rx="5" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="340" y="510" text-anchor="middle" font-family="Arial" font-size="14" fill="#24292e">Delivery</text>
+  <!-- AI to Event Bus -->
+  <path d="M400,425 L500,425" stroke="#333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
   
-  <!-- Microsoft API Gateway -->
-  <rect x="550" y="170" width="200" height="60" rx="5" fill="#ffffff" stroke="#0078d4" stroke-width="2"/>
-  <text x="650" y="205" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#0078d4">Microsoft API Gateway</text>
+  <!-- Security Annotations -->
+  <g id="security-notes">
+    <rect x="50" y="530" width="150" height="50" rx="5" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="125" y="550" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">🔐 mTLS</text>
+    <text x="125" y="565" text-anchor="middle" font-family="Arial" font-size="10">All connections</text>
+  </g>
   
-  <!-- Microsoft Components -->
-  <rect x="510" y="270" width="120" height="50" rx="5" fill="#ffffff" stroke="#0078d4" stroke-width="1.5"/>
-  <text x="570" y="300" text-anchor="middle" font-family="Arial" font-size="14" fill="#0078d4">Logic Apps</text>
+  <g id="auth-note">
+    <rect x="225" y="530" width="150" height="50" rx="5" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="300" y="550" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">🔑 Auth</text>
+    <text x="300" y="565" text-anchor="middle" font-family="Arial" font-size="10">OAuth 2.0 / JWT</text>
+  </g>
   
-  <rect x="510" y="340" width="120" height="50" rx="5" fill="#ffffff" stroke="#0078d4" stroke-width="1.5"/>
-  <text x="570" y="370" text-anchor="middle" font-family="Arial" font-size="14" fill="#0078d4">Microsoft Sentinel</text>
+  <g id="monitoring-note">
+    <rect x="400" y="530" width="150" height="50" rx="5" fill="#dcfce7" stroke="#22c55e"/>
+    <text x="475" y="550" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">📊 Monitoring</text>
+    <text x="475" y="565" text-anchor="middle" font-family="Arial" font-size="10">App Insights</text>
+  </g>
   
-  <rect x="510" y="410" width="120" height="50" rx="5" fill="#ffffff" stroke="#0078d4" stroke-width="1.5"/>
-  <text x="570" y="440" text-anchor="middle" font-family="Arial" font-size="14" fill="#0078d4">Microsoft Defender</text>
+  <g id="compliance-note">
+    <rect x="575" y="530" width="150" height="50" rx="5" fill="#fce7f3" stroke="#ec4899"/>
+    <text x="650" y="550" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">✓ Compliance</text>
+    <text x="650" y="565" text-anchor="middle" font-family="Arial" font-size="10">SOC2 / ISO27001</text>
+  </g>
   
-  <rect x="510" y="480" width="120" height="50" rx="5" fill="#ffffff" stroke="#0078d4" stroke-width="1.5"/>
-  <text x="570" y="510" text-anchor="middle" font-family="Arial" font-size="14" fill="#0078d4">Azure Monitor</text>
-  
-  <!-- Microsoft Integration -->
-  <rect x="670" y="270" width="120" height="50" rx="5" fill="#ffffff" stroke="#0078d4" stroke-width="1.5"/>
-  <text x="730" y="300" text-anchor="middle" font-family="Arial" font-size="14" fill="#0078d4">Event Hub</text>
-  
-  <rect x="670" y="340" width="120" height="50" rx="5" fill="#ffffff" stroke="#0078d4" stroke-width="1.5"/>
-  <text x="730" y="370" text-anchor="middle" font-family="Arial" font-size="14" fill="#0078d4">Authentication</text>
-  
-  <rect x="670" y="410" width="120" height="50" rx="5" fill="#ffffff" stroke="#0078d4" stroke-width="1.5"/>
-  <text x="730" y="440" text-anchor="middle" font-family="Arial" font-size="14" fill="#0078d4">Data Connectors</text>
-  
-  <rect x="670" y="480" width="120" height="50" rx="5" fill="#ffffff" stroke="#0078d4" stroke-width="1.5"/>
-  <text x="730" y="510" text-anchor="middle" font-family="Arial" font-size="14" fill="#0078d4">Response Actions</text>
-  
-  <!-- API Integration Flows -->
-  <!-- GitHub to Microsoft -->
-  <path d="M 350 200 L 550 200" stroke="#24292e" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <rect x="420" y="180" width="60" height="25" rx="12.5" fill="#f6f8fa" stroke="#24292e" stroke-width="1"/>
-  <text x="450" y="197" text-anchor="middle" font-family="Arial" font-size="12" fill="#24292e">REST API</text>
-  
-  <!-- Webhook Flow -->
-  <path d="M 340 320 L 570 320" stroke="#24292e" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
-  <rect x="420" y="300" width="70" height="25" rx="12.5" fill="#f6f8fa" stroke="#24292e" stroke-width="1"/>
-  <text x="455" y="317" text-anchor="middle" font-family="Arial" font-size="12" fill="#24292e">Webhooks</text>
-  
-  <!-- Auth Flow -->
-  <path d="M 340 365 L 570 365" stroke="#24292e" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
-  <rect x="420" y="345" width="70" height="25" rx="12.5" fill="#f6f8fa" stroke="#24292e" stroke-width="1"/>
-  <text x="455" y="362" text-anchor="middle" font-family="Arial" font-size="12" fill="#24292e">OAuth</text>
-  
-  <!-- Event Flow -->
-  <path d="M 340 435 L 570 435" stroke="#24292e" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
-  <rect x="420" y="415" width="70" height="25" rx="12.5" fill="#f6f8fa" stroke="#24292e" stroke-width="1"/>
-  <text x="455" y="432" text-anchor="middle" font-family="Arial" font-size="12" fill="#24292e">Events</text>
-  
-  <!-- Response Flow -->
-  <path d="M 570 505 L 340 505" stroke="#0078d4" stroke-width="2" stroke-dasharray="5,5" marker-end="url(#arrowhead)"/>
-  <rect x="420" y="485" width="70" height="25" rx="12.5" fill="#f0f1ff" stroke="#0078d4" stroke-width="1"/>
-  <text x="455" y="502" text-anchor="middle" font-family="Arial" font-size="12" fill="#0078d4">Actions</text>
-  
-  <!-- Main Flow -->
-  <path d="M 550 230 L 350 230" stroke="#0078d4" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <rect x="420" y="210" width="60" height="25" rx="12.5" fill="#f0f1ff" stroke="#0078d4" stroke-width="1"/>
-  <text x="450" y="227" text-anchor="middle" font-family="Arial" font-size="12" fill="#0078d4">REST API</text>
-  
-  <!-- Internal Connections -->
-  <!-- GitHub Internal -->
-  <path d="M 160 320 L 160 340" stroke="#24292e" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 160 390 L 160 410" stroke="#24292e" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 160 460 L 160 480" stroke="#24292e" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  
-  <path d="M 340 320 L 340 340" stroke="#24292e" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 340 390 L 340 410" stroke="#24292e" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 340 460 L 340 480" stroke="#24292e" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  
-  <path d="M 220 295 L 280 295" stroke="#24292e" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 220 435 L 280 435" stroke="#24292e" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 220 505 L 280 505" stroke="#24292e" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  
-  <!-- Microsoft Internal -->
-  <path d="M 570 320 L 570 340" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 570 390 L 570 410" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 570 460 L 570 480" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  
-  <path d="M 730 320 L 730 340" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 730 390 L 730 410" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 730 460 L 730 480" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  
-  <path d="M 630 295 L 670 295" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 630 435 L 670 435" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 630 505 L 670 505" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  
-  <!-- Gateway to Components -->
-  <path d="M 250 230 L 250 260 L 160 270" stroke="#0366d6" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 250 230 L 250 260 L 340 270" stroke="#0366d6" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  
-  <path d="M 650 230 L 650 260 L 570 270" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  <path d="M 650 230 L 650 260 L 730 270" stroke="#0078d4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-  
-  <!-- API Call Examples -->
-  <rect x="350" y="150" width="200" height="30" rx="3" fill="#f6f8fa"/>
-  <text x="450" y="170" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">GET /repos/{owner}/{repo}/code-scanning/alerts</text>
-  
-  <rect x="350" y="240" width="200" height="30" rx="3" fill="#f6f8fa"/>
-  <text x="450" y="260" text-anchor="middle" font-family="monospace" font-size="8" fill="#666">POST /repos/{owner}/{repo}/issues</text>
-  
-  <!-- Legend -->
-  <rect x="50" y="570" width="800" height="30" rx="5" fill="#f6f8fa" stroke="#d0d7de" stroke-width="1"/>
-  
-  <circle cx="80" cy="585" r="5" fill="#0366d6"/>
-  <text x="90" y="589" font-family="Arial" font-size="12" fill="#586069">  GitHub API</text>
-  
-  <circle cx="200" cy="585" r="5" fill="#0078d4"/>
-  <text x="210" y="589" font-family="Arial" font-size="12" fill="#586069">  Microsoft API</text>
-  
-  <line x1="320" y1="585" x2="340" y2="585" stroke="#24292e" stroke-width="2"/>
-  <text x="350" y="589" font-family="Arial" font-size="12" fill="#586069">  GitHub to Microsoft</text>
-  
-  <line x1="500" y1="585" x2="520" y2="585" stroke="#0078d4" stroke-width="2"/>
-  <text x="530" y="589" font-family="Arial" font-size="12" fill="#586069">  Microsoft to GitHub</text>
-  
-  <line x1="670" y1="585" x2="690" y2="585" stroke="#24292e" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="700" y="589" font-family="Arial" font-size="12" fill="#586069">  Event-based</text>
+  <!-- Rate Limit Box -->
+  <g id="rate-limits">
+    <rect x="750" y="530" width="100" height="50" rx="5" fill="#f3f4f6" stroke="#9ca3af"/>
+    <text x="800" y="550" text-anchor="middle" font-family="Arial" font-size="11" font-weight="bold">Rate Limits</text>
+    <text x="800" y="565" text-anchor="middle" font-family="Arial" font-size="10">Enforced</text>
+  </g>
   
   <!-- Arrow Definition -->
   <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#000000"/>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
     </marker>
   </defs>
 </svg> 

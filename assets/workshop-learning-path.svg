@@ -1,0 +1,149 @@
+<svg width="1000" height="600" viewBox="0 0 1000 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="foundationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dbeafe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ddd6fe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="enterpriseGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fce7f3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="2" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <title>Secure Code AI Workshop Learning Path</title>
+  <desc>Visual representation of the 10-module workshop progression</desc>
+  
+  <!-- Title -->
+  <text x="500" y="40" text-anchor="middle" font-family="Arial" font-size="26" font-weight="bold">🛡️ Secure Code AI Workshop Learning Path</text>
+  <text x="500" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">10 Modules • 19 Hours • Complete Security Journey</text>
+  
+  <!-- Foundation Track Background -->
+  <rect x="50" y="100" width="280" height="400" rx="10" fill="url(#foundationGradient)" opacity="0.2"/>
+  <text x="190" y="130" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#1e40af">Foundation Track</text>
+  
+  <!-- AI-Powered Track Background -->
+  <rect x="360" y="100" width="280" height="400" rx="10" fill="url(#aiGradient)" opacity="0.2"/>
+  <text x="500" y="130" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#6d28d9">AI-Powered Track</text>
+  
+  <!-- Enterprise Track Background -->
+  <rect x="670" y="100" width="280" height="400" rx="10" fill="url(#enterpriseGradient)" opacity="0.2"/>
+  <text x="810" y="130" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#be185d">Enterprise Track</text>
+  
+  <!-- Module Boxes -->
+  <!-- Module 1 -->
+  <g id="module1">
+    <rect x="70" y="160" width="240" height="80" rx="8" fill="white" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+    <text x="190" y="185" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Module 1: Shift-Left Security</text>
+    <text x="190" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Security fundamentals & culture</text>
+    <text x="190" y="225" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">⏱️ 1.5 hours</text>
+  </g>
+  
+  <!-- Module 2 -->
+  <g id="module2">
+    <rect x="70" y="260" width="240" height="80" rx="8" fill="white" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+    <text x="190" y="285" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Module 2: GitHub Advanced Security</text>
+    <text x="190" y="305" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">GHAS features & configuration</text>
+    <text x="190" y="325" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">⏱️ 1 hour</text>
+  </g>
+  
+  <!-- Module 3 -->
+  <g id="module3">
+    <rect x="70" y="360" width="240" height="80" rx="8" fill="white" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+    <text x="190" y="385" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Module 3: Security Environment</text>
+    <text x="190" y="405" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Tools setup & configuration</text>
+    <text x="190" y="425" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">⏱️ 1.5 hours</text>
+  </g>
+  
+  <!-- Module 4 -->
+  <g id="module4">
+    <rect x="380" y="160" width="240" height="80" rx="8" fill="white" stroke="#7c3aed" stroke-width="2" filter="url(#shadow)"/>
+    <text x="500" y="185" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Module 4: AI Secure Coding</text>
+    <text x="500" y="205" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">GitHub Copilot for security</text>
+    <text x="500" y="225" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">⏱️ 2 hours</text>
+  </g>
+  
+  <!-- Module 5 -->
+  <g id="module5">
+    <rect x="380" y="260" width="240" height="80" rx="8" fill="white" stroke="#7c3aed" stroke-width="2" filter="url(#shadow)"/>
+    <text x="500" y="285" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Module 5: Container Security</text>
+    <text x="500" y="305" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">DevSecOps & container scanning</text>
+    <text x="500" y="325" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">⏱️ 2 hours</text>
+  </g>
+  
+  <!-- Module 6 -->
+  <g id="module6">
+    <rect x="380" y="360" width="240" height="80" rx="8" fill="white" stroke="#7c3aed" stroke-width="2" filter="url(#shadow)"/>
+    <text x="500" y="385" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Module 6: Agentic AI</text>
+    <text x="500" y="405" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Security automation agents</text>
+    <text x="500" y="425" text-anchor="middle" font-family="Arial" font-size="11" fill="#999">⏱️ 2 hours</text>
+  </g>
+  
+  <!-- Module 7 -->
+  <g id="module7">
+    <rect x="690" y="160" width="240" height="60" rx="8" fill="white" stroke="#ec4899" stroke-width="2" filter="url(#shadow)"/>
+    <text x="810" y="180" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">Module 7: Multi-Cloud Security</text>
+    <text x="810" y="200" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Cross-cloud strategies</text>
+    <text x="810" y="215" text-anchor="middle" font-family="Arial" font-size="10" fill="#999">⏱️ 2 hours</text>
+  </g>
+  
+  <!-- Module 8 -->
+  <g id="module8">
+    <rect x="690" y="235" width="240" height="60" rx="8" fill="white" stroke="#ec4899" stroke-width="2" filter="url(#shadow)"/>
+    <text x="810" y="255" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">Module 8: Microsoft Sentinel</text>
+    <text x="810" y="275" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">SIEM/SOAR implementation</text>
+    <text x="810" y="290" text-anchor="middle" font-family="Arial" font-size="10" fill="#999">⏱️ 2.5 hours</text>
+  </g>
+  
+  <!-- Module 9 -->
+  <g id="module9">
+    <rect x="690" y="310" width="240" height="60" rx="8" fill="white" stroke="#ec4899" stroke-width="2" filter="url(#shadow)"/>
+    <text x="810" y="330" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">Module 9: Security Dashboards</text>
+    <text x="810" y="350" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Monitoring & reporting</text>
+    <text x="810" y="365" text-anchor="middle" font-family="Arial" font-size="10" fill="#999">⏱️ 2 hours</text>
+  </g>
+  
+  <!-- Module 10 -->
+  <g id="module10">
+    <rect x="690" y="385" width="240" height="60" rx="8" fill="white" stroke="#ec4899" stroke-width="2" filter="url(#shadow)"/>
+    <text x="810" y="405" text-anchor="middle" font-family="Arial" font-size="13" font-weight="bold">Module 10: Advanced Patterns</text>
+    <text x="810" y="425" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Zero-trust & enterprise</text>
+    <text x="810" y="440" text-anchor="middle" font-family="Arial" font-size="10" fill="#999">⏱️ 2.5 hours</text>
+  </g>
+  
+  <!-- Progress Arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+    </marker>
+  </defs>
+  
+  <!-- Vertical arrows within tracks -->
+  <path d="M 190,240 L 190,260" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 190,340 L 190,360" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <path d="M 500,240 L 500,260" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 500,340 L 500,360" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <path d="M 810,220 L 810,235" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 810,295 L 810,310" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <path d="M 810,370 L 810,385" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Track transitions -->
+  <path d="M 310,400 Q 345,400 380,400" stroke="#666" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)"/>
+  <path d="M 620,400 Q 655,400 690,400" stroke="#666" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)"/>
+  
+  <!-- Summary Box -->
+  <rect x="100" y="520" width="800" height="60" rx="8" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="1"/>
+  <text x="500" y="545" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">🎯 Workshop Outcomes</text>
+  <text x="200" y="565" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">80% fewer vulnerabilities</text>
+  <text x="400" y="565" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">50% faster development</text>
+  <text x="600" y="565" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">95% security coverage</text>
+  <text x="800" y="565" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">Enterprise-ready skills</text>
+</svg> 

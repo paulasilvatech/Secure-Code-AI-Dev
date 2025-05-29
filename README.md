@@ -2,15 +2,15 @@
 
 Welcome to the **Secure Code AI Development Workshop** - your comprehensive guide to building secure applications with AI-powered tools and DevSecOps practices!
 
-![Secure Code AI Workflow](assets/secure-code-ai-workflow.svg)
+![Solution Overview](assets/solution-overview.svg)
 
 ## 🎯 Workshop Overview
 
 This hands-on workshop teaches you how to integrate security throughout the software development lifecycle using AI tools, GitHub Advanced Security, and Azure cloud services. Perfect for developers, security engineers, and DevOps professionals looking to enhance their security practices.
 
-## 📊 Key Outcomes
+## 📚 Learning Path
 
-![Security Results](assets/security-results-metrics.svg)
+![Workshop Learning Path](assets/workshop-learning-path.svg)
 
 ## 🚀 What You'll Learn
 

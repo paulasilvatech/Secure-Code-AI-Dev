@@ -19,6 +19,10 @@ By the end of this workshop, participants will be able to:
 9. **Create comprehensive security dashboards** and reports
 10. **Implement advanced security patterns** including zero-trust architecture
 
+## 🏗️ Workshop Architecture
+
+![Workshop Architecture](../assets/workshop-architecture.svg)
+
 ## 📋 Agenda
 
 ### Day 1: Foundations (4 hours)

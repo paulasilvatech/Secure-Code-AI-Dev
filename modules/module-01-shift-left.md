@@ -157,6 +157,20 @@ Moving from traditional security to DevSecOps requires:
    - Quick remediation cycles
    - Learning from incidents
 
+### Building a Security-First Culture
+
+Creating a security-first culture requires:
+
+1. **Leadership Buy-In**: Security starts at the top
+2. **Developer Empowerment**: Give teams the tools and training
+3. **Continuous Learning**: Security landscape constantly evolves
+4. **Shared Responsibility**: Everyone owns security
+5. **Celebration of Success**: Recognize security achievements
+
+![Continuous Security Feedback Cycle](../assets/continuous-feedback-cycle.svg)
+
+## Security Fundamentals for Developers
+
 ## 📝 Exercises
 
 ### Exercise 1: Understanding the Impact (20 minutes)

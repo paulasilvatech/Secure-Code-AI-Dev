@@ -135,6 +135,10 @@ az security pricing show \
 | **Kubernetes Security** | Cluster protection | Admission control, workload protection |
 | **CI/CD Integration** | Shift-left security | Build-time scanning, policy gates |
 
+The following diagram shows how different security services integrate through APIs:
+
+![API Integration Flow](../assets/api-integration-flow.svg)
+
 ## Container Image Security
 
 ### Secure Dockerfile Practices

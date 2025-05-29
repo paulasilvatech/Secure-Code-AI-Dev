@@ -15,115 +15,94 @@
       text { fill: #fff; }
     }
   </style>
-  <title id="title">Nexus Shield Overview</title>
-  <desc id="desc">Diagram showing Nexus Shield Overview for Nexus Shield Security Playbook</desc>>
+  <defs>
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <title id="title">Secure Code AI Development Overview</title>
+  <desc id="desc">Diagram showing the comprehensive security ecosystem for AI-powered secure development</desc>>
   <!-- Title -->
-  <text x="450" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">Nexus Shield: Unified GitHub-Microsoft Security Ecosystem</text>
+  <text x="450" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">Secure Code AI: GitHub + Microsoft Security Ecosystem</text>
   
-  <!-- Background Shield Shape -->
-  <path d="M450,80 L750,150 L750,400 Q600,550 450,620 Q300,550 150,400 L150,150 Z" 
-        fill="#f8f9fa" stroke="#24292e" stroke-width="2" opacity="0.3"/>
+  <!-- Central Security Hub -->
+  <circle cx="450" cy="350" r="120" fill="url(#blueGradient)" filter="url(#shadow)"/>
+  <text x="450" y="340" text-anchor="middle" font-family="Arial" font-size="20" fill="white" font-weight="bold">Security</text>
+  <text x="450" y="365" text-anchor="middle" font-family="Arial" font-size="20" fill="white" font-weight="bold">Command</text>
+  <text x="450" y="390" text-anchor="middle" font-family="Arial" font-size="20" fill="white" font-weight="bold">Center</text>
   
-  <!-- Layer 1: Development Environment -->
-  <rect x="250" y="110" width="400" height="120" rx="20" fill="#f0f8ff" stroke="#0366d6" stroke-width="2"/>
-  <text x="450" y="135" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#0366d6">Development Environment</text>
+  <!-- GitHub Section -->
+  <g id="github-section">
+    <rect x="50" y="100" width="200" height="150" rx="10" fill="#24292e" filter="url(#shadow)"/>
+    <text x="150" y="130" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">GitHub</text>
+    <text x="150" y="155" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Advanced Security</text>
+    <text x="150" y="175" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Code Scanning</text>
+    <text x="150" y="195" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Secret Detection</text>
+    <text x="150" y="215" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Dependency Review</text>
+    <text x="150" y="235" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Copilot Security</text>
+  </g>
   
-  <!-- GitHub Components -->
-  <rect x="275" y="150" width="100" height="60" rx="10" fill="#ffffff" stroke="#0366d6" stroke-width="2"/>
-  <text x="325" y="175" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#0366d6">GitHub</text>
-  <text x="325" y="195" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">Copilot</text>
+  <!-- Microsoft Sentinel -->
+  <g id="sentinel-section">
+    <rect x="650" y="100" width="200" height="150" rx="10" fill="#0078d4" filter="url(#shadow)"/>
+    <text x="750" y="130" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Microsoft</text>
+    <text x="750" y="150" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Sentinel</text>
+    <text x="750" y="175" text-anchor="middle" font-family="Arial" font-size="14" fill="white">SIEM/SOAR</text>
+    <text x="750" y="195" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Threat Detection</text>
+    <text x="750" y="215" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Incident Response</text>
+    <text x="750" y="235" text-anchor="middle" font-family="Arial" font-size="14" fill="white">AI Analytics</text>
+  </g>
   
-  <rect x="400" y="150" width="100" height="60" rx="10" fill="#ffffff" stroke="#0366d6" stroke-width="2"/>
-  <text x="450" y="175" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#0366d6">Advanced</text>
-  <text x="450" y="195" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">Security</text>
+  <!-- Azure Resources -->
+  <g id="azure-section">
+    <rect x="350" y="100" width="200" height="120" rx="10" fill="#005a9e" filter="url(#shadow)"/>
+    <text x="450" y="130" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Azure Security</text>
+    <text x="450" y="155" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Key Vault</text>
+    <text x="450" y="175" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Container Security</text>
+    <text x="450" y="195" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Network Security</text>
+    <text x="450" y="210" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Identity Protection</text>
+  </g>
   
-  <rect x="525" y="150" width="100" height="60" rx="10" fill="#ffffff" stroke="#0366d6" stroke-width="2"/>
-  <text x="575" y="175" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#0366d6">GitHub</text>
-  <text x="575" y="195" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">Actions</text>
+  <!-- AI/ML Section -->
+  <g id="ai-section">
+    <rect x="50" y="500" width="200" height="120" rx="10" fill="url(#greenGradient)" filter="url(#shadow)"/>
+    <text x="150" y="530" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">AI Security</text>
+    <text x="150" y="555" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Copilot Autofix</text>
+    <text x="150" y="575" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Agentic Automation</text>
+    <text x="150" y="595" text-anchor="middle" font-family="Arial" font-size="14" fill="white">ML Threat Detection</text>
+  </g>
   
-  <!-- Layer 2: Multi-Model AI Verification -->
-  <rect x="200" y="260" width="500" height="60" rx="15" fill="#f8f0ff" stroke="#6f42c1" stroke-width="2"/>
-  <text x="450" y="295" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#6f42c1">Multi-Model AI Verification Pipeline</text>
+  <!-- DevSecOps Pipeline -->
+  <g id="devsecops-section">
+    <rect x="650" y="500" width="200" height="120" rx="10" fill="#ff6b6b" filter="url(#shadow)"/>
+    <text x="750" y="530" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">DevSecOps</text>
+    <text x="750" y="555" text-anchor="middle" font-family="Arial" font-size="14" fill="white">CI/CD Security</text>
+    <text x="750" y="575" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Shift-Left Testing</text>
+    <text x="750" y="595" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Automated Compliance</text>
+  </g>
   
-  <!-- Layer 3: Security Operations -->
-  <rect x="250" y="350" width="400" height="120" rx="20" fill="#f0f1ff" stroke="#0078d4" stroke-width="2"/>
-  <text x="450" y="375" text-anchor="middle" font-family="Arial" font-size="18" font-weight="bold" fill="#0078d4">Security Operations Environment</text>
+  <!-- Connections -->
+  <line x1="250" y1="175" x2="350" y2="320" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="650" y1="175" x2="550" y2="320" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="450" y1="220" x2="450" y2="230" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="250" y1="550" x2="350" y2="400" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="650" y1="550" x2="550" y2="400" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
   
-  <!-- Microsoft Components -->
-  <rect x="275" y="390" width="100" height="60" rx="10" fill="#ffffff" stroke="#0078d4" stroke-width="2"/>
-  <text x="325" y="415" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#0078d4">Microsoft</text>
-  <text x="325" y="435" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">Sentinel</text>
-  
-  <rect x="400" y="390" width="100" height="60" rx="10" fill="#ffffff" stroke="#0078d4" stroke-width="2"/>
-  <text x="450" y="415" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#0078d4">Microsoft</text>
-  <text x="450" y="435" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">Defender</text>
-  
-  <rect x="525" y="390" width="100" height="60" rx="10" fill="#ffffff" stroke="#0078d4" stroke-width="2"/>
-  <text x="575" y="415" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#0078d4">Azure</text>
-  <text x="575" y="435" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">Logic Apps</text>
-  
-  <!-- Layer 4: Integration Layer -->
-  <rect x="250" y="500" width="400" height="60" rx="20" fill="#f0fff0" stroke="#2ea44f" stroke-width="2"/>
-  <text x="450" y="535" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#2ea44f">Integration Layer &amp; Event Bus</text>
-  
-  <!-- Continuous Improvement Feedback Loop -->
-  <path d="M175,290 C100,290 100,400 175,400" 
-        fill="none" stroke="#2ea44f" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
-  <path d="M725,400 C800,400 800,290 725,290" 
-        fill="none" stroke="#2ea44f" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
-  
-  <!-- Connection Lines -->
-  <!-- From GitHub Components to AI Verification -->
-  <path d="M325,210 L325,260" stroke="#0366d6" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M450,210 L450,260" stroke="#0366d6" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M575,210 L575,260" stroke="#0366d6" stroke-width="2" marker-end="url(#arrowhead)"/>
-  
-  <!-- From AI Verification to Security Operations -->
-  <path d="M325,320 L325,350" stroke="#6f42c1" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M450,320 L450,350" stroke="#6f42c1" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M575,320 L575,350" stroke="#6f42c1" stroke-width="2" marker-end="url(#arrowhead)"/>
-  
-  <!-- From Security Operations to Integration Layer -->
-  <path d="M325,450 L325,500" stroke="#0078d4" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M450,450 L450,500" stroke="#0078d4" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M575,450 L575,500" stroke="#0078d4" stroke-width="2" marker-end="url(#arrowhead)"/>
-  
-  <!-- From Integration Layer back to Development Environment -->
-  <path d="M275,500 C200,500 200,170 275,170" 
-        fill="none" stroke="#2ea44f" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)"/>
-  <path d="M625,500 C700,500 700,170 625,170" 
-        fill="none" stroke="#2ea44f" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrowhead)"/>
-  
-  <!-- Key Benefits -->
-  <rect x="170" y="590" width="150" height="80" rx="10" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="245" y="615" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#24292e">Unified Security</text>
-  <text x="245" y="635" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">Seamless integration</text>
-  <text x="245" y="655" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">across platforms</text>
-  
-  <rect x="325" y="590" width="250" height="80" rx="10" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="450" y="615" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#24292e">Continuous Feedback Loop</text>
-  <text x="450" y="635" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">Security intelligence flows</text>
-  <text x="450" y="655" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">between development and operations</text>
-  
-  <rect x="580" y="590" width="150" height="80" rx="10" fill="#ffffff" stroke="#24292e" stroke-width="1.5"/>
-  <text x="655" y="615" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold" fill="#24292e">AI-Enhanced</text>
-  <text x="655" y="635" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">Multi-model verification</text>
-  <text x="655" y="655" text-anchor="middle" font-family="Arial" font-size="12" fill="#586069">reduces false positives</text>
+  <!-- Labels -->
+  <text x="450" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#666666">Comprehensive Security Workshop Ecosystem</text>
   
   <!-- Legend -->
-  <rect x="750" y="635" width="15" height="15" fill="#f0f8ff" stroke="#0366d6" stroke-width="1.5"/>
-  <text x="780" y="648" font-family="Arial" font-size="12" fill="#24292e">GitHub Platform</text>
-  
-  <rect x="750" y="655" width="15" height="15" fill="#f0f1ff" stroke="#0078d4" stroke-width="1.5"/>
-  <text x="780" y="668" font-family="Arial" font-size="12" fill="#24292e">Microsoft Platform</text>
-  
-  <rect x="750" y="675" width="15" height="15" fill="#f8f0ff" stroke="#6f42c1" stroke-width="1.5"/>
-  <text x="780" y="688" font-family="Arial" font-size="12" fill="#24292e">AI Verification</text>
-  
-  <!-- Arrowhead Definition -->
-  <defs>
-    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#24292e"/>
-    </marker>
-  </defs>
+  <g id="legend">
+    <rect x="320" y="640" width="260" height="50" rx="5" fill="#f0f0f0" stroke="#ccc"/>
+    <text x="450" y="660" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Workshop Components</text>
+    <text x="450" y="680" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">10 Modules • 19 Hours • Complete Security Coverage</text>
+  </g>
 </svg>
