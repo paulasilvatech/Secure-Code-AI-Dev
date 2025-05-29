@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg class="svg-diagram" aria-labelledby="title desc" viewBox="0 0 900 700" width="900" height="700" xmlns="http://www.w3.org/2000/svg">
+<svg width="900" height="700" viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
   <style>
     .github { fill: #0366d6; }
     .microsoft { fill: #0078d4; }
@@ -16,93 +16,201 @@
     }
   </style>
   <defs>
-    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2c5aa0;stop-opacity:1" />
+    <!-- Modern Gradients -->
+    <linearGradient id="githubGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d333b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1c2128;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="greenGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#16a34a;stop-opacity:1" />
+    <linearGradient id="azureGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0078d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#005a9e;stop-opacity:1" />
     </linearGradient>
-    <filter id="shadow">
-      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    <linearGradient id="sentinelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="devopsGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="centerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4f46e5;stop-opacity:1" />
+    </linearGradient>
+    <!-- Enhanced Shadow Filter -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.15"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Glow Effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
-  <title id="title">Secure Code AI Development Overview</title>
-  <desc id="desc">Diagram showing the comprehensive security ecosystem for AI-powered secure development</desc>>
-  <!-- Title -->
-  <text x="450" y="40" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">Secure Code AI: GitHub + Microsoft Security Ecosystem</text>
   
-  <!-- Central Security Hub -->
-  <circle cx="450" cy="350" r="120" fill="url(#blueGradient)" filter="url(#shadow)"/>
-  <text x="450" y="340" text-anchor="middle" font-family="Arial" font-size="20" fill="white" font-weight="bold">Security</text>
-  <text x="450" y="365" text-anchor="middle" font-family="Arial" font-size="20" fill="white" font-weight="bold">Command</text>
-  <text x="450" y="390" text-anchor="middle" font-family="Arial" font-size="20" fill="white" font-weight="bold">Center</text>
+  <title>Secure Code AI: GitHub + Microsoft Security Ecosystem</title>
+  <desc>Comprehensive security ecosystem diagram for AI-powered secure development</desc>
   
-  <!-- GitHub Section -->
-  <g id="github-section">
-    <rect x="50" y="100" width="200" height="150" rx="10" fill="#24292e" filter="url(#shadow)"/>
-    <text x="150" y="130" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">GitHub</text>
-    <text x="150" y="155" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Advanced Security</text>
-    <text x="150" y="175" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Code Scanning</text>
-    <text x="150" y="195" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Secret Detection</text>
-    <text x="150" y="215" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Dependency Review</text>
-    <text x="150" y="235" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Copilot Security</text>
+  <!-- Background -->
+  <rect width="900" height="700" fill="#fafafa"/>
+  
+  <!-- Title Section -->
+  <text x="450" y="50" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="28" font-weight="700" fill="#1a1a1a">
+    Secure Code AI: GitHub + Microsoft Security Ecosystem
+  </text>
+  <text x="450" y="80" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="16" fill="#6b7280">
+    Comprehensive Security Workshop Ecosystem
+  </text>
+  
+  <!-- Central Command Center -->
+  <g id="central-hub">
+    <circle cx="450" cy="350" r="130" fill="url(#centerGrad)" filter="url(#shadow)"/>
+    <circle cx="450" cy="350" r="120" fill="none" stroke="white" stroke-width="2" opacity="0.3"/>
+    <text x="450" y="340" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="24" fill="white" font-weight="600">
+      Security
+    </text>
+    <text x="450" y="365" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="24" fill="white" font-weight="600">
+      Command
+    </text>
+    <text x="450" y="390" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="24" fill="white" font-weight="600">
+      Center
+    </text>
   </g>
   
-  <!-- Microsoft Sentinel -->
-  <g id="sentinel-section">
-    <rect x="650" y="100" width="200" height="150" rx="10" fill="#0078d4" filter="url(#shadow)"/>
-    <text x="750" y="130" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Microsoft</text>
-    <text x="750" y="150" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Sentinel</text>
-    <text x="750" y="175" text-anchor="middle" font-family="Arial" font-size="14" fill="white">SIEM/SOAR</text>
-    <text x="750" y="195" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Threat Detection</text>
-    <text x="750" y="215" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Incident Response</text>
-    <text x="750" y="235" text-anchor="middle" font-family="Arial" font-size="14" fill="white">AI Analytics</text>
+  <!-- GitHub Section (Top Left) -->
+  <g id="github-section" transform="translate(150, 150)">
+    <rect x="-100" y="-50" width="200" height="120" rx="15" fill="url(#githubGrad)" filter="url(#shadow)"/>
+    <text x="0" y="-20" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="white" font-weight="600">
+      GitHub
+    </text>
+    <text x="0" y="5" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#e6edf3">
+      Advanced Security
+    </text>
+    <text x="0" y="25" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#e6edf3">
+      Code Scanning
+    </text>
+    <text x="0" y="45" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#e6edf3">
+      Secret Detection
+    </text>
+    <text x="0" y="65" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#e6edf3">
+      Dependency Review
+    </text>
   </g>
   
-  <!-- Azure Resources -->
-  <g id="azure-section">
-    <rect x="350" y="100" width="200" height="120" rx="10" fill="#005a9e" filter="url(#shadow)"/>
-    <text x="450" y="130" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">Azure Security</text>
-    <text x="450" y="155" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Key Vault</text>
-    <text x="450" y="175" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Container Security</text>
-    <text x="450" y="195" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Network Security</text>
-    <text x="450" y="210" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Identity Protection</text>
+  <!-- Azure Security (Top Center) -->
+  <g id="azure-section" transform="translate(450, 130)">
+    <rect x="-100" y="-40" width="200" height="100" rx="15" fill="url(#azureGrad)" filter="url(#shadow)"/>
+    <text x="0" y="-10" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="white" font-weight="600">
+      Azure Security
+    </text>
+    <text x="0" y="15" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      Key Vault
+    </text>
+    <text x="0" y="35" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      Container Security
+    </text>
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      Network Security
+    </text>
   </g>
   
-  <!-- AI/ML Section -->
-  <g id="ai-section">
-    <rect x="50" y="500" width="200" height="120" rx="10" fill="url(#greenGradient)" filter="url(#shadow)"/>
-    <text x="150" y="530" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">AI Security</text>
-    <text x="150" y="555" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Copilot Autofix</text>
-    <text x="150" y="575" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Agentic Automation</text>
-    <text x="150" y="595" text-anchor="middle" font-family="Arial" font-size="14" fill="white">ML Threat Detection</text>
+  <!-- Microsoft Sentinel (Top Right) -->
+  <g id="sentinel-section" transform="translate(750, 150)">
+    <rect x="-100" y="-50" width="200" height="120" rx="15" fill="url(#sentinelGrad)" filter="url(#shadow)"/>
+    <text x="0" y="-20" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="white" font-weight="600">
+      Microsoft
+    </text>
+    <text x="0" y="0" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="white" font-weight="600">
+      Sentinel
+    </text>
+    <text x="0" y="25" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      SIEM/SOAR
+    </text>
+    <text x="0" y="45" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      Threat Detection
+    </text>
+    <text x="0" y="65" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      AI Analytics
+    </text>
   </g>
   
-  <!-- DevSecOps Pipeline -->
-  <g id="devsecops-section">
-    <rect x="650" y="500" width="200" height="120" rx="10" fill="#ff6b6b" filter="url(#shadow)"/>
-    <text x="750" y="530" text-anchor="middle" font-family="Arial" font-size="18" fill="white" font-weight="bold">DevSecOps</text>
-    <text x="750" y="555" text-anchor="middle" font-family="Arial" font-size="14" fill="white">CI/CD Security</text>
-    <text x="750" y="575" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Shift-Left Testing</text>
-    <text x="750" y="595" text-anchor="middle" font-family="Arial" font-size="14" fill="white">Automated Compliance</text>
+  <!-- AI Security (Bottom Left) -->
+  <g id="ai-section" transform="translate(150, 500)">
+    <rect x="-100" y="-40" width="200" height="100" rx="15" fill="url(#aiGrad)" filter="url(#shadow)"/>
+    <text x="0" y="-10" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="white" font-weight="600">
+      AI Security
+    </text>
+    <text x="0" y="15" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      Copilot Autofix
+    </text>
+    <text x="0" y="35" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      Agentic Automation
+    </text>
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      ML Threat Detection
+    </text>
   </g>
   
-  <!-- Connections -->
-  <line x1="250" y1="175" x2="350" y2="320" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
-  <line x1="650" y1="175" x2="550" y2="320" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
-  <line x1="450" y1="220" x2="450" y2="230" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
-  <line x1="250" y1="550" x2="350" y2="400" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
-  <line x1="650" y1="550" x2="550" y2="400" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <!-- DevSecOps (Bottom Right) -->
+  <g id="devsecops-section" transform="translate(750, 500)">
+    <rect x="-100" y="-40" width="200" height="100" rx="15" fill="url(#devopsGrad)" filter="url(#shadow)"/>
+    <text x="0" y="-10" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="20" fill="white" font-weight="600">
+      DevSecOps
+    </text>
+    <text x="0" y="15" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      CI/CD Security
+    </text>
+    <text x="0" y="35" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      Shift-Left Testing
+    </text>
+    <text x="0" y="55" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="white">
+      Automated Compliance
+    </text>
+  </g>
   
-  <!-- Labels -->
-  <text x="450" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#666666">Comprehensive Security Workshop Ecosystem</text>
+  <!-- Connection Lines -->
+  <g id="connections" opacity="0.6">
+    <!-- GitHub to Center -->
+    <line x1="250" y1="210" x2="350" y2="300" stroke="#4b5563" stroke-width="2" stroke-dasharray="5,5"/>
+    <!-- Azure to Center -->
+    <line x1="450" y1="190" x2="450" y2="220" stroke="#4b5563" stroke-width="2" stroke-dasharray="5,5"/>
+    <!-- Sentinel to Center -->
+    <line x1="650" y1="210" x2="550" y2="300" stroke="#4b5563" stroke-width="2" stroke-dasharray="5,5"/>
+    <!-- AI to Center -->
+    <line x1="250" y1="460" x2="350" y2="400" stroke="#4b5563" stroke-width="2" stroke-dasharray="5,5"/>
+    <!-- DevSecOps to Center -->
+    <line x1="650" y1="460" x2="550" y2="400" stroke="#4b5563" stroke-width="2" stroke-dasharray="5,5"/>
+  </g>
   
-  <!-- Legend -->
-  <g id="legend">
-    <rect x="320" y="640" width="260" height="50" rx="5" fill="#f0f0f0" stroke="#ccc"/>
-    <text x="450" y="660" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Workshop Components</text>
-    <text x="450" y="680" text-anchor="middle" font-family="Arial" font-size="12" fill="#666">10 Modules • 19 Hours • Complete Security Coverage</text>
+  <!-- Workshop Info Box -->
+  <g id="workshop-info">
+    <rect x="270" y="620" width="360" height="60" rx="10" fill="white" stroke="#e5e7eb" stroke-width="1" filter="url(#shadow)"/>
+    <text x="450" y="645" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="16" font-weight="600" fill="#1a1a1a">
+      Workshop Components
+    </text>
+    <text x="450" y="665" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="14" fill="#6b7280">
+      10 Modules • 19 Hours • Complete Security Coverage
+    </text>
+  </g>
+  
+  <!-- Decorative Elements -->
+  <g id="decorative" opacity="0.1">
+    <circle cx="100" cy="100" r="50" fill="#6366f1"/>
+    <circle cx="800" cy="600" r="40" fill="#10b981"/>
+    <circle cx="820" cy="80" r="30" fill="#ef4444"/>
   </g>
 </svg>
