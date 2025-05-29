@@ -27,25 +27,6 @@ This workshop provides hands-on guidance to implement modern security workflows 
 
 > *"Security is not about adding gates at the end, but about building resilience from the first line of code with AI-powered intelligence amplifying human expertise."*
 
-## ⭐ Business Impact
-
-Organizations implementing comprehensive AI-powered security development report significant benefits:
-
-- **80% Vulnerability Reduction**: Shift-left security catches issues during development
-- **50% Faster Development**: AI-assisted secure coding accelerates delivery
-- **90% Automation Rate**: Security scanning and remediation run automatically
-- **Zero-Day Protection**: Proactive threat detection before exploitation
-- **Compliance Ready**: Built-in compliance checks for SOC2, ISO27001, GDPR
-
-Advanced security workflows enable progression through four maturity stages:
-
-1. **Manual**: Traditional security gates and manual code reviews
-2. **Assisted**: AI-powered vulnerability detection and suggestions
-3. **Automated**: Full CI/CD security integration with auto-remediation
-4. **Intelligent**: Self-healing systems with predictive threat prevention
-
-![AI Security Architecture](assets/workshop-architecture.svg)
-
 ## 📋 Workshop Structure
 
 The workshop is organized into progressive modules, allowing you to choose the depth of coverage based on your time and experience:
