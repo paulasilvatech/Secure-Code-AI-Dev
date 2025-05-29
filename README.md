@@ -10,7 +10,7 @@ Welcome to the **Secure Code AI Development** Workshop! This hands-on workshop g
 
 ![Security Development Process Diagram](assets/solution-overview.svg)
 
-## 🌐 Official Workshop Website: [secureaidev.com](https://secureaidev.com)
+## 🌐 Official Workshop Website: [secure-code-ai.dev](https://secure-code-ai.dev)
 
 ## 📖 The Journey to AI-Enhanced Security Development
 
@@ -125,11 +125,6 @@ The workshop is organized into progressive modules, allowing you to choose the d
    - Progress through modules based on your experience level
    - Use the [Advanced Troubleshooting Guide](docs/troubleshooting-guide.md) if needed
 
-4. **🚀 Try the Practical Exercises**
-   - Check out the **resources** folder for hands-on exercises
-   - Includes real-world security scenarios and solutions
-   - Perfect for applying what you've learned in production contexts
-
 ## 🌟 Key Features
 
 - **AI-Enhanced Security**: Learn to implement GitHub Copilot for secure code generation
@@ -157,16 +152,4 @@ Hands-on workshop for transforming Figma designs into production-ready code usin
 
 ## 👤 Credits
 
-This Secure Code AI Development Workshop was developed by **Paula Silva**, Developer Productivity Global Black Belt at Microsoft Americas, focusing on empowering developers to build secure applications through AI-powered automation. The workshop provides a comprehensive approach to implementing modern security practices for enterprise software development.
-
----
-
-<div align="center">
-
-### 🌟 Star this repository if you find it helpful!
-
-**Built with ❤️ by the Secure AI Development Team**
-
-[Website](https://secureaidev.com) • [Blog](https://blog.secureaidev.com) • [Twitter](https://twitter.com/secureaidev)
-
-</div> 
+This Secure Code AI Development Workshop was developed by [Paula Silva](https://github.com/paulanunes85), Developer Productivity [Global Black Belt at Microsoft Americas](https://www.linkedin.com/in/paulanunes/), focusing on empowering developers to build secure applications through AI-powered automation. The workshop provides a comprehensive approach to implementing modern security practices for enterprise software development.
