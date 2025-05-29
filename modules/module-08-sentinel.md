@@ -850,3 +850,13 @@ Continue to [Module 09: Building Security Dashboards](../09-security-dashboards/
 ---
 
 **Need Help?** Check our [Sentinel FAQ](../../docs/sentinel-faq.md) or post in [Discussions](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/discussions).
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [← Module 07: Multi-Cloud Security](module-07-multicloud.md) | [📚 All Modules](../README.md#-learning-path) | [Module 09: Security Dashboards →](module-09-dashboards.md) |
+
+**Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🛡️ Security FAQ](../docs/workshop-faq.md)

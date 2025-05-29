@@ -469,3 +469,13 @@ Continue to [Module 03: Setting Up Your Security Environment](../03-environment-
 ---
 
 **Need Help?** Check our [Troubleshooting Guide](../../docs/troubleshooting.md) or ask in [Discussions](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/discussions).
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [← Module 01: Shift-Left Security](module-01-shift-left.md) | [📚 All Modules](../README.md#-learning-path) | [Module 04: Copilot Security →](module-04-copilot.md) |
+
+**Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🔧 Troubleshooting](../docs/troubleshooting-guide.md)

@@ -144,7 +144,7 @@ The workshop is organized into progressive modules, allowing you to choose the d
    ```
 
 2. **Quick Start (30 minutes)**
-   - Follow our [Quick Start Guide](docs/secure-code-ai-workshop.md) for immediate hands-on experience
+   - Follow our [Quick Start Guide](docs/QUICK_START.md) for immediate hands-on experience
    - Complete setup verification and first security scan
    - Generate your first secure code with AI assistance
 
@@ -194,6 +194,7 @@ Secure-Code-AI-Dev/
 
 ## 📚 Documentation
 
+- **Quick Start**: [QUICK_START.md](docs/QUICK_START.md)
 - **Workshop Overview**: [secure-code-ai-workshop.md](docs/secure-code-ai-workshop.md)
 - **Products Overview**: [products-overview.md](docs/products-overview.md)
 - **FAQ**: [workshop-faq.md](docs/workshop-faq.md)

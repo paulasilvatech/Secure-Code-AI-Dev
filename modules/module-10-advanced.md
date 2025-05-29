@@ -1087,3 +1087,13 @@ Remember: **Security is not a destination, it's a journey. Keep learning, keep s
 ---
 
 **Questions?** Reach out in [Discussions](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/discussions) or connect on [LinkedIn](https://linkedin.com).
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [← Module 09: Security Dashboards](module-09-dashboards.md) | [📚 All Modules](../README.md#-learning-path) | [🏠 Back to Home](../README.md) |
+
+**Quick Links**: [🚀 Quick Start](../docs/QUICK_START.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🏆 Share Your Success](https://github.com/paulasilvatech/Secure-Code-AI-Dev/discussions)

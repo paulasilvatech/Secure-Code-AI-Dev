@@ -743,3 +743,13 @@ Continue to [Module 06: Agentic DevOps and Automation](../06-agentic-devops/READ
 ---
 
 **Need Help?** Check our [Container Security FAQ](../../docs/container-security-faq.md) or post in [Discussions](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/discussions).
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [← Module 04: Copilot Security](module-04-copilot.md) | [📚 All Modules](../README.md#-learning-path) | [Module 06: Agentic AI Security →](module-06-agentic.md) |
+
+**Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🔧 Troubleshooting](../docs/troubleshooting-guide.md)

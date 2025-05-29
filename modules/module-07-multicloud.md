@@ -850,3 +850,13 @@ Continue to [Module 08: Microsoft Sentinel Integration](../08-sentinel-integrati
 ---
 
 **Questions?** Visit our [Multi-cloud Security FAQ](../../docs/multicloud-faq.md) or join the [discussion](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/discussions).
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [← Module 06: Agentic AI Security](module-06-agentic.md) | [📚 All Modules](../README.md#-learning-path) | [Module 08: Azure Sentinel →](module-08-sentinel.md) |
+
+**Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🔧 Troubleshooting](../docs/troubleshooting-guide.md)

@@ -748,3 +748,13 @@ Continue to [Module 05: Container Security with Microsoft Defender](../05-contai
 ---
 
 **Questions?** Visit our [AI Security FAQ](../../docs/ai-security-faq.md) or join the [discussion](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/discussions).
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [← Module 02: GitHub Advanced Security](module-02-ghas.md) | [📚 All Modules](../README.md#-learning-path) | [Module 05: Container Security →](module-05-container.md) |
+
+**Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🛡️ Security FAQ](../docs/workshop-faq.md)

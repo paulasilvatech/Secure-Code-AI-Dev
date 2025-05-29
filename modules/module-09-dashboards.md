@@ -869,3 +869,13 @@ Continue to [Module 10: Advanced Scenarios and Best Practices](../10-advanced-sc
 ---
 
 **Questions?** Check our [Dashboard FAQ](../../docs/dashboard-faq.md) or share your creations in [Discussions](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/discussions).
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [← Module 08: Azure Sentinel](module-08-sentinel.md) | [📚 All Modules](../README.md#-learning-path) | [Module 10: Advanced Scenarios →](module-10-advanced.md) |
+
+**Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🔧 Troubleshooting](../docs/troubleshooting-guide.md)

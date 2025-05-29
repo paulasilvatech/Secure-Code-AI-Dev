@@ -376,3 +376,13 @@ Ready to dive deeper? Continue to [Module 02: GitHub Advanced Security Fundament
 ---
 
 **Questions or Issues?** Check our [FAQ](../../docs/faq.md) or open an [issue](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/issues).
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [🚀 Quick Start Guide](../docs/QUICK_START.md) | [📚 All Modules](../README.md#-learning-path) | [Module 02: GitHub Advanced Security →](module-02-ghas.md) |
+
+**Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🛡️ Security FAQ](../docs/workshop-faq.md)

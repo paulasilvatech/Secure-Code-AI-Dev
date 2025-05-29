@@ -384,3 +384,13 @@ This integrated security stack represents the future of application security - w
 ---
 
 **Next Steps**: Return to the [main workshop](./README.md) or continue to [Module 01](./modules/01-shift-left-fundamentals/README.md).
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [🚀 Workshop Overview](secure-code-ai-workshop.md) | [📚 Documentation](../README.md#-documentation) | [🛡️ Security FAQ](workshop-faq.md) |
+
+**Quick Links**: [🚀 Quick Start](QUICK_START.md) • [🔧 Troubleshooting](troubleshooting-guide.md) • [📋 All Modules](../modules/)

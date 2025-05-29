@@ -231,3 +231,13 @@ This workshop is licensed under the MIT License. See [LICENSE](./LICENSE) for de
 ---
 
 🎉 **Ready to start?** Head to [Module 01: Introduction to Shift-Left Security](./modules/01-shift-left-fundamentals/README.md) to begin your journey!
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [🚀 Quick Start](QUICK_START.md) | [📚 Documentation](../README.md#-documentation) | [📦 Products Overview](products-overview.md) |
+
+**Quick Links**: [🛡️ Security FAQ](workshop-faq.md) • [🔧 Troubleshooting](troubleshooting-guide.md) • [📋 All Modules](../modules/)

@@ -276,3 +276,13 @@ kubectl get nodes
 - Help others with their questions
 
 Remember: There are no stupid questions in security - it's better to ask than to assume! 🛡️
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [📦 Products Overview](products-overview.md) | [📚 Documentation](../README.md#-documentation) | [🔧 Troubleshooting Guide](troubleshooting-guide.md) |
+
+**Quick Links**: [🚀 Quick Start](QUICK_START.md) • [🚀 Workshop Overview](secure-code-ai-workshop.md) • [📋 All Modules](../modules/)

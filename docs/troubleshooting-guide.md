@@ -502,3 +502,13 @@ If you're still experiencing issues:
 4. Having sufficient permissions
 
 Happy troubleshooting! 🔧
+
+---
+
+## 🧭 Navigation
+
+| Previous | Up | Next |
+|----------|----|----- |
+| [🛡️ Security FAQ](workshop-faq.md) | [📚 Documentation](../README.md#-documentation) | [🚀 Quick Start](QUICK_START.md) |
+
+**Quick Links**: [🚀 Workshop Overview](secure-code-ai-workshop.md) • [📦 Products](products-overview.md) • [📋 All Modules](../modules/)
