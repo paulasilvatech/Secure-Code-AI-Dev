@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background and main container -->
+  <rect width="800" height="500" fill="#f8f9fa" rx="5" ry="5" />
+  
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Continuous Security Feedback Cycle</text>
+  
+  <!-- Main diagram container -->
+  <g transform="translate(50, 80)">
+    <!-- Diagram background -->
+    <rect width="700" height="360" fill="#fff" stroke="#ddd" stroke-width="1" rx="5" ry="5" />
+    
+    <!-- GitHub Development Environment -->
+    <rect x="50" y="50" width="250" height="120" fill="#f0f7ff" stroke="#0366d6" stroke-width="2" rx="5" ry="5" />
+    <text x="175" y="85" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#0366d6">GitHub</text>
+    <text x="175" y="110" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#555">Code Generation &amp; Scanning</text>
+    
+    <!-- Microsoft Security Environment -->
+    <rect x="400" y="50" width="250" height="120" fill="#f0fff0" stroke="#107c10" stroke-width="2" rx="5" ry="5" />
+    <text x="525" y="85" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#107c10">Microsoft Security</text>
+    <text x="525" y="110" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#555">Threat Detection &amp; Response</text>
+    
+    <!-- Integration Layer -->
+    <rect x="150" y="230" width="400" height="80" fill="#f5f0ff" stroke="#5e2ca5" stroke-width="2" rx="5" ry="5" />
+    <text x="350" y="260" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#5e2ca5">Multi-Model AI Verification</text>
+    <text x="350" y="285" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#555">Cross-platform security intelligence</text>
+    
+    <!-- Flow Arrows -->
+    <!-- GitHub to Microsoft -->
+    <path d="M 300 90 C 325 90, 375 90, 400 90" fill="none" stroke="#0366d6" stroke-width="2" />
+    <polygon points="400,90 390,85 390,95" fill="#0366d6" />
+    
+    <!-- Microsoft to GitHub -->
+    <path d="M 400 130 C 375 130, 325 130, 300 130" fill="none" stroke="#107c10" stroke-width="2" />
+    <polygon points="300,130 310,125 310,135" fill="#107c10" />
+    
+    <!-- GitHub to Integration -->
+    <path d="M 175 170 C 175 200, 275 230, 300 230" fill="none" stroke="#0366d6" stroke-width="2" />
+    <polygon points="300,230 290,225 290,235" fill="#0366d6" />
+    
+    <!-- Microsoft to Integration -->
+    <path d="M 525 170 C 525 200, 425 230, 400 230" fill="none" stroke="#107c10" stroke-width="2" />
+    <polygon points="400,230 410,225 410,235" fill="#107c10" />
+    
+    <!-- Integration to GitHub -->
+    <path d="M 300 310 C 275 310, 225 330, 225 340 C 225 350, 175 350, 175 340 C 175 300, 175 200, 175 170" fill="none" stroke="#5e2ca5" stroke-width="2" />
+    <polygon points="175,170 170,180 180,180" fill="#5e2ca5" />
+    
+    <!-- Integration to Microsoft -->
+    <path d="M 400 310 C 425 310, 475 330, 475 340 C 475 350, 525 350, 525 340 C 525 300, 525 200, 525 170" fill="none" stroke="#5e2ca5" stroke-width="2" />
+    <polygon points="525,170 520,180 530,180" fill="#5e2ca5" />
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(50, 450)">
+    <rect x="0" y="0" width="15" height="15" fill="#f0f7ff" stroke="#0366d6" stroke-width="2" />
+    <text x="25" y="12" font-family="Arial, sans-serif" font-size="12" fill="#333">GitHub Security</text>
+    
+    <rect x="150" y="0" width="15" height="15" fill="#f0fff0" stroke="#107c10" stroke-width="2" />
+    <text x="175" y="12" font-family="Arial, sans-serif" font-size="12" fill="#333">Microsoft Security</text>
+    
+    <rect x="320" y="0" width="15" height="15" fill="#f5f0ff" stroke="#5e2ca5" stroke-width="2" />
+    <text x="345" y="12" font-family="Arial, sans-serif" font-size="12" fill="#333">Multi-Model Verification</text>
+  </g>
+  
+  <!-- Footer text with attribution -->
+  <text x="400" y="485" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">
+    Security-Nexus-Playbook
+  </text>
+</svg>

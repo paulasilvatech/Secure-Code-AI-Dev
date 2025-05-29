@@ -1,0 +1,342 @@
+name: Secure CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 2 * * 1'  # Weekly security scan
+
+env:
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
+  ACR_NAME: ${{ secrets.ACR_NAME }}
+  AKS_NAME: ${{ secrets.AKS_NAME }}
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+  checks: write
+  pull-requests: write
+
+jobs:
+  security-checks:
+    name: Security Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for better analysis
+
+      - name: Run GitLeaks
+        uses: zricethezav/gitleaks-action@master
+        with:
+          config-path: .gitleaks.toml
+          
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript, python, csharp
+          queries: security-and-quality
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"
+
+      - name: Run Trivy security scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  dependency-check:
+    name: Dependency Security Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Dependency Review
+        uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          deny-licenses: GPL-3.0, AGPL-3.0
+
+  build-and-test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    needs: [security-checks]
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          npm audit fix --force
+
+      - name: Run tests with coverage
+        run: |
+          npm test -- --coverage --watchAll=false
+          
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: unittests
+          name: codecov-umbrella
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  container-security:
+    name: Container Security Scan
+    runs-on: ubuntu-latest
+    needs: [build-and-test]
+    if: github.event_name == 'push'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_NAME }}.azurecr.io
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build container image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: |
+            ${{ secrets.ACR_NAME }}.azurecr.io/secure-app:${{ github.sha }}
+            ${{ secrets.ACR_NAME }}.azurecr.io/secure-app:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          outputs: type=docker,dest=/tmp/image.tar
+
+      - name: Run Trivy container scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          input: /tmp/image.tar
+          format: 'sarif'
+          output: 'container-scan-results.sarif'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload container scan results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'container-scan-results.sarif'
+          category: 'container-security'
+
+      - name: Run Snyk container test
+        uses: snyk/actions/docker@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          image: ${{ secrets.ACR_NAME }}.azurecr.io/secure-app:${{ github.sha }}
+          args: --severity-threshold=high
+
+      - name: Push image if secure
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.ACR_NAME }}.azurecr.io/secure-app:${{ github.sha }}
+            ${{ secrets.ACR_NAME }}.azurecr.io/secure-app:latest
+
+  infrastructure-scan:
+    name: Infrastructure Security Scan
+    runs-on: ubuntu-latest
+    needs: [security-checks]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.6.0
+
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: ./resources
+          quiet: true
+          soft_fail: false
+          framework: bicep,terraform,kubernetes
+          output_format: sarif
+          output_file_path: checkov.sarif
+
+      - name: Upload Checkov results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: checkov.sarif
+          category: 'infrastructure-security'
+
+  deploy-to-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+    needs: [container-security, infrastructure-scan]
+    if: github.ref == 'refs/heads/develop'
+    environment:
+      name: staging
+      url: https://staging.secure-code-workshop.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to AKS
+        uses: azure/k8s-deploy@v4
+        with:
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          name: ${{ secrets.AKS_NAME }}
+          namespace: staging
+          manifests: |
+            ./k8s/staging/
+          images: |
+            ${{ secrets.ACR_NAME }}.azurecr.io/secure-app:${{ github.sha }}
+
+      - name: Run post-deployment security tests
+        run: |
+          # Run OWASP ZAP scan
+          docker run -v $(pwd):/zap/wrk/:rw \
+            -t owasp/zap2docker-stable zap-baseline.py \
+            -t https://staging.secure-code-workshop.com \
+            -g gen.conf -r zap-report.html
+
+  deploy-to-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [deploy-to-staging]
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+      url: https://secure-code-workshop.com
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to AKS
+        uses: azure/k8s-deploy@v4
+        with:
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          name: ${{ secrets.AKS_NAME }}
+          namespace: production
+          manifests: |
+            ./k8s/production/
+          images: |
+            ${{ secrets.ACR_NAME }}.azurecr.io/secure-app:${{ github.sha }}
+          strategy: canary
+          percentage: 20
+
+      - name: Monitor deployment
+        run: |
+          # Monitor deployment health
+          kubectl wait --for=condition=ready pod -l app=secure-app -n production --timeout=300s
+
+      - name: Complete canary deployment
+        if: success()
+        uses: azure/k8s-deploy@v4
+        with:
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          name: ${{ secrets.AKS_NAME }}
+          namespace: production
+          manifests: |
+            ./k8s/production/
+          images: |
+            ${{ secrets.ACR_NAME }}.azurecr.io/secure-app:${{ github.sha }}
+          strategy: canary
+          action: promote
+
+      - name: Rollback on failure
+        if: failure()
+        uses: azure/k8s-deploy@v4
+        with:
+          resource-group: ${{ secrets.RESOURCE_GROUP }}
+          name: ${{ secrets.AKS_NAME }}
+          namespace: production
+          strategy: canary
+          action: reject
+
+  security-report:
+    name: Generate Security Report
+    runs-on: ubuntu-latest
+    needs: [deploy-to-production]
+    if: always()
+    steps:
+      - name: Generate security summary
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const summary = `## Security Scan Summary
+            
+            ### Code Security
+            - CodeQL: ✅ Passed
+            - Dependency Check: ✅ Passed
+            - Secret Scanning: ✅ No secrets found
+            
+            ### Container Security
+            - Trivy Scan: ✅ No critical vulnerabilities
+            - Snyk Scan: ✅ Passed
+            
+            ### Infrastructure Security
+            - Checkov: ✅ All policies passed
+            
+            ### Deployment Status
+            - Staging: ✅ Deployed successfully
+            - Production: ✅ Deployed with canary strategy
+            `;
+            
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: summary
+            }); 

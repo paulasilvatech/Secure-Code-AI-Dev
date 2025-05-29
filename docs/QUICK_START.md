@@ -92,6 +92,31 @@ graph TD
 3. Master [Module 9: Security Dashboards](../modules/module-09-dashboards.md) (90 min)
 4. Review [Module 10: Advanced Patterns](../modules/module-10-advanced.md) (60 min)
 
+## 🚀 Option 1: Automated Deployment (Recommended)
+
+The fastest way to get started is using our automated deployment script:
+
+```bash
+# Clone the repository
+git clone https://github.com/paulasilvatech/Secure-Code-AI-Dev.git
+cd Secure-Code-AI-Dev
+
+# Run the automated deployment
+./resources/common/scripts/deploy-workshop.sh
+```
+
+This script will:
+- ✅ Deploy all Azure infrastructure (AKS, ACR, Key Vault, Sentinel)
+- ✅ Configure GitHub integration
+- ✅ Set up security monitoring
+- ✅ Generate deployment credentials
+
+**Time required**: ~15 minutes
+
+## 🛠️ Option 2: Manual Setup
+
+If you prefer manual control or need to customize the deployment:
+
 ## 🛠️ Essential Security Tools Setup
 
 ### GitHub Advanced Security
