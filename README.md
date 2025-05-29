@@ -54,42 +54,42 @@ The workshop is organized into progressive modules, allowing you to choose the d
 - Security tools installation and integration
 - Cloud environment security baseline
 
-### Module 4: [AI-Powered Secure Coding with Copilot]
+### Module 4: [AI-Powered Secure Coding with Copilot]()
 - Security-focused prompt engineering
 - AI-assisted vulnerability prevention
 - Secure code pattern generation
 
-### Module 5: [Container Security & DevSecOps]
+### Module 5: [Container Security & DevSecOps]()
 - Container image scanning and hardening
 - Kubernetes security implementation
 - Microsoft Defender for Containers
 
-### Module 6: [Agentic AI for Security Automation]
+### Module 6: [Agentic AI for Security Automation]()
 - Building autonomous security agents
 - Automated incident response workflows
 - AI-driven security operations
 
-### Module 7: [Multi-Cloud Security Strategies]
+### Module 7: [Multi-Cloud Security Strategies]()
 - Cross-cloud security architecture
 - Unified policy management
 - Multi-cloud compliance automation
 
-### Module 8: [Microsoft Sentinel Integration]
+### Module 8: [Microsoft Sentinel Integration]()
 - SIEM/SOAR implementation
 - Custom detection rules and playbooks
 - Threat hunting with KQL
 
-### Module 9: [Security Dashboards & Reporting]
+### Module 9: [Security Dashboards & Reporting]()
 - Real-time security visualization
 - Compliance reporting automation
 - Executive security dashboards
 
-### Module 10: [Advanced Security Patterns]
+### Module 10: [Advanced Security Patterns]()
 - Zero-trust architecture implementation
 - Advanced threat modeling techniques
 - Enterprise security at scale
 
-### [Advanced Troubleshooting Guide]
+### [Advanced Troubleshooting Guide](docs/troubleshooting-guide.md)
 - Common security issues and solutions
 - Advanced debugging techniques
 - Performance optimization strategies
