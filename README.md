@@ -7,7 +7,13 @@ Welcome to the **Secure Code AI Development** Workshop! This hands-on workshop g
 ## Secure AI Development Workflow - Enterprise-Grade Security
 
 <div align="center">
-  <img src="assets/workshop-architecture.svg" alt="Secure Code AI Architecture" width="700">
+  <img src="assets/secure-code-ai-workflow.svg" alt="Secure Code AI Development Workflow" width="100%">
+</div>
+
+## 🚀 Transform Your Security Posture with AI
+
+<div align="center">
+  <img src="assets/security-results-metrics.svg" alt="Security Transformation Results" width="100%">
 </div>
 
 ## 🌐 Official Workshop Website: [secure-code-ai.dev](https://secure-code-ai.dev)
@@ -158,16 +164,18 @@ The workshop is organized into progressive modules, allowing you to choose the d
    - Practice with authentic enterprise security challenges
    - Apply AI-powered security tools to your own projects
 
-## 📁 Repository Structure
+## 📁 Estrutura do Projeto
 
 ```
 Secure-Code-AI-Dev/
-├── assets/              # Visual resources and diagrams
+├── assets/              # Recursos visuais e mídias
+│   ├── secure-code-ai-workflow.svg
+│   ├── security-results-metrics.svg
 │   └── workshop-architecture.svg
-├── config/              # Configuration files and templates
-├── scripts/             # Automation and setup scripts
-├── templates/           # Security policy and workflow templates
-├── modules/            # Workshop modules (sequential learning)
+├── config/              # Arquivos de configuração
+├── scripts/             # Scripts de automação
+├── templates/           # Templates e modelos
+├── modules/            # Módulos do workshop
 │   ├── module-01-shift-left.md
 │   ├── module-02-ghas.md
 │   ├── module-04-copilot.md
@@ -177,11 +185,12 @@ Secure-Code-AI-Dev/
 │   ├── module-08-sentinel.md
 │   ├── module-09-dashboards.md
 │   └── module-10-advanced.md
-└── docs/               # General documentation
+└── docs/               # Documentação geral
     ├── products-overview.md
     ├── secure-code-ai-workshop.md
     ├── troubleshooting-guide.md
-    └── workshop-faq.md
+    ├── workshop-faq.md
+    └── QUICK_START.md
 ```
 
 ## 🌟 Key Features

@@ -1,0 +1,208 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#0a0f1b"/>
+  
+  <!-- Decorative elements -->
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="successGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="warningGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="dangerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#dc2626;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Pulse animation -->
+    <circle id="pulse" r="3" fill="#3b82f6">
+      <animate attributeName="r" from="3" to="15" dur="2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" from="1" to="0" dur="2s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- Glow filter -->
+    <filter id="glow">
+      <fegaussianblur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Title -->
+  <text x="600" y="50" font-family="Arial, sans-serif" font-size="32" font-weight="bold" text-anchor="middle" fill="#ffffff">
+    Security Transformation Results
+  </text>
+  <text x="600" y="80" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#64748b">
+    Real-time Security Metrics Dashboard
+  </text>
+  
+  <!-- Before vs After Section -->
+  <g transform="translate(50, 120)">
+    <!-- Before -->
+    <g>
+      <rect x="0" y="0" width="250" height="200" rx="10" fill="#1e293b" stroke="#dc2626" stroke-width="2" opacity="0.8"/>
+      <text x="125" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#dc2626">Before</text>
+      <text x="20" y="60" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8">• Manual security reviews</text>
+      <text x="20" y="85" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8">• Late vulnerability detection</text>
+      <text x="20" y="110" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8">• 3-5 days to fix issues</text>
+      <text x="20" y="135" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8">• Reactive approach</text>
+      <text x="20" y="160" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8">• High security debt</text>
+      <text x="20" y="185" font-family="Arial, sans-serif" font-size="14" fill="#94a3b8">• Limited visibility</text>
+    </g>
+    
+    <!-- Arrow -->
+    <path d="M 270 110 L 330 110" stroke="#3b82f6" stroke-width="3" fill="none">
+      <animate attributeName="stroke-dasharray" from="0 100" to="100 0" dur="2s" repeatCount="indefinite"/>
+    </path>
+    <polygon points="330,105 340,110 330,115" fill="#3b82f6"/>
+    
+    <!-- After -->
+    <g transform="translate(350, 0)">
+      <rect x="0" y="0" width="250" height="200" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2" opacity="0.8"/>
+      <text x="125" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#10b981">After</text>
+      <text x="20" y="60" font-family="Arial, sans-serif" font-size="14" fill="#a7f3d0">• AI-powered automation</text>
+      <text x="20" y="85" font-family="Arial, sans-serif" font-size="14" fill="#a7f3d0">• Real-time detection</text>
+      <text x="20" y="110" font-family="Arial, sans-serif" font-size="14" fill="#a7f3d0">• Minutes to auto-fix</text>
+      <text x="20" y="135" font-family="Arial, sans-serif" font-size="14" fill="#a7f3d0">• Proactive prevention</text>
+      <text x="20" y="160" font-family="Arial, sans-serif" font-size="14" fill="#a7f3d0">• Zero security debt</text>
+      <text x="20" y="185" font-family="Arial, sans-serif" font-size="14" fill="#a7f3d0">• Full stack visibility</text>
+    </g>
+  </g>
+  
+  <!-- Key Metrics Dashboard -->
+  <g transform="translate(700, 120)">
+    <rect x="0" y="0" width="450" height="200" rx="10" fill="#0f172a" stroke="#3b82f6" stroke-width="2" filter="url(#glow)"/>
+    <text x="225" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3b82f6">Live Security Score</text>
+    
+    <!-- Security Score Gauge -->
+    <g transform="translate(225, 100)">
+      <circle cx="0" cy="0" r="60" fill="none" stroke="#1e293b" stroke-width="10"/>
+      <circle cx="0" cy="0" r="60" fill="none" stroke="url(#successGradient)" stroke-width="10" 
+              stroke-dasharray="283" stroke-dashoffset="70" transform="rotate(-90)">
+        <animate attributeName="stroke-dashoffset" from="283" to="70" dur="2s" fill="freeze"/>
+      </circle>
+      <text x="0" y="10" font-family="Arial, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#10b981">95</text>
+      <text x="0" y="30" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#64748b">/100</text>
+    </g>
+    
+    <!-- Mini metrics -->
+    <text x="50" y="170" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Vulnerabilities: </text>
+    <text x="140" y="170" font-family="Arial, sans-serif" font-size="12" fill="#10b981" font-weight="bold">↓ 87%</text>
+    
+    <text x="250" y="170" font-family="Arial, sans-serif" font-size="12" fill="#64748b">Fix Time: </text>
+    <text x="310" y="170" font-family="Arial, sans-serif" font-size="12" fill="#10b981" font-weight="bold">↓ 96%</text>
+  </g>
+  
+  <!-- Performance Metrics Grid -->
+  <g transform="translate(50, 350)">
+    <!-- MTTR Metric -->
+    <g>
+      <rect x="0" y="0" width="270" height="150" rx="10" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+      <text x="135" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#3b82f6">Mean Time to Remediate</text>
+      <text x="135" y="80" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#ffffff">20 min</text>
+      <text x="135" y="105" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#64748b">Previously: 3-5 days</text>
+      <rect x="20" y="120" width="230" height="8" rx="4" fill="#1e293b"/>
+      <rect x="20" y="120" width="200" height="8" rx="4" fill="url(#successGradient)">
+        <animate attributeName="width" from="0" to="200" dur="1.5s" fill="freeze"/>
+      </rect>
+    </g>
+    
+    <!-- Coverage Metric -->
+    <g transform="translate(300, 0)">
+      <rect x="0" y="0" width="270" height="150" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+      <text x="135" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#8b5cf6">Security Coverage</text>
+      <text x="135" y="80" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#ffffff">100%</text>
+      <text x="135" y="105" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#64748b">All repos protected</text>
+      <g transform="translate(135, 125)">
+        <use href="#pulse"/>
+        <circle cx="0" cy="0" r="3" fill="#8b5cf6"/>
+      </g>
+    </g>
+    
+    <!-- Compliance Metric -->
+    <g transform="translate(600, 0)">
+      <rect x="0" y="0" width="270" height="150" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+      <text x="135" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#10b981">Compliance Status</text>
+      <g transform="translate(135, 75)">
+        <circle cx="0" cy="0" r="30" fill="#10b981" opacity="0.3"/>
+        <path d="M -15 0 L -5 10 L 15 -10" stroke="#10b981" stroke-width="4" fill="none" stroke-linecap="round">
+          <animate attributeName="stroke-dasharray" from="0 50" to="50 0" dur="0.5s" fill="freeze"/>
+        </path>
+      </g>
+      <text x="135" y="125" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#64748b">SOC2, ISO 27001 Ready</text>
+    </g>
+    
+    <!-- Cost Savings -->
+    <g transform="translate(900, 0)">
+      <rect x="0" y="0" width="250" height="150" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+      <text x="125" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#f59e0b">Annual Savings</text>
+      <text x="125" y="80" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#ffffff">$4.2M</text>
+      <text x="125" y="105" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#64748b">In prevented breaches</text>
+      <text x="125" y="125" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#f59e0b">ROI: 320%</text>
+    </g>
+  </g>
+  
+  <!-- Timeline visualization -->
+  <g transform="translate(50, 540)">
+    <rect x="0" y="0" width="1100" height="220" rx="15" fill="#0f172a" stroke="#3b82f6" stroke-width="2" opacity="0.8"/>
+    <text x="550" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#ffffff">Security Maturity Journey</text>
+    
+    <!-- Timeline -->
+    <line x1="100" y1="120" x2="1000" y2="120" stroke="#334155" stroke-width="3"/>
+    
+    <!-- Milestones -->
+    <g transform="translate(100, 120)">
+      <circle cx="0" cy="0" r="8" fill="#3b82f6"/>
+      <text x="0" y="-20" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#3b82f6" font-weight="bold">Month 1</text>
+      <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">GHAS Enabled</text>
+      <text x="0" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">Shift-Left</text>
+    </g>
+    
+    <g transform="translate(300, 120)">
+      <circle cx="0" cy="0" r="8" fill="#8b5cf6"/>
+      <text x="0" y="-20" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#8b5cf6" font-weight="bold">Month 3</text>
+      <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">AI Integration</text>
+      <text x="0" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">Copilot Autofix</text>
+    </g>
+    
+    <g transform="translate(500, 120)">
+      <circle cx="0" cy="0" r="8" fill="#10b981"/>
+      <text x="0" y="-20" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#10b981" font-weight="bold">Month 6</text>
+      <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">Zero Trust</text>
+      <text x="0" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">Multi-Cloud</text>
+    </g>
+    
+    <g transform="translate(700, 120)">
+      <circle cx="0" cy="0" r="8" fill="#f59e0b"/>
+      <text x="0" y="-20" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#f59e0b" font-weight="bold">Month 9</text>
+      <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">Full Automation</text>
+      <text x="0" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">Self-Healing</text>
+    </g>
+    
+    <g transform="translate(900, 120)">
+      <circle cx="0" cy="0" r="12" fill="#ef4444" filter="url(#glow)"/>
+      <text x="0" y="-20" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#ef4444" font-weight="bold">Month 12</text>
+      <text x="0" y="40" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">Enterprise</text>
+      <text x="0" y="55" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#94a3b8">Security CoE</text>
+    </g>
+    
+    <!-- Progress bar -->
+    <rect x="100" y="115" width="800" height="10" rx="5" fill="#1e293b"/>
+    <rect x="100" y="115" width="800" height="10" rx="5" fill="url(#successGradient)" opacity="0.5">
+      <animate attributeName="width" from="0" to="800" dur="3s" fill="freeze"/>
+    </rect>
+  </g>
+</svg> 
