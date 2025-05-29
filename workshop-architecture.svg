@@ -1,0 +1,206 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-size="24" font-weight="bold" fill="#1f2937">
+    Secure Code AI Workshop - Complete Architecture
+  </text>
+  
+  <!-- Developer Environment -->
+  <g id="dev-env">
+    <rect x="20" y="60" width="340" height="200" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" rx="10"/>
+    <text x="190" y="85" text-anchor="middle" font-size="18" font-weight="bold" fill="#0c4a6e">Developer Environment</text>
+    
+    <rect x="40" y="110" width="140" height="40" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="110" y="135" text-anchor="middle" font-size="14" fill="#334155">VS Code + Copilot</text>
+    
+    <rect x="200" y="110" width="140" height="40" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="270" y="135" text-anchor="middle" font-size="14" fill="#334155">GitHub CLI</text>
+    
+    <rect x="40" y="170" width="140" height="40" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="110" y="195" text-anchor="middle" font-size="14" fill="#334155">Docker Desktop</text>
+    
+    <rect x="200" y="170" width="140" height="40" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="270" y="195" text-anchor="middle" font-size="14" fill="#334155">Azure CLI</text>
+  </g>
+  
+  <!-- GitHub Platform -->
+  <g id="github-platform">
+    <rect x="400" y="60" width="380" height="280" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2" rx="10"/>
+    <text x="590" y="85" text-anchor="middle" font-size="18" font-weight="bold" fill="#4c1d95">GitHub Platform</text>
+    
+    <rect x="420" y="110" width="160" height="50" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="500" y="135" text-anchor="middle" font-size="14" fill="#334155">GitHub Repository</text>
+    <text x="500" y="150" text-anchor="middle" font-size="12" fill="#64748b">Source Code</text>
+    
+    <rect x="600" y="110" width="160" height="50" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="680" y="135" text-anchor="middle" font-size="14" fill="#334155">GitHub Actions</text>
+    <text x="680" y="150" text-anchor="middle" font-size="12" fill="#64748b">CI/CD Pipeline</text>
+    
+    <rect x="420" y="180" width="160" height="50" fill="#10b981" stroke="#059669" stroke-width="2" rx="5"/>
+    <text x="500" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">GHAS</text>
+    <text x="500" y="215" text-anchor="middle" font-size="12" fill="#ffffff">Code Scanning</text>
+    
+    <rect x="600" y="180" width="160" height="50" fill="#10b981" stroke="#059669" stroke-width="2" rx="5"/>
+    <text x="680" y="200" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">Secret Scanning</text>
+    <text x="680" y="215" text-anchor="middle" font-size="12" fill="#ffffff">Push Protection</text>
+    
+    <rect x="420" y="250" width="160" height="50" fill="#10b981" stroke="#059669" stroke-width="2" rx="5"/>
+    <text x="500" y="270" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">Dependabot</text>
+    <text x="500" y="285" text-anchor="middle" font-size="12" fill="#ffffff">Dependency Updates</text>
+    
+    <rect x="600" y="250" width="160" height="50" fill="#f59e0b" stroke="#d97706" stroke-width="2" rx="5"/>
+    <text x="680" y="270" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">Copilot Autofix</text>
+    <text x="680" y="285" text-anchor="middle" font-size="12" fill="#ffffff">AI Remediation</text>
+  </g>
+  
+  <!-- Container Registry -->
+  <g id="container-registry">
+    <rect x="820" y="60" width="340" height="120" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" rx="10"/>
+    <text x="990" y="85" text-anchor="middle" font-size="18" font-weight="bold" fill="#92400e">Container Registry</text>
+    
+    <rect x="840" y="110" width="300" height="50" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="990" y="135" text-anchor="middle" font-size="14" fill="#334155">Azure Container Registry</text>
+    <text x="990" y="150" text-anchor="middle" font-size="12" fill="#64748b">Secured Images</text>
+  </g>
+  
+  <!-- Multi-Cloud Deployment -->
+  <g id="multi-cloud">
+    <rect x="20" y="380" width="340" height="180" fill="#dcfce7" stroke="#22c55e" stroke-width="2" rx="10"/>
+    <text x="190" y="405" text-anchor="middle" font-size="18" font-weight="bold" fill="#14532d">Multi-Cloud Deployment</text>
+    
+    <rect x="40" y="430" width="300" height="40" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2" rx="5"/>
+    <text x="190" y="455" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">Azure AKS (Primary)</text>
+    
+    <rect x="40" y="480" width="140" height="30" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="110" y="500" text-anchor="middle" font-size="12" fill="#334155">AWS EKS</text>
+    
+    <rect x="200" y="480" width="140" height="30" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="270" y="500" text-anchor="middle" font-size="12" fill="#334155">GCP GKE</text>
+  </g>
+  
+  <!-- Microsoft Defender -->
+  <g id="defender">
+    <rect x="400" y="380" width="380" height="180" fill="#e0e7ff" stroke="#4338ca" stroke-width="2" rx="10"/>
+    <text x="590" y="405" text-anchor="middle" font-size="18" font-weight="bold" fill="#1e1b4b">Microsoft Defender for Cloud</text>
+    
+    <rect x="420" y="430" width="160" height="40" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="500" y="455" text-anchor="middle" font-size="12" fill="#334155">Cloud Security Posture</text>
+    
+    <rect x="600" y="430" width="160" height="40" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="680" y="455" text-anchor="middle" font-size="12" fill="#334155">Container Security</text>
+    
+    <rect x="420" y="490" width="160" height="40" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="500" y="515" text-anchor="middle" font-size="12" fill="#334155">Threat Protection</text>
+    
+    <rect x="600" y="490" width="160" height="40" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="680" y="515" text-anchor="middle" font-size="12" fill="#334155">Compliance</text>
+  </g>
+  
+  <!-- Microsoft Sentinel -->
+  <g id="sentinel">
+    <rect x="820" y="380" width="340" height="180" fill="#fee2e2" stroke="#dc2626" stroke-width="2" rx="10"/>
+    <text x="990" y="405" text-anchor="middle" font-size="18" font-weight="bold" fill="#7f1d1d">Microsoft Sentinel</text>
+    
+    <rect x="840" y="430" width="300" height="40" fill="#ef4444" stroke="#b91c1c" stroke-width="2" rx="5"/>
+    <text x="990" y="455" text-anchor="middle" font-size="14" font-weight="bold" fill="#ffffff">Central Security Dashboard</text>
+    
+    <rect x="840" y="490" width="140" height="30" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="910" y="510" text-anchor="middle" font-size="12" fill="#334155">SIEM</text>
+    
+    <rect x="1000" y="490" width="140" height="30" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="1070" y="510" text-anchor="middle" font-size="12" fill="#334155">SOAR</text>
+  </g>
+  
+  <!-- Monitoring & Observability -->
+  <g id="monitoring">
+    <rect x="20" y="600" width="760" height="140" fill="#f0f9ff" stroke="#0891b2" stroke-width="2" rx="10"/>
+    <text x="400" y="625" text-anchor="middle" font-size="18" font-weight="bold" fill="#083344">Monitoring &amp; Observability</text>
+    
+    <rect x="40" y="650" width="160" height="60" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="120" y="675" text-anchor="middle" font-size="14" fill="#334155">Azure Monitor</text>
+    <text x="120" y="695" text-anchor="middle" font-size="12" fill="#64748b">Metrics &amp; Logs</text>
+    
+    <rect x="220" y="650" width="160" height="60" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="300" y="675" text-anchor="middle" font-size="14" fill="#334155">Application Insights</text>
+    <text x="300" y="695" text-anchor="middle" font-size="12" fill="#64748b">APM &amp; Tracing</text>
+    
+    <rect x="400" y="650" width="160" height="60" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="480" y="675" text-anchor="middle" font-size="14" fill="#334155">Log Analytics</text>
+    <text x="480" y="695" text-anchor="middle" font-size="12" fill="#64748b">Query &amp; Analysis</text>
+    
+    <rect x="580" y="650" width="180" height="60" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="670" y="675" text-anchor="middle" font-size="14" fill="#334155">Security Workbooks</text>
+    <text x="670" y="695" text-anchor="middle" font-size="12" fill="#64748b">Custom Dashboards</text>
+  </g>
+  
+  <!-- Agentic DevOps -->
+  <g id="agentic">
+    <rect x="820" y="600" width="340" height="140" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="2" rx="10"/>
+    <text x="990" y="625" text-anchor="middle" font-size="18" font-weight="bold" fill="#4c1d95">Agentic DevOps</text>
+    
+    <rect x="840" y="650" width="140" height="60" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="910" y="675" text-anchor="middle" font-size="14" fill="#334155">Security Agents</text>
+    <text x="910" y="695" text-anchor="middle" font-size="12" fill="#64748b">Automated Response</text>
+    
+    <rect x="1000" y="650" width="140" height="60" fill="#ffffff" stroke="#64748b" stroke-width="1" rx="5"/>
+    <text x="1070" y="675" text-anchor="middle" font-size="14" fill="#334155">AI Orchestration</text>
+    <text x="1070" y="695" text-anchor="middle" font-size="12" fill="#64748b">Agent-to-Agent</text>
+  </g>
+  
+  <!-- Arrows and Connections -->
+  <defs>
+    <!-- Arrow marker definition -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto" fill="#6b7280">
+      <polygon points="0 0, 10 3.5, 0 7"/>
+    </marker>
+    
+    <!-- Shadow filter for arrows -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1"/>
+      <feOffset dx="1" dy="1" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.1"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Connection arrows with proper clearance -->
+  <!-- Dev to GitHub -->
+  <path d="M 360 160 L 400 160" stroke="#6b7280" stroke-width="3" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- GitHub to Registry -->
+  <path d="M 780 120 L 820 120" stroke="#6b7280" stroke-width="3" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- Registry to Multi-Cloud (going below GitHub Platform components) -->
+  <path d="M 990 180 L 990 355 L 190 355 L 190 380" 
+        stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)" fill="none" stroke-dasharray="6,3"/>
+  
+  <!-- Multi-Cloud to Defender -->
+  <path d="M 360 470 L 400 470" stroke="#6b7280" stroke-width="3" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- Defender to Sentinel -->
+  <path d="M 780 470 L 820 470" stroke="#6b7280" stroke-width="3" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- Sentinel to Monitoring (going below all middle row components) -->
+  <path d="M 990 560 L 990 575 L 400 575 L 400 600" 
+        stroke="#6b7280" stroke-width="2" marker-end="url(#arrowhead)" fill="none" stroke-dasharray="6,3"/>
+  
+  <!-- Monitoring to Agentic -->
+  <path d="M 780 670 L 820 670" stroke="#6b7280" stroke-width="3" marker-end="url(#arrowhead)" fill="none"/>
+  
+  <!-- Feedback loop (very bottom) -->
+  <path d="M 990 740 L 990 780 L 190 780 L 190 260" 
+        stroke="#8b5cf6" stroke-width="1.5" marker-end="url(#arrowhead)" fill="none" 
+        stroke-dasharray="4,4" opacity="0.4"/>
+  <text x="500" y="795" font-size="10" fill="#8b5cf6" opacity="0.6">Continuous Feedback Loop</text>
+  
+  <!-- Sentinel to Defender (security feedback) -->
+  <path d="M 820 450 L 790 450" 
+        stroke="#dc2626" stroke-width="2" marker-end="url(#arrowhead)" fill="none" 
+        stroke-dasharray="3,3" opacity="0.6"/>
+</svg>
