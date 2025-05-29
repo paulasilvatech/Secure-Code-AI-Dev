@@ -476,6 +476,6 @@ Continue to [Module 03: Setting Up Your Security Environment](../03-environment-
 
 | Previous | Up | Next |
 |----------|----|----- |
-| [← Module 01: Shift-Left Security](module-01-shift-left.md) | [📚 All Modules](../README.md#-learning-path) | [Module 04: Copilot Security →](module-04-copilot.md) |
+| [← Module 01: Shift-Left Security](module-01-shift-left.md) | [📚 All Modules](../README.md#-learning-path) | [Module 03: Environment Setup →](module-03-environment-setup.md) |
 
-**Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🔧 Troubleshooting](../docs/troubleshooting-guide.md)
+**Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🛡️ Security FAQ](../docs/workshop-faq.md)

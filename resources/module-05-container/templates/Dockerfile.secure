@@ -1,0 +1,119 @@
+# Secure Dockerfile Template
+# Following container security best practices
+
+# Use specific version tags, never 'latest'
+ARG NODE_VERSION=20.11.0
+ARG ALPINE_VERSION=3.19
+
+# Stage 1: Dependencies
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS dependencies
+
+# Add metadata
+LABEL maintainer="security-team@example.com"
+LABEL description="Secure Node.js application"
+LABEL version="1.0.0"
+
+# Create non-root user early
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001
+
+# Set working directory
+WORKDIR /app
+
+# Copy only package files first (better layer caching)
+COPY package*.json ./
+
+# Install dependencies with security audit
+RUN npm ci --only=production && \
+    npm audit fix && \
+    npm cache clean --force
+
+# Stage 2: Build
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS build
+
+WORKDIR /app
+
+# Copy package files
+COPY package*.json ./
+
+# Install all dependencies (including dev)
+RUN npm ci && \
+    npm cache clean --force
+
+# Copy source code
+COPY --chown=nodejs:nodejs . .
+
+# Build application
+RUN npm run build && \
+    npm prune --production
+
+# Stage 3: Security scanning
+FROM aquasec/trivy:latest AS security-scan
+
+# Copy built application for scanning
+COPY --from=build /app /app
+
+# Run security scan
+RUN trivy filesystem --no-progress --security-checks vuln,config /app
+
+# Stage 4: Production
+FROM node:${NODE_VERSION}-alpine${ALPINE_VERSION} AS production
+
+# Install security updates
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache \
+        dumb-init \
+        libcap && \
+    rm -rf /var/cache/apk/*
+
+# Create app directory
+WORKDIR /app
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001
+
+# Copy built application from build stage
+COPY --from=build --chown=nodejs:nodejs /app/dist ./dist
+COPY --from=build --chown=nodejs:nodejs /app/node_modules ./node_modules
+COPY --from=dependencies --chown=nodejs:nodejs /app/package*.json ./
+
+# Security configurations
+RUN chmod -R 550 /app && \
+    chmod -R 440 /app/dist
+
+# Remove unnecessary tools
+RUN apk del libcap
+
+# Set security headers
+ENV NODE_ENV=production
+ENV NODE_OPTIONS="--max-old-space-size=512"
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+    CMD node healthcheck.js || exit 1
+
+# Switch to non-root user
+USER nodejs
+
+# Expose port (not as root)
+EXPOSE 3000
+
+# Use dumb-init to handle signals properly
+ENTRYPOINT ["dumb-init", "--"]
+
+# Start application
+CMD ["node", "dist/index.js"]
+
+# Security notes:
+# 1. Multi-stage build reduces final image size and attack surface
+# 2. Specific version pinning prevents unexpected updates
+# 3. Non-root user (nodejs:1001) runs the application
+# 4. Security scanning integrated in build process
+# 5. Minimal final image with only production dependencies
+# 6. Read-only file permissions where possible
+# 7. Health checks for container orchestration
+# 8. Proper signal handling with dumb-init
+# 9. Security updates applied
+# 10. Unnecessary tools removed 

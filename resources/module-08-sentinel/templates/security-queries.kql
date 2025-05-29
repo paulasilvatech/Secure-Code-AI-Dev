@@ -1,0 +1,150 @@
+// Secure Code AI Workshop - Sentinel Security Queries
+// Collection of KQL queries for security monitoring
+
+// ========================================
+// GitHub Security Alerts
+// ========================================
+
+// Critical GitHub Security Alerts
+GitHubSecurityAlerts_CL
+| where TimeGenerated > ago(24h)
+| where Severity in ("critical", "high")
+| where State == "open"
+| project TimeGenerated, Repository, AlertName, Severity, AlertUrl, AlertType
+| order by TimeGenerated desc
+
+// GitHub Secret Scanning Alerts
+GitHubSecurityAlerts_CL
+| where TimeGenerated > ago(7d)
+| where AlertType == "secret_scanning"
+| summarize Count = count() by Repository, Severity
+| order by Count desc
+
+// ========================================
+// Container Security
+// ========================================
+
+// Suspicious Container Activity
+ContainerLog
+| where TimeGenerated > ago(1h)
+| where ContainerName !in ("omsagent", "omsagent-rs")
+| where LogEntry contains_any ("error", "failed", "denied", "unauthorized")
+| project TimeGenerated, ContainerName, LogEntry, Computer
+| take 100
+
+// Container Image Vulnerabilities
+ContainerInventory
+| where TimeGenerated > ago(24h)
+| where ImageTag != "latest"
+| join kind=leftouter (
+    SecurityAlert
+    | where AlertType contains "container"
+) on $left.ContainerID == $right.ResourceId
+| project TimeGenerated, Image, ImageTag, AlertName, Severity
+| where isnotempty(AlertName)
+
+// ========================================
+// Azure Security Center Alerts
+// ========================================
+
+// High Severity Security Alerts
+SecurityAlert
+| where TimeGenerated > ago(24h)
+| where AlertSeverity in ("High", "Critical")
+| project TimeGenerated, AlertName, AlertSeverity, ResourceId, Description
+| order by TimeGenerated desc
+
+// Security Recommendations by Resource
+SecurityRecommendation
+| where TimeGenerated > ago(7d)
+| where RecommendationState == "Active"
+| summarize Count = count() by RecommendationName, RecommendationSeverity
+| order by Count desc
+
+// ========================================
+// Network Security
+// ========================================
+
+// Suspicious Network Activity
+AzureNetworkAnalytics_CL
+| where TimeGenerated > ago(1h)
+| where SubType_s == "FlowLog"
+| where FlowStatus_s == "D" // Denied flows
+| summarize DeniedCount = count() by SrcIP_s, DestIP_s, DestPort_d
+| where DeniedCount > 10
+| order by DeniedCount desc
+
+// Unusual Outbound Traffic
+AzureNetworkAnalytics_CL
+| where TimeGenerated > ago(24h)
+| where Direction_s == "O"
+| where DestPort_d !in (80, 443, 22, 3389)
+| summarize BytesSent = sum(BytesSent_d) by SrcIP_s, DestIP_s, DestPort_d
+| where BytesSent > 1000000000 // 1GB
+| order by BytesSent desc
+
+// ========================================
+// Identity and Access
+// ========================================
+
+// Failed Login Attempts
+SigninLogs
+| where TimeGenerated > ago(1h)
+| where ResultType != "0"
+| summarize FailedAttempts = count() by UserPrincipalName, IPAddress, Location
+| where FailedAttempts > 5
+| order by FailedAttempts desc
+
+// Privileged Account Activity
+AuditLogs
+| where TimeGenerated > ago(24h)
+| where Category == "RoleManagement"
+| where OperationName contains "Add member to role"
+| project TimeGenerated, OperationName, Identity, TargetResources
+| order by TimeGenerated desc
+
+// ========================================
+// Compliance and Governance
+// ========================================
+
+// Resource Changes
+AzureActivity
+| where TimeGenerated > ago(24h)
+| where OperationNameValue contains_any ("write", "delete", "action")
+| where ActivityStatusValue == "Succeeded"
+| project TimeGenerated, OperationNameValue, Caller, Resource
+| order by TimeGenerated desc
+
+// Policy Violations
+PolicyInsights_CL
+| where TimeGenerated > ago(7d)
+| where ComplianceState == "NonCompliant"
+| summarize ViolationCount = count() by PolicyDefinitionName, ResourceType
+| order by ViolationCount desc
+
+// ========================================
+// Custom Detection Rules
+// ========================================
+
+// Potential Crypto Mining Activity
+Perf
+| where TimeGenerated > ago(1h)
+| where ObjectName == "Processor"
+| where CounterName == "% Processor Time"
+| where CounterValue > 90
+| summarize AvgCPU = avg(CounterValue) by Computer, bin(TimeGenerated, 5m)
+| where AvgCPU > 90
+| join kind=inner (
+    Process
+    | where TimeGenerated > ago(1h)
+    | where ProcessName contains_any ("xmrig", "minerd", "minergate")
+) on Computer
+
+// Suspicious PowerShell Activity
+SecurityEvent
+| where TimeGenerated > ago(1h)
+| where EventID == 4688
+| where Process contains "powershell"
+| where CommandLine contains_any ("bypass", "hidden", "encoded", "downloadstring")
+| project TimeGenerated, Computer, Account, CommandLine
+| order by TimeGenerated desc 

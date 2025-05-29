@@ -1,0 +1,282 @@
+# Agentic Security Automation Template
+# AI-driven security agent for automated threat response
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: security-agent-config
+  namespace: security
+data:
+  agent-config.yaml: |
+    # Security Agent Configuration
+    agent:
+      name: "security-sentinel"
+      version: "1.0.0"
+      mode: "autonomous"
+      
+    # AI Model Configuration
+    ai:
+      provider: "azure-openai"
+      model: "gpt-4"
+      endpoint: "${AZURE_OPENAI_ENDPOINT}"
+      temperature: 0.3
+      max_tokens: 2000
+      
+    # Security Policies
+    policies:
+      threat_response:
+        - name: "suspicious_login"
+          severity: "high"
+          actions:
+            - "block_ip"
+            - "notify_security_team"
+            - "create_incident"
+        
+        - name: "malware_detected"
+          severity: "critical"
+          actions:
+            - "isolate_container"
+            - "capture_forensics"
+            - "escalate_to_soc"
+            
+        - name: "data_exfiltration"
+          severity: "critical"
+          actions:
+            - "block_network"
+            - "revoke_access"
+            - "alert_management"
+    
+    # Automated Actions
+    actions:
+      block_ip:
+        type: "network"
+        provider: "azure_firewall"
+        parameters:
+          duration: "24h"
+          log: true
+          
+      isolate_container:
+        type: "container"
+        provider: "kubernetes"
+        parameters:
+          network_policy: "deny-all"
+          kill_processes: true
+          
+      create_incident:
+        type: "ticketing"
+        provider: "servicenow"
+        parameters:
+          priority: "high"
+          assignment_group: "security-ops"
+    
+    # Learning Configuration
+    learning:
+      enabled: true
+      feedback_loop: true
+      model_update_frequency: "weekly"
+      data_retention: "90d"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: security-agent
+  namespace: security
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: security-agent
+  template:
+    metadata:
+      labels:
+        app: security-agent
+    spec:
+      serviceAccountName: security-agent-sa
+      containers:
+      - name: agent
+        image: secureaiworkshop.azurecr.io/security-agent:latest
+        env:
+        - name: AZURE_OPENAI_ENDPOINT
+          valueFrom:
+            secretKeyRef:
+              name: azure-openai-secret
+              key: endpoint
+        - name: AZURE_OPENAI_KEY
+          valueFrom:
+            secretKeyRef:
+              name: azure-openai-secret
+              key: api-key
+        - name: SENTINEL_WORKSPACE_ID
+          valueFrom:
+            secretKeyRef:
+              name: sentinel-secret
+              key: workspace-id
+        - name: SENTINEL_SHARED_KEY
+          valueFrom:
+            secretKeyRef:
+              name: sentinel-secret
+              key: shared-key
+        ports:
+        - containerPort: 8080
+          name: metrics
+        - containerPort: 8443
+          name: webhook
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1000m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        volumeMounts:
+        - name: config
+          mountPath: /config
+          readOnly: true
+        - name: rules
+          mountPath: /rules
+          readOnly: true
+      volumes:
+      - name: config
+        configMap:
+          name: security-agent-config
+      - name: rules
+        configMap:
+          name: security-rules
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: security-agent
+  namespace: security
+spec:
+  selector:
+    app: security-agent
+  ports:
+  - name: metrics
+    port: 8080
+    targetPort: 8080
+  - name: webhook
+    port: 443
+    targetPort: 8443
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: security-agent-sa
+  namespace: security
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: security-agent-role
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "endpoints"]
+  verbs: ["get", "list", "watch", "delete"]
+- apiGroups: ["apps"]
+  resources: ["deployments", "replicasets"]
+  verbs: ["get", "list", "watch", "update"]
+- apiGroups: ["networking.k8s.io"]
+  resources: ["networkpolicies"]
+  verbs: ["create", "update", "delete", "get", "list"]
+- apiGroups: ["security.istio.io"]
+  resources: ["authorizationpolicies"]
+  verbs: ["create", "update", "delete", "get", "list"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: security-agent-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: security-agent-role
+subjects:
+- kind: ServiceAccount
+  name: security-agent-sa
+  namespace: security
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: security-rules
+  namespace: security
+data:
+  detection-rules.yaml: |
+    rules:
+      - id: "AUTH001"
+        name: "Multiple Failed Login Attempts"
+        description: "Detect brute force login attempts"
+        query: |
+          SigninLogs
+          | where ResultType != "0"
+          | summarize FailedAttempts = count() by UserPrincipalName, IPAddress, bin(TimeGenerated, 5m)
+          | where FailedAttempts > 5
+        severity: "high"
+        mitigation: "block_ip"
+        
+      - id: "NET001"
+        name: "Unusual Outbound Traffic"
+        description: "Detect potential data exfiltration"
+        query: |
+          NetworkAnalytics
+          | where Direction == "Outbound"
+          | where BytesSent > 1000000000
+          | where DestinationPort !in (80, 443)
+        severity: "critical"
+        mitigation: "isolate_container"
+        
+      - id: "CONT001"
+        name: "Suspicious Container Behavior"
+        description: "Detect container anomalies"
+        query: |
+          ContainerLog
+          | where LogEntry contains_any ("curl", "wget", "nc", "ncat")
+          | where ContainerName !in ("allowed-containers")
+        severity: "medium"
+        mitigation: "alert_security"
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: security-agent-hpa
+  namespace: security
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: security-agent
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageUtilization: 80 

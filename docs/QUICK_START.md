@@ -1,260 +1,243 @@
-# 🚀 Quick Start Guide - Secure Code AI Development
+# 🚀 Quick Start Guide
 
-Get up and running with secure AI-powered development practices in under 30 minutes!
+Get started with the Secure Code AI Development Workshop in just 30 minutes! This guide will help you set up your environment and complete your first security scan.
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
-[![Workshop Status](https://img.shields.io/badge/workshop-ready-green.svg)](#)
-[![AI Powered](https://img.shields.io/badge/AI-powered-purple.svg)](#)
+## ⚡ Prerequisites Checklist
 
-## 📋 Prerequisites Checklist
+Before starting, ensure you have:
 
-Before you begin, make sure you have:
+- [ ] GitHub account with [GitHub Advanced Security](https://github.com/features/security) access
+- [ ] [Azure free account](https://azure.microsoft.com/free/) created
+- [ ] [VS Code](https://code.visualstudio.com/) installed
+- [ ] [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running
+- [ ] [GitHub Copilot](https://github.com/features/copilot) subscription active
+- [ ] Terminal/Command Prompt access
 
-- [ ] **GitHub account** with GitHub Advanced Security ([Get GHAS](https://github.com/features/security))
-- [ ] **GitHub Copilot** subscription ([Get Copilot](https://github.com/features/copilot))
-- [ ] **Azure account** ([Sign up free](https://azure.microsoft.com/free/))
-- [ ] **Node.js 18+** installed ([Download](https://nodejs.org))
-- [ ] **VS Code** or preferred IDE ([Download](https://code.visualstudio.com))
-- [ ] **Docker Desktop** installed ([Download](https://www.docker.com/products/docker-desktop/))
-- [ ] Basic understanding of software security principles
+## 🏃‍♀️ 5-Minute Setup
 
-## ⚡ 15-Minute Security Quick Demo
-
-### Step 1: Clone and Setup (3 minutes)
+### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/paulasilvatech/Secure-Code-AI-Dev.git
-cd Secure-Code-AI-Dev
-```
-
-### Step 2: Enable Security Features (5 minutes)
-
-Quick security setup:
-- Enable GitHub Advanced Security on your repository
-- Configure secret scanning and code scanning
-- Set up security policies
-
-### Step 3: Your First Secure Code Generation (7 minutes)
-
-Follow these steps to see AI-powered secure coding in action:
-1. Open VS Code with GitHub Copilot
-2. Create a secure authentication component
-3. See how AI suggests security best practices
-
-## 🎯 Choose Your Security Learning Path
-
-Based on your experience and security needs:
-
-```mermaid
-graph TD
-    A[Start Here] --> B{Security Experience?}
-    
-    B -->|New to Security| C[Beginner Path<br/>90 minutes total]
-    B -->|Some Security Knowledge| D[Intermediate Path<br/>2-3 hours total]
-    B -->|Security Professional| E[Expert Path<br/>6+ hours total]
-    
-    C --> C1[Module 1: Shift-Left Security<br/>30 min]
-    C1 --> C2[Module 2: GitHub Advanced Security<br/>30 min]
-    C2 --> C3[Module 4: Secure Coding with Copilot<br/>30 min]
-    C3 --> F[Start Secure Development]
-    
-    D --> D1[Quick Security Assessment<br/>15 min]
-    D1 --> D2[Module 5: Container Security<br/>60 min]
-    D2 --> D3[Module 6: Agentic AI Security<br/>45 min]
-    D3 --> D4[Module 7: Multi-Cloud Security<br/>60 min]
-    D4 --> G[Build Secure Applications]
-    
-    E --> E1[Complete Modules 1-6<br/>3 hours foundation]
-    E1 --> E2[Module 8: Azure Sentinel<br/>90 min]
-    E2 --> E3[Module 9: Security Dashboards<br/>90 min]
-    E3 --> E4[Module 10: Advanced Patterns<br/>60 min]
-    E4 --> H[Enterprise Security Implementation]
-    
-    style C fill:#e8f5e8
-    style D fill:#fff7e6
-    style E fill:#ffe6e6
-```
-
-### 🟢 New to Security (90 minutes total)
-1. Start with [Module 1: Shift-Left Security](../modules/module-01-shift-left.md) (30 min)
-2. Continue to [Module 2: GitHub Advanced Security](../modules/module-02-ghas.md) (30 min)
-3. Try [Module 4: Secure Coding with Copilot](../modules/module-04-copilot.md) (30 min)
-
-### 🟡 Some Security Knowledge (2-3 hours total)
-1. Review [Workshop Overview](secure-code-ai-workshop.md) (15 min)
-2. Jump to [Module 5: Container Security](../modules/module-05-container.md) (60 min)
-3. Explore [Module 6: Agentic AI Security](../modules/module-06-agentic.md) (45 min)
-4. Practice with [Module 7: Multi-Cloud Security](../modules/module-07-multicloud.md) (60 min)
-
-### 🔴 Security Professional (6+ hours total)
-1. Complete Modules 1-7 as foundation (3 hours)
-2. Deep dive into [Module 8: Azure Sentinel](../modules/module-08-sentinel.md) (90 min)
-3. Master [Module 9: Security Dashboards](../modules/module-09-dashboards.md) (90 min)
-4. Review [Module 10: Advanced Patterns](../modules/module-10-advanced.md) (60 min)
-
-## 🚀 Option 1: Automated Deployment (Recommended)
-
-The fastest way to get started is using our automated deployment script:
-
-```bash
-# Clone the repository
+# Clone the workshop repository
 git clone https://github.com/paulasilvatech/Secure-Code-AI-Dev.git
 cd Secure-Code-AI-Dev
 
-# Run the automated deployment
-./resources/common/scripts/deploy-workshop.sh
+# Create your own branch
+git checkout -b my-workshop-progress
 ```
 
-This script will:
-- ✅ Deploy all Azure infrastructure (AKS, ACR, Key Vault, Sentinel)
-- ✅ Configure GitHub integration
-- ✅ Set up security monitoring
-- ✅ Generate deployment credentials
+### Step 2: Run the Quick Setup Script
 
-**Time required**: ~15 minutes
-
-## 🛠️ Option 2: Manual Setup
-
-If you prefer manual control or need to customize the deployment:
-
-## 🛠️ Essential Security Tools Setup
-
-### GitHub Advanced Security
 ```bash
-# Enable in repository settings
-# Navigate to Settings > Security & analysis
-# Enable:
-# - Dependency graph
-# - Dependabot alerts
-# - Code scanning
-# - Secret scanning
+# Make the script executable (macOS/Linux)
+chmod +x scripts/quick-setup.sh
+
+# Run the quick setup
+./scripts/quick-setup.sh
 ```
 
-### GitHub Copilot for Security
+For Windows users:
+```powershell
+# Run in PowerShell as Administrator
+.\scripts\quick-setup.ps1
+```
+
+### Step 3: Verify Installation
+
 ```bash
-# Install VS Code extension
-code --install-extension GitHub.copilot
-
-# Configure for security-first suggestions
-# Settings > GitHub Copilot > Include Security Context
+# Run verification script
+./scripts/verify-setup.sh
 ```
 
-### Azure Security Tools
+You should see all green checkmarks ✅ for required tools.
+
+## 🎯 Your First Security Scan (10 minutes)
+
+### 1. Create a Sample Vulnerable Application
+
 ```bash
-# Install Azure CLI
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+# Navigate to templates directory
+cd templates/vulnerable-app
 
-# Login to Azure
-az login
+# Install dependencies
+npm install
 
-# Create security resource group
-az group create --name SecureDevRG --location eastus
+# Run initial security scan
+npm audit
 ```
 
-## 🔒 Sample Security Scenarios
+### 2. Enable GitHub Advanced Security
 
-Practice with these real-world security challenges:
-
-- **Beginner**: Secure user authentication flow
-- **Intermediate**: Container vulnerability scanning pipeline
-- **Advanced**: Zero-trust architecture implementation
-
-## 🚨 Common Security Setup Issues
-
-### GitHub Advanced Security Not Available
 ```bash
-# Check if GHAS is enabled for your organization
-gh api /orgs/{org}/settings/security_analysis
+# Push to GitHub
+git add .
+git commit -m "Initial vulnerable app"
+git push origin my-workshop-progress
 
-# For personal repos, upgrade to GitHub Pro
+# Enable GHAS in your repository settings
+# Go to: Settings > Security & Analysis > Enable all
 ```
 
-### Copilot Security Suggestions Not Working
-- Ensure security context is enabled in settings
-- Update to latest Copilot version
-- Check if repository has security policies defined
+### 3. Fix Your First Vulnerability with AI
 
-### Azure Security Center Access
-```bash
-# Check subscription access
-az account show
+Open VS Code and use GitHub Copilot:
 
-# Enable Security Center
-az security pricing create -n default --tier standard
-```
-
-## 📚 Key Security Concepts
-
-### Shift-Left Security
-Moving security earlier in the development lifecycle:
 ```javascript
-// Example: Input validation at development time
-function validateUserInput(input) {
-  // AI suggests security validations
-  const sanitized = DOMPurify.sanitize(input);
-  const validated = validator.isAlphanumeric(sanitized);
-  return validated ? sanitized : null;
-}
+// Type this comment in app.js
+// fix the SQL injection vulnerability in the login function
+
+// Copilot will suggest secure code
 ```
 
-### Security as Code
-Defining security policies programmatically:
-```yaml
-# security-policy.yml
-name: Security Policy
-rules:
-  - no-hardcoded-secrets
-  - enforce-https
-  - validate-inputs
-  - secure-dependencies
+## 📚 Quick Module Overview
+
+Here's what you'll learn in each of the 10 modules:
+
+### Core Security (Modules 1-3)
+1. **[Shift-Left Security](../modules/module-01-shift-left.md)** - Security fundamentals (1.5h)
+2. **[GitHub Advanced Security](../modules/module-02-ghas.md)** - GHAS features (1h)
+3. **[Security Environment Setup](../modules/module-03-environment-setup.md)** - Tools & configuration (1.5h)
+
+### AI-Powered Development (Modules 4-6)
+4. **[AI Secure Coding](../modules/module-04-copilot.md)** - GitHub Copilot for security (2h)
+5. **[Container Security](../modules/module-05-container.md)** - DevSecOps practices (2h)
+6. **[Agentic AI](../modules/module-06-agentic.md)** - Automated security agents (2h)
+
+### Enterprise Security (Modules 7-10)
+7. **[Multi-Cloud Security](../modules/module-07-multicloud.md)** - Cross-cloud strategies (2h)
+8. **[Microsoft Sentinel](../modules/module-08-sentinel.md)** - SIEM/SOAR setup (2.5h)
+9. **[Security Dashboards](../modules/module-09-dashboards.md)** - Monitoring & reporting (2h)
+10. **[Advanced Patterns](../modules/module-10-advanced.md)** - Zero-trust & more (2.5h)
+
+## 🛠️ Essential Commands Cheat Sheet
+
+### Git Commands
+```bash
+git status                    # Check current status
+git add .                     # Stage all changes
+git commit -m "message"       # Commit changes
+git push origin branch-name   # Push to GitHub
 ```
 
-### DevSecOps Integration
+### Docker Commands
+```bash
+docker build -t app .         # Build image
+docker run -p 3000:3000 app   # Run container
+docker ps                     # List running containers
+docker scan app               # Scan for vulnerabilities
+```
 
-| Security Stage | Tools | Automation |
-|---|---|---|
-| **Code** | GitHub Copilot, SAST | Pre-commit hooks |
-| **Build** | Container scanning | CI/CD pipelines |
-| **Deploy** | Azure Security Center | Policy as Code |
-| **Runtime** | Azure Sentinel | Real-time monitoring |
+### Azure CLI Commands
+```bash
+az login                      # Login to Azure
+az group create -n rg-workshop -l eastus  # Create resource group
+az acr create -n myregistry -g rg-workshop --sku Basic  # Create container registry
+```
 
-## 🎯 Success Metrics
+### Security Scanning
+```bash
+# GitHub CLI security commands
+gh secret scan                # Scan for secrets
+gh api /repos/{owner}/{repo}/code-scanning/alerts  # View alerts
 
-After completing the quick start, you should be able to:
+# Local scanning
+trivy fs .                    # Scan filesystem
+snyk test                     # Test for vulnerabilities
+```
 
-- [ ] Enable and configure GitHub Advanced Security
-- [ ] Generate secure code with AI assistance
-- [ ] Implement basic security controls
-- [ ] Set up vulnerability scanning
-- [ ] Create security monitoring dashboards
+## 🎓 Learning Paths
+
+### 🚀 Express Path (3 hours)
+Perfect for a quick introduction:
+1. Module 1: Shift-Left basics (45 min)
+2. Module 2: GHAS setup (30 min)
+3. Module 4: AI secure coding (90 min)
+4. Quick lab: Fix 3 vulnerabilities (15 min)
+
+### 📚 Standard Path (8 hours)
+Comprehensive security coverage:
+1. Complete Modules 1-7
+2. Hands-on labs for each module
+3. Build a secure CI/CD pipeline
+4. Deploy to cloud with security
+
+### 🏆 Advanced Path (16+ hours)
+Full enterprise implementation:
+1. All 10 modules in detail
+2. Multi-cloud deployment
+3. Complete monitoring setup
+4. Custom security agents
+5. Production-ready implementation
+
+## 🔧 Troubleshooting Quick Fixes
+
+### Docker Not Running
+```bash
+# macOS/Windows
+# Open Docker Desktop application
+
+# Linux
+sudo systemctl start docker
+```
+
+### GitHub Authentication Issues
+```bash
+# Reconfigure GitHub CLI
+gh auth logout
+gh auth login
+
+# Use personal access token
+git config --global credential.helper store
+```
+
+### Azure Login Problems
+```bash
+# Clear Azure credentials
+az logout
+az account clear
+az login --use-device-code
+```
+
+## 📊 Success Metrics
+
+Track your progress:
+- [ ] Completed environment setup
+- [ ] Ran first security scan
+- [ ] Fixed first vulnerability with AI
+- [ ] Enabled GHAS on repository
+- [ ] Completed at least 3 modules
+- [ ] Deployed secure application
+
+## 🚦 Next Steps
+
+1. **Complete Module 1** - [Start Here](../modules/module-01-shift-left.md)
+2. **Join Community** - [GitHub Discussions](https://github.com/paulasilvatech/Secure-Code-AI-Dev/discussions)
+3. **Share Progress** - Post your achievements with #SecureCodeAI
 
 ## 🆘 Need Help?
 
-| Support Type | Resource | Best For |
-|---|---|---|
-| 🚨 **Immediate Help** | [Troubleshooting Guide](troubleshooting-guide.md) | Quick fixes and common issues |
-| 🔍 **Security Issues** | [Security FAQ](workshop-faq.md) | Security-specific questions |
-| 💬 **Community** | [GitHub Discussions](https://github.com/paulasilvatech/Secure-Code-AI-Dev/discussions) | Questions and collaboration |
-| 🏢 **Enterprise** | [Products Overview](products-overview.md) | Enterprise security solutions |
-| 🆕 **Report Issue** | [New Issue](https://github.com/paulasilvatech/Secure-Code-AI-Dev/issues/new) | Bug reports and feature requests |
+- 📖 [Detailed Troubleshooting Guide](troubleshooting-guide.md)
+- 💬 [Workshop FAQ](workshop-faq.md)
+- 🤝 [Community Support](https://github.com/paulasilvatech/Secure-Code-AI-Dev/discussions)
+- 📧 Direct support: workshop@secureaidev.com
 
-## 🎉 What's Next?
+---
 
-Once you've completed the quick start:
+## 🎉 Congratulations!
 
-1. **Build Secure Applications** following Modules 5-7
-2. **Implement Security Monitoring** from Module 8
-3. **Create Security Dashboards** with Module 9
-4. **Share Your Experience** via [GitHub Discussions](https://github.com/paulasilvatech/Secure-Code-AI-Dev/discussions)
+You're ready to start your secure coding journey! Remember:
+- Take breaks between modules
+- Practice with real code
+- Ask questions in discussions
+- Share your learnings
+
+**Ready for Module 1?** → [Start with Shift-Left Security](../modules/module-01-shift-left.md)
 
 ---
 
 <div align="center">
-  <strong>Ready to revolutionize your secure development workflow?</strong><br>
-  <a href="secure-code-ai-workshop.md">Start with the Full Workshop Overview →</a>
+  <strong>🛡️ Secure Code. 🤖 AI-Powered. 🚀 Production-Ready.</strong>
 </div>
-
----
 
 ## 🧭 Navigation
 

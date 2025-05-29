@@ -1,0 +1,300 @@
+# Zero Trust Architecture Implementation
+# Advanced security patterns for enterprise environments
+
+---
+# Network Policies for Zero Trust
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: zero-trust-default-deny
+  namespace: production
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+
+---
+# Allow only authenticated traffic
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-authenticated-only
+  namespace: production
+spec:
+  podSelector:
+    matchLabels:
+      security: "zero-trust"
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: istio-system
+    - podSelector:
+        matchLabels:
+          app: istio-ingressgateway
+    ports:
+    - protocol: TCP
+      port: 443
+
+---
+# Istio Service Mesh Configuration
+apiVersion: security.istio.io/v1beta1
+kind: PeerAuthentication
+metadata:
+  name: default
+  namespace: production
+spec:
+  mtls:
+    mode: STRICT
+
+---
+# Authorization Policy - Deny by Default
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-all
+  namespace: production
+spec:
+  {}
+
+---
+# Allow specific services with JWT validation
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: require-jwt
+  namespace: production
+spec:
+  selector:
+    matchLabels:
+      app: secure-api
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        requestPrincipals: ["https://secureapp.azuread.com/*"]
+    to:
+    - operation:
+        methods: ["GET", "POST"]
+    when:
+    - key: request.auth.claims[iss]
+      values: ["https://login.microsoftonline.com/{tenant-id}/v2.0"]
+    - key: request.auth.claims[aud]
+      values: ["api://secure-app"]
+
+---
+# Request Authentication with JWT
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: jwt-auth
+  namespace: production
+spec:
+  selector:
+    matchLabels:
+      app: secure-api
+  jwtRules:
+  - issuer: "https://login.microsoftonline.com/{tenant-id}/v2.0"
+    jwksUri: "https://login.microsoftonline.com/{tenant-id}/discovery/v2.0/keys"
+    audiences:
+    - "api://secure-app"
+    forwardOriginalToken: true
+
+---
+# Workload Identity Binding
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: secure-app-sa
+  namespace: production
+  annotations:
+    azure.workload.identity/client-id: "{client-id}"
+    azure.workload.identity/tenant-id: "{tenant-id}"
+
+---
+# Pod Security Policy (or Pod Security Standards)
+apiVersion: policy/v1beta1
+kind: PodSecurityPolicy
+metadata:
+  name: zero-trust-psp
+spec:
+  privileged: false
+  allowPrivilegeEscalation: false
+  requiredDropCapabilities:
+  - ALL
+  volumes:
+  - 'configMap'
+  - 'emptyDir'
+  - 'projected'
+  - 'secret'
+  - 'downwardAPI'
+  - 'persistentVolumeClaim'
+  runAsUser:
+    rule: 'MustRunAsNonRoot'
+  seLinux:
+    rule: 'RunAsAny'
+  fsGroup:
+    rule: 'RunAsAny'
+  readOnlyRootFilesystem: true
+
+---
+# Admission Controller for Policy Enforcement
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: zero-trust-validator
+webhooks:
+- name: validate.zerotrust.security
+  clientConfig:
+    service:
+      name: zero-trust-validator
+      namespace: security
+      path: "/validate"
+    caBundle: LS0tLS1CRUdJTi... # Base64 encoded CA cert
+  rules:
+  - operations: ["CREATE", "UPDATE"]
+    apiGroups: ["apps", ""]
+    apiVersions: ["v1", "v1beta1"]
+    resources: ["deployments", "pods", "services"]
+  admissionReviewVersions: ["v1", "v1beta1"]
+  sideEffects: None
+  failurePolicy: Fail
+  namespaceSelector:
+    matchLabels:
+      zero-trust: "enabled"
+
+---
+# OPA (Open Policy Agent) Configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: opa-policies
+  namespace: security
+data:
+  zero-trust.rego: |
+    package kubernetes.admission
+    
+    import future.keywords.contains
+    import future.keywords.if
+    import future.keywords.in
+    
+    # Deny containers without security context
+    deny[msg] {
+      input.request.kind.kind == "Pod"
+      container := input.request.object.spec.containers[_]
+      not container.securityContext.runAsNonRoot
+      msg := sprintf("Container %s must run as non-root user", [container.name])
+    }
+    
+    # Deny images from untrusted registries
+    deny[msg] {
+      input.request.kind.kind == "Pod"
+      container := input.request.object.spec.containers[_]
+      not starts_with(container.image, "secureregistry.azurecr.io/")
+      msg := sprintf("Container %s uses untrusted image registry", [container.name])
+    }
+    
+    # Require specific labels
+    deny[msg] {
+      input.request.kind.kind in ["Deployment", "Pod"]
+      required_labels := {"security-scan", "compliance", "data-classification"}
+      missing_labels := required_labels - {label | input.request.object.metadata.labels[label]}
+      count(missing_labels) > 0
+      msg := sprintf("Missing required labels: %v", [missing_labels])
+    }
+    
+    # Enforce resource limits
+    deny[msg] {
+      input.request.kind.kind == "Pod"
+      container := input.request.object.spec.containers[_]
+      not container.resources.limits.memory
+      msg := sprintf("Container %s must specify memory limits", [container.name])
+    }
+    
+    # Require encrypted volumes
+    deny[msg] {
+      input.request.kind.kind == "PersistentVolumeClaim"
+      not input.request.object.metadata.annotations["azure.disk.encryption"]
+      msg := "PersistentVolumeClaim must use encrypted storage"
+    }
+
+---
+# Falco Security Rules
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: falco-rules
+  namespace: security
+data:
+  custom_rules.yaml: |
+    - rule: Unauthorized Process in Container
+      desc: Detect unauthorized process execution in containers
+      condition: >
+        spawned_process and container and
+        not proc.name in (allowed_processes) and
+        not container.image.repository in (trusted_images)
+      output: >
+        Unauthorized process started in container
+        (user=%user.name command=%proc.cmdline container=%container.id image=%container.image.repository)
+      priority: WARNING
+      tags: [container, process, mitre_execution]
+    
+    - rule: Suspicious Network Connection
+      desc: Detect suspicious outbound connections
+      condition: >
+        (evt.type=connect or evt.type=sendto) and
+        evt.dir=< and
+        (fd.typechar=4 or fd.typechar=6) and
+        container and
+        not (fd.ip in (allowed_ips)) and
+        not (fd.port in (80, 443, 53))
+      output: >
+        Suspicious network connection from container
+        (command=%proc.cmdline connection=%fd.name container=%container.id)
+      priority: WARNING
+      tags: [network, mitre_command_and_control]
+    
+    - list: allowed_processes
+      items: [node, python, java, nginx, httpd]
+    
+    - list: trusted_images
+      items: [secureregistry.azurecr.io]
+    
+    - list: allowed_ips
+      items: ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
+
+---
+# Certificate Management
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: zero-trust-ca
+spec:
+  ca:
+    secretName: zero-trust-ca-key-pair
+
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: service-mesh-cert
+  namespace: production
+spec:
+  secretName: service-mesh-tls
+  issuerRef:
+    name: zero-trust-ca
+    kind: ClusterIssuer
+  commonName: "*.production.svc.cluster.local"
+  dnsNames:
+  - "*.production.svc.cluster.local"
+  - "*.production.pod.cluster.local"
+  duration: 2160h # 90 days
+  renewBefore: 720h # 30 days
+  usages:
+  - digital signature
+  - key encipherment
+  - server auth
+  - client auth 

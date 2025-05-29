@@ -1,0 +1,130 @@
+{
+  // Security-focused VS Code configuration
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    "**/.env": true,
+    "**/*.key": true,
+    "**/*.pem": true,
+    "**/*.cert": true,
+    "**/*.crt": true,
+    "**/secrets": true,
+    "**/credentials": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/.env": true,
+    "**/secrets": true,
+    "**/credentials": true,
+    "**/*.key": true,
+    "**/*.pem": true
+  },
+  
+  // GitHub Copilot settings
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": true,
+    "markdown": true,
+    "dockerfile": true,
+    "bicep": true,
+    "terraform": true
+  },
+  
+  // Security scanning settings
+  "sonarlint.rules": {
+    "javascript:S2068": {
+      "level": "on",
+      "parameters": {
+        "credentialWords": ["password", "passwd", "pwd", "secret", "token", "api_key", "apikey", "access_key", "secret_key"]
+      }
+    },
+    "javascript:S3330": {
+      "level": "on"
+    },
+    "javascript:S5042": {
+      "level": "on"
+    },
+    "javascript:S5542": {
+      "level": "on"
+    }
+  },
+  
+  // Trivy extension settings
+  "trivy.severity": "HIGH,CRITICAL",
+  "trivy.ignoreUnfixed": false,
+  "trivy.vulnType": "os,library",
+  
+  // Snyk extension settings
+  "snyk.yesWelcomeNotification": false,
+  "snyk.severity": {
+    "critical": true,
+    "high": true,
+    "medium": true,
+    "low": false
+  },
+  
+  // Git settings
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  
+  // Terminal settings
+  "terminal.integrated.env.linux": {
+    "TRIVY_SEVERITY": "HIGH,CRITICAL"
+  },
+  "terminal.integrated.env.osx": {
+    "TRIVY_SEVERITY": "HIGH,CRITICAL"
+  },
+  "terminal.integrated.env.windows": {
+    "TRIVY_SEVERITY": "HIGH,CRITICAL"
+  },
+  
+  // Editor security
+  "security.workspace.trust.untrustedFiles": "newWindow",
+  "security.workspace.trust.startupPrompt": "always",
+  "security.workspace.trust.enabled": true,
+  "security.workspace.trust.banner": "always",
+  
+  // Language-specific settings
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  
+  // Remote development security
+  "remote.SSH.showLoginTerminal": true,
+  "remote.SSH.lockfilesInTmp": true,
+  "remote.SSH.useLocalServer": false,
+  
+  // Extension recommendations
+  "extensions.ignoreRecommendations": false,
+  "extensions.showRecommendationsOnlyOnDemand": false
+} 

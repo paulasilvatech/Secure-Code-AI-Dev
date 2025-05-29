@@ -1,238 +1,201 @@
-# 🔐 Secure Code AI Workshop
+# 🛡️ Secure Code AI Development Workshop
 
-## 🎯 Workshop Overview
+## Workshop Overview
 
-Welcome to the Secure Code AI Workshop! This comprehensive training program explores the integration of cutting-edge security tools including GitHub Advanced Security (GHAS), Copilot Autofix, Agentic DevOps, Microsoft Defender for Cloud, and Microsoft Sentinel in a multi-cloud environment.
+Welcome to the comprehensive Secure Code AI Development Workshop! This hands-on training program teaches you how to build secure applications using AI-powered tools, GitHub Advanced Security, and modern DevSecOps practices.
 
-### 📋 Table of Contents
-- [Introduction](#introduction)
-- [Prerequisites](#prerequisites)
-- [Workshop Structure](#workshop-structure)
-- [Learning Paths](#learning-paths)
-- [Module Overview](#module-overview)
-- [Getting Started](#getting-started)
-- [Architecture Overview](#architecture-overview)
+## 🎯 Workshop Objectives
 
-## 🌟 Introduction
+By the end of this workshop, participants will be able to:
 
-In today's rapidly evolving threat landscape, securing your code and infrastructure from the very beginning - a practice known as "Shift Left" - is not just a best practice, it's a necessity. This workshop will teach you how to build a comprehensive security ecosystem that protects your applications from code to cloud.
+1. **Implement shift-left security** principles in the development lifecycle
+2. **Master GitHub Advanced Security** features and workflows
+3. **Configure security development environments** with proper tools
+4. **Leverage AI tools** like GitHub Copilot for secure code generation
+5. **Build secure containerized applications** with DevSecOps practices
+6. **Create AI agents** for automated security operations
+7. **Deploy multi-cloud security** strategies
+8. **Set up Microsoft Sentinel** for advanced threat detection
+9. **Create comprehensive security dashboards** and reports
+10. **Implement advanced security patterns** including zero-trust architecture
 
-### Why This Workshop?
+## 📋 Agenda
 
-- **Proactive Security**: Learn to identify and fix vulnerabilities before they reach production
-- **AI-Powered Automation**: Leverage AI to automate security fixes and accelerate development
-- **Multi-Cloud Security**: Manage security across Azure, AWS, and GCP from a central hub
-- **Developer-First Approach**: Integrate security seamlessly into developer workflows
-- **Real-Time Monitoring**: Build comprehensive dashboards with Microsoft Sentinel
+### Day 1: Foundations (4 hours)
 
-### What You'll Learn
+#### Morning Session (2.5 hours)
 
-- Implement GitHub Advanced Security (GHAS) with Copilot Autofix
-- Deploy and secure containerized applications across multiple clouds
-- Build an agent-to-agent ecosystem for automated security
-- Create centralized security monitoring with Microsoft Sentinel
-- Integrate security into CI/CD pipelines
-- Implement Infrastructure as Code (IaC) security
+1. **[Module 01: Shift-Left Security Fundamentals](../modules/module-01-shift-left.md)** ⏱️ 1.5 hours
+   - Understanding shift-left principles
+   - Security in the development lifecycle
+   - Building a security-first culture
+   - Hands-on: Implementing pre-commit hooks
 
-## 📚 Prerequisites
+2. **[Module 02: GitHub Advanced Security](../modules/module-02-ghas.md)** ⏱️ 1 hour
+   - Setting up GHAS features
+   - Code scanning and secret detection
+   - Dependency review and security policies
 
-### Required Knowledge
-- **Basic Level**: Git fundamentals and basic command line usage
-- **Intermediate Level**: Understanding of CI/CD concepts
-- **Advanced Level**: Container orchestration and cloud architecture
+#### Afternoon Session (1.5 hours)
 
-### Required Accounts (Free Trials Available)
+3. **[Module 03: Setting Up Your Security Environment](../modules/module-03-environment-setup.md)** ⏱️ 1.5 hours
+   - Installing security tools
+   - Configuring VS Code for security
+   - Setting up cloud environments
+   - Integration testing
 
-1. **GitHub Account** 
-   - Sign up at [github.com](https://github.com)
-   - 30-day GHAS trial available
+### Day 2: AI-Powered Security (4 hours)
 
-2. **Microsoft Azure Account**
-   - [Azure Free Account](https://azure.microsoft.com/free/) with $200 credit
-   - Valid for 30 days
+#### Morning Session (2 hours)
 
-3. **Optional Cloud Accounts**
-   - AWS Free Tier (optional for multi-cloud scenarios)
-   - GCP Free Tier (optional for multi-cloud scenarios)
+4. **[Module 04: AI-Powered Secure Coding with GitHub Copilot](../modules/module-04-copilot.md)** ⏱️ 2 hours
+   - Security-focused prompts
+   - AI-assisted vulnerability prevention
+   - Best practices for secure code generation
+   - Hands-on: Building secure APIs with Copilot
 
-### Software Requirements
-- Git 2.30+
+#### Afternoon Session (2 hours)
+
+5. **[Module 05: Container Security & DevSecOps](../modules/module-05-container.md)** ⏱️ 1 hour
+   - Container security best practices
+   - Secure CI/CD pipelines
+   - Image scanning and compliance
+
+6. **[Module 06: Agentic AI for Security Automation](../modules/module-06-agentic.md)** ⏱️ 1 hour
+   - Building security AI agents
+   - Automated threat response
+   - Intelligent security workflows
+
+### Day 3: Enterprise Security (4 hours)
+
+#### Morning Session (2 hours)
+
+7. **[Module 07: Multi-Cloud Security Strategies](../modules/module-07-multicloud.md)** ⏱️ 1 hour
+   - Cross-cloud security architecture
+   - Unified security policies
+   - Multi-cloud compliance
+
+8. **[Module 08: Microsoft Sentinel Integration](../modules/module-08-sentinel.md)** ⏱️ 1 hour
+   - Setting up Sentinel workspace
+   - Creating detection rules
+   - Incident response automation
+
+#### Afternoon Session (2 hours)
+
+9. **[Module 09: Security Dashboards & Reporting](../modules/module-09-dashboards.md)** ⏱️ 1 hour
+   - Building security dashboards
+   - Compliance reporting
+   - Security metrics and KPIs
+
+10. **[Module 10: Advanced Security Patterns](../modules/module-10-advanced.md)** ⏱️ 1 hour
+    - Zero-trust architecture
+    - Advanced threat modeling
+    - Security at scale
+
+## 💻 Technical Requirements
+
+### Hardware
+- Modern laptop with at least 8GB RAM
+- 20GB free disk space
+- Stable internet connection
+
+### Software
+- VS Code (latest version)
 - Docker Desktop
-- Visual Studio Code
+- Git client
+- Node.js 18+ and npm
+- Python 3.8+
 - Azure CLI
 - GitHub CLI
-- Node.js 16+ (for some exercises)
 
-## 🗂️ Workshop Structure
+### Accounts
+- GitHub account with Advanced Security access
+- Azure subscription (free tier acceptable)
+- GitHub Copilot subscription
+- Docker Hub account
 
-### Module Categories
+## 🎓 Workshop Format Options
 
-| Level | Modules | Focus Area | Duration |
-|-------|---------|------------|----------|
-| **Basic** | 1-3 | Fundamentals & Setup | 4-6 hours |
-| **Intermediate** | 4-7 | Integration & Automation | 6-8 hours |
-| **Advanced** | 8-10 | Multi-cloud & Monitoring | 6-8 hours |
+### 1. **Express Track** (3 hours)
+- Focus on Modules 1, 2, 4
+- Core security concepts
+- Basic AI integration
+- Quick wins implementation
 
-### Complete Module List
+### 2. **Standard Track** (8 hours)
+- Complete Modules 1-7
+- Comprehensive security coverage
+- Hands-on labs
+- Real-world scenarios
 
-1. **[Module 01: Introduction to Shift-Left Security](./modules/01-shift-left-fundamentals/README.md)** ⏱️ 2 hours
-2. **[Module 02: GitHub Advanced Security Fundamentals](./modules/02-ghas-fundamentals/README.md)** ⏱️ 2 hours
-3. **[Module 03: Setting Up Your Security Environment](./modules/03-environment-setup/README.md)** ⏱️ 2.5 hours
-4. **[Module 04: Copilot Autofix and AI-Powered Security](./modules/04-copilot-autofix/README.md)** ⏱️ 2 hours
-5. **[Module 05: Container Security with Microsoft Defender](./modules/05-container-security/README.md)** ⏱️ 2.5 hours
-6. **[Module 06: Agentic DevOps and Automation](./modules/06-agentic-devops/README.md)** ⏱️ 2 hours
-7. **[Module 07: Multi-Cloud Security Architecture](./modules/07-multicloud-security/README.md)** ⏱️ 3 hours
-8. **[Module 08: Microsoft Sentinel Integration](./modules/08-sentinel-integration/README.md)** ⏱️ 2.5 hours
-9. **[Module 09: Building Security Dashboards](./modules/09-security-dashboards/README.md)** ⏱️ 2 hours
-10. **[Module 10: Advanced Scenarios and Best Practices](./modules/10-advanced-scenarios/README.md)** ⏱️ 2.5 hours
+### 3. **Advanced Track** (12+ hours)
+- All 10 modules
+- Deep-dive sessions
+- Custom implementations
+- Enterprise case studies
 
-## 🎓 Learning Paths
+## 📊 Learning Outcomes
 
-### 🚀 One-Day Fast Track (8 hours)
-Perfect for getting started with core concepts:
-- Module 1: Shift-Left Fundamentals (1 hour)
-- Module 2: GHAS Fundamentals (2 hours)
-- Module 3: Environment Setup (2 hours)
-- Module 4: Copilot Autofix (2 hours)
-- Module 8: Sentinel Integration Basics (1 hour)
+Upon completion, participants will:
 
-### 📚 Complete Path (20+ hours)
-Comprehensive coverage of all topics:
-- Complete all 10 modules in sequence
-- Includes all exercises and hands-on labs
-- Suitable for self-paced learning over 1-2 weeks
+1. **Reduce security vulnerabilities** by 80% through shift-left practices
+2. **Accelerate secure development** by 50% using AI tools
+3. **Automate security workflows** saving 30+ hours per sprint
+4. **Implement enterprise-grade security** across multi-cloud environments
+5. **Build comprehensive security monitoring** with real-time dashboards
 
-### 🎯 Security Professional Path (12 hours)
-For those focusing on security operations:
-- Module 1, 2, 5, 7, 8, 9, 10
-- Emphasis on monitoring and multi-cloud security
+## 🏆 Certification
 
-## 🏗️ Architecture Overview
+Participants who complete all modules and exercises will receive:
+- Workshop completion certificate
+- Security implementation badge
+- GitHub repository with all implementations
+- Access to ongoing support community
 
-Our workshop builds a comprehensive security architecture:
+## 👨‍🏫 Workshop Delivery
 
-```mermaid
-graph TB
-    subgraph "Development Environment"
-        A[Developer IDE] --> B[GitHub Repository]
-        B --> C[GitHub Advanced Security]
-        C --> D[Copilot Autofix]
-    end
-    
-    subgraph "CI/CD Pipeline"
-        B --> E[GitHub Actions]
-        E --> F[Container Registry]
-        F --> G[Security Scanning]
-    end
-    
-    subgraph "Multi-Cloud Deployment"
-        F --> H[Azure AKS]
-        F --> I[AWS EKS]
-        F --> J[GCP GKE]
-    end
-    
-    subgraph "Security Monitoring"
-        H --> K[Microsoft Defender]
-        I --> K
-        J --> K
-        K --> L[Microsoft Sentinel]
-        L --> M[Security Dashboard]
-    end
-    
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style L fill:#bbf,stroke:#333,stroke-width:2px
-    style M fill:#bfb,stroke:#333,stroke-width:2px
-```
+### For Instructors
+- [Instructor Guide](instructor-guide.md)
+- [Lab Setup Instructions](lab-setup.md)
+- [Assessment Templates](assessments.md)
 
-## 🚀 Getting Started
+### For Participants
+- [Pre-workshop Checklist](pre-workshop-checklist.md)
+- [Quick Reference Guide](quick-reference.md)
+- [Resource Links](resources.md)
 
-### Step 1: Fork This Repository
-```bash
-# Fork this repository to your GitHub account
-# Then clone your fork
-git clone https://github.com/YOUR-USERNAME/secure-code-ai-workshop
-cd secure-code-ai-workshop
-```
+## 📚 Additional Resources
 
-### Step 2: Set Up Your Environment
-```bash
-# Run the setup script
-./scripts/setup-workshop.sh
+- [Security Best Practices Guide](security-best-practices.md)
+- [Troubleshooting Common Issues](../troubleshooting-guide.md)
+- [Workshop FAQ](workshop-faq.md)
+- [Community Forum](https://github.com/paulasilvatech/Secure-Code-AI-Dev/discussions)
 
-# Verify installation
-./scripts/verify-setup.sh
-```
+## 🤝 Support
 
-### Step 3: Choose Your Path
-- **Beginners**: Start with Module 1
-- **Intermediate**: Review Module 1-2, then jump to Module 4
-- **Advanced**: Start with Module 7 for multi-cloud scenarios
+- **During Workshop**: Instructor assistance
+- **Post-Workshop**: GitHub Discussions
+- **Enterprise Support**: workshop@secureaidev.com
 
-## 📖 Key Concepts
+## 📈 Success Metrics
 
-### Shift-Left Security
-Moving security practices earlier in the development lifecycle to:
-- Reduce cost of fixing vulnerabilities
-- Improve developer productivity
-- Enhance overall security posture
+Track your progress with these key metrics:
+- Pre-commit security checks passing rate
+- Vulnerability detection and fix time
+- Security coverage percentage
+- Compliance score improvements
+- Team security maturity level
 
-### Agent-to-Agent Ecosystem
-Automated security agents that:
-- Communicate and coordinate security tasks
-- Provide real-time threat response
-- Enable autonomous security operations
+## 🚀 Next Steps
 
-### Multi-Cloud Security
-Centralized security management across:
-- Azure (primary)
-- AWS (secondary)
-- GCP (tertiary)
-
-## 🛠️ Tools and Technologies
-
-### Core Security Tools
-- **GitHub Advanced Security**: Code scanning, secret scanning, dependency review
-- **Copilot Autofix**: AI-powered vulnerability remediation
-- **Microsoft Defender for Cloud**: Cloud security posture management
-- **Microsoft Sentinel**: SIEM and SOAR capabilities
-
-### Supporting Technologies
-- **Docker & Kubernetes**: Container orchestration
-- **Terraform**: Infrastructure as Code
-- **Azure DevOps / GitHub Actions**: CI/CD pipelines
-
-## 📊 Workshop Outcomes
-
-By completing this workshop, you will be able to:
-
-1. ✅ Implement comprehensive shift-left security practices
-2. ✅ Configure and use GitHub Advanced Security features
-3. ✅ Automate security fixes with AI-powered tools
-4. ✅ Deploy secure containerized applications across multiple clouds
-5. ✅ Build centralized security monitoring dashboards
-6. ✅ Implement security best practices in CI/CD pipelines
-7. ✅ Create automated security response workflows
-8. ✅ Monitor and respond to security threats in real-time
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](./CONTRIBUTING.md) for details.
-
-## 📝 License
-
-This workshop is licensed under the MIT License. See [LICENSE](./LICENSE) for details.
-
-## 🆘 Support
-
-- **Workshop Issues**: [GitHub Issues](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/issues)
-- **Community Forum**: [Discussions](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/discussions)
-- **Documentation**: [Wiki](https://github.com/YOUR-USERNAME/secure-code-ai-workshop/wiki)
+1. Complete pre-workshop setup
+2. Join the workshop Slack/Teams channel
+3. Review Module 1 materials
+4. Prepare questions for Q&A sessions
 
 ---
 
-🎉 **Ready to start?** Head to [Module 01: Introduction to Shift-Left Security](./modules/01-shift-left-fundamentals/README.md) to begin your journey!
-
----
+**Ready to begin?** Start with [Module 01: Shift-Left Security Fundamentals](../modules/module-01-shift-left.md) →
 
 ## 🧭 Navigation
 

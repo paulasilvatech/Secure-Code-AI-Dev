@@ -1,0 +1,222 @@
+name: Security Scanning
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  # Secret Detection
+  secret-detection:
+    name: Secret Detection
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Run git-secrets
+        run: |
+          # Install git-secrets
+          git clone https://github.com/awslabs/git-secrets.git
+          cd git-secrets && sudo make install && cd ..
+          rm -rf git-secrets
+          
+          # Configure git-secrets
+          git secrets --register-aws
+          git secrets --register-azure
+          git secrets --add 'password\s*=\s*["\'][^"\']+["\']'
+          git secrets --add 'api[_-]?key\s*=\s*["\'][^"\']+["\']'
+          
+          # Scan repository
+          git secrets --scan
+      
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Vulnerability Scanning
+  vulnerability-scan:
+    name: Vulnerability Scanning
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'HIGH,CRITICAL'
+      
+      - name: Upload Trivy results to GitHub Security
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+      
+      - name: Run Snyk Security Scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+  # SAST Scanning
+  sast-scan:
+    name: Static Application Security Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Semgrep
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: >-
+            p/security-audit
+            p/secrets
+            p/owasp-top-ten
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Run Bandit
+        run: |
+          pip install bandit
+          bandit -r . -f json -o bandit-results.json || true
+          
+          # Convert to SARIF if issues found
+          if [ -f bandit-results.json ]; then
+            pip install bandit-sarif-formatter
+            cat bandit-results.json | bandit-sarif-formatter > bandit-results.sarif
+            
+            # Upload results
+            echo "::notice::Uploading Bandit results"
+          fi
+      
+      - name: Upload Bandit results
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'bandit-results.sarif'
+        continue-on-error: true
+
+  # Container Scanning
+  container-scan:
+    name: Container Security Scanning
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, 'Dockerfile') || contains(github.event.head_commit.message, 'docker')
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Hadolint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: Dockerfile
+          failure-threshold: warning
+          format: sarif
+          output-file: hadolint-results.sarif
+      
+      - name: Upload Hadolint results
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: hadolint-results.sarif
+
+  # License Scanning
+  license-scan:
+    name: License Compliance Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run License Checker
+        uses: fossas/fossa-action@main
+        with:
+          api-key: ${{ secrets.FOSSA_API_KEY }}
+        continue-on-error: true
+
+  # Security Policy Check
+  security-policy:
+    name: Security Policy Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check for security policy
+        run: |
+          if [ ! -f "SECURITY.md" ]; then
+            echo "::warning::SECURITY.md file is missing"
+            echo "Consider adding a security policy to your repository"
+          else
+            echo "✅ Security policy found"
+          fi
+      
+      - name: Check for security headers
+        run: |
+          # Check if common security files exist
+          files=(".trivyignore" ".gitleaks.toml" ".semgrep.yml")
+          for file in "${files[@]}"; do
+            if [ -f "$file" ]; then
+              echo "✅ Found $file"
+            else
+              echo "::notice::Consider adding $file for better security scanning"
+            fi
+          done
+
+  # Compliance Report
+  compliance-report:
+    name: Generate Compliance Report
+    runs-on: ubuntu-latest
+    needs: [secret-detection, vulnerability-scan, sast-scan]
+    if: always()
+    steps:
+      - name: Generate Summary
+        run: |
+          echo "## Security Scan Summary 🔒" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          # Check job statuses
+          echo "| Scan Type | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|--------|" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ needs.secret-detection.result }}" == "success" ]; then
+            echo "| Secret Detection | ✅ Passed |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Secret Detection | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ "${{ needs.vulnerability-scan.result }}" == "success" ]; then
+            echo "| Vulnerability Scan | ✅ Passed |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| Vulnerability Scan | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ "${{ needs.sast-scan.result }}" == "success" ]; then
+            echo "| SAST Scan | ✅ Passed |" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "| SAST Scan | ❌ Failed |" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Scan Date**: $(date -u +'%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY 

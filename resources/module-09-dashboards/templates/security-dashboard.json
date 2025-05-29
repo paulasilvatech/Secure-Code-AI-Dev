@@ -1,0 +1,230 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "dashboardName": {
+      "type": "string",
+      "defaultValue": "Security-Operations-Dashboard",
+      "metadata": {
+        "description": "Name of the dashboard"
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "Location for the dashboard"
+      }
+    },
+    "workspaceResourceId": {
+      "type": "string",
+      "metadata": {
+        "description": "Resource ID of Log Analytics workspace"
+      }
+    }
+  },
+  "variables": {
+    "dashboardId": "[resourceId('Microsoft.Portal/dashboards', parameters('dashboardName'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Portal/dashboards",
+      "apiVersion": "2020-09-01-preview",
+      "name": "[parameters('dashboardName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "lenses": [
+          {
+            "order": 0,
+            "parts": [
+              {
+                "position": {
+                  "x": 0,
+                  "y": 0,
+                  "colSpan": 8,
+                  "rowSpan": 4
+                },
+                "metadata": {
+                  "type": "Extension/Microsoft_Azure_Security/PartType/SecurityMetricGalleryTileViewModel",
+                  "settings": {
+                    "title": "Security Score",
+                    "subtitle": "Overall security posture"
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 8,
+                  "y": 0,
+                  "colSpan": 4,
+                  "rowSpan": 2
+                },
+                "metadata": {
+                  "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                  "settings": {
+                    "content": {
+                      "settings": {
+                        "content": "## 🔒 Security Alerts\n\n**Critical**: 0  \n**High**: 2  \n**Medium**: 5  \n**Low**: 12",
+                        "title": "Active Alerts",
+                        "subtitle": "Last 24 hours"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 12,
+                  "y": 0,
+                  "colSpan": 4,
+                  "rowSpan": 2
+                },
+                "metadata": {
+                  "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                  "settings": {
+                    "content": {
+                      "settings": {
+                        "content": "## 🛡️ Compliance\n\n**PCI-DSS**: 98%  \n**HIPAA**: 95%  \n**SOC 2**: 97%  \n**ISO 27001**: 96%",
+                        "title": "Compliance Status",
+                        "subtitle": "Current scores"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 0,
+                  "y": 4,
+                  "colSpan": 6,
+                  "rowSpan": 4
+                },
+                "metadata": {
+                  "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+                  "settings": {
+                    "query": "SecurityAlert\n| where TimeGenerated > ago(24h)\n| summarize Count = count() by AlertSeverity, bin(TimeGenerated, 1h)\n| render timechart",
+                    "workspaceResourceId": "[parameters('workspaceResourceId')]",
+                    "title": "Security Alerts Trend",
+                    "subtitle": "Last 24 hours"
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 6,
+                  "y": 4,
+                  "colSpan": 6,
+                  "rowSpan": 4
+                },
+                "metadata": {
+                  "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+                  "settings": {
+                    "query": "SigninLogs\n| where TimeGenerated > ago(1h)\n| where ResultType != '0'\n| summarize FailedSignins = count() by UserPrincipalName\n| top 10 by FailedSignins desc\n| render barchart",
+                    "workspaceResourceId": "[parameters('workspaceResourceId')]",
+                    "title": "Failed Sign-ins by User",
+                    "subtitle": "Last hour"
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 12,
+                  "y": 2,
+                  "colSpan": 4,
+                  "rowSpan": 6
+                },
+                "metadata": {
+                  "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+                  "settings": {
+                    "query": "AzureActivity\n| where TimeGenerated > ago(24h)\n| where CategoryValue == 'Security'\n| summarize Count = count() by OperationNameValue\n| top 10 by Count desc\n| render piechart",
+                    "workspaceResourceId": "[parameters('workspaceResourceId')]",
+                    "title": "Security Operations",
+                    "subtitle": "By operation type"
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 0,
+                  "y": 8,
+                  "colSpan": 8,
+                  "rowSpan": 4
+                },
+                "metadata": {
+                  "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+                  "settings": {
+                    "query": "GitHubSecurityAlerts_CL\n| where TimeGenerated > ago(7d)\n| summarize Count = count() by Repository, Severity\n| render columnchart",
+                    "workspaceResourceId": "[parameters('workspaceResourceId')]",
+                    "title": "GitHub Security Alerts",
+                    "subtitle": "By repository and severity"
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 8,
+                  "y": 8,
+                  "colSpan": 4,
+                  "rowSpan": 2
+                },
+                "metadata": {
+                  "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                  "settings": {
+                    "content": {
+                      "settings": {
+                        "content": "## 📊 Key Metrics\n\n- **MTTR**: 4.2 hours\n- **MTTD**: 15 minutes\n- **False Positive Rate**: 8%\n- **Coverage**: 94%",
+                        "title": "Security KPIs"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 8,
+                  "y": 10,
+                  "colSpan": 4,
+                  "rowSpan": 2
+                },
+                "metadata": {
+                  "type": "Extension/HubsExtension/PartType/MarkdownPart",
+                  "settings": {
+                    "content": {
+                      "settings": {
+                        "content": "## 🚨 Recent Incidents\n\n1. Suspicious login from new location\n2. Unauthorized API access attempt\n3. Potential SQL injection blocked\n4. DDoS attack mitigated",
+                        "title": "Latest Security Events"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "position": {
+                  "x": 12,
+                  "y": 8,
+                  "colSpan": 4,
+                  "rowSpan": 4
+                },
+                "metadata": {
+                  "type": "Extension/Microsoft_OperationsManagementSuite_Workspace/PartType/LogsDashboardPart",
+                  "settings": {
+                    "query": "ContainerLog\n| where TimeGenerated > ago(1h)\n| where LogEntry contains_any ('error', 'failed', 'denied')\n| summarize Count = count() by ContainerName\n| top 10 by Count desc\n| render barchart",
+                    "workspaceResourceId": "[parameters('workspaceResourceId')]",
+                    "title": "Container Security Events",
+                    "subtitle": "Error and denial counts"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+    "dashboardId": {
+      "type": "string",
+      "value": "[variables('dashboardId')]"
+    }
+  }
+} 

@@ -755,6 +755,6 @@ Continue to [Module 05: Container Security with Microsoft Defender](../05-contai
 
 | Previous | Up | Next |
 |----------|----|----- |
-| [← Module 02: GitHub Advanced Security](module-02-ghas.md) | [📚 All Modules](../README.md#-learning-path) | [Module 05: Container Security →](module-05-container.md) |
+| [← Module 03: Environment Setup](module-03-environment-setup.md) | [📚 All Modules](../README.md#-learning-path) | [Module 05: Container Security →](module-05-container.md) |
 
 **Quick Links**: [🏠 Home](../README.md) • [📖 Workshop Overview](../docs/secure-code-ai-workshop.md) • [🛡️ Security FAQ](../docs/workshop-faq.md)

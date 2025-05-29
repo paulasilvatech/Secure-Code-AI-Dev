@@ -1,251 +1,82 @@
-# Workshop Resources
+# 📁 Workshop Resources
 
-This directory contains all the infrastructure as code templates, scripts, and workflows needed to successfully deploy and run the Secure Code AI Workshop.
+This directory contains all Infrastructure as Code (IaC) templates, scripts, and configurations for the Secure Code AI Development Workshop.
 
-## 📁 Directory Structure
+## Resource Structure
 
-```
-resources/
-├── common/                     # Common resources used across all modules
-│   ├── bicep/                 # Bicep templates for Azure infrastructure
-│   ├── scripts/               # Deployment and utility scripts
-│   └── workflows/             # GitHub Actions workflows
-├── module-01-shift-left/      # Module 1 specific resources
-├── module-02-ghas/            # Module 2 specific resources
-├── module-04-copilot/         # Module 4 specific resources
-├── module-05-container/       # Module 5 specific resources
-├── module-06-agentic/         # Module 6 specific resources
-├── module-07-multicloud/      # Module 7 specific resources
-├── module-08-sentinel/        # Module 8 specific resources
-├── module-09-dashboards/      # Module 9 specific resources
-└── module-10-advanced/        # Module 10 specific resources
-```
+### Common Resources
+- [common/](common/) - Shared resources used across all modules
+  - `bicep/` - Main infrastructure templates
+  - `scripts/` - Workshop deployment scripts  
+  - `templates/` - Common configuration templates
+  - `workflows/` - Shared GitHub Actions workflows
 
-## 🚀 Quick Start
+### Module-Specific Resources
 
-### Deploy Complete Workshop Infrastructure
+Each module has its own resource directory with:
 
-```bash
-# Clone the repository
-git clone https://github.com/paulasilvatech/Secure-Code-AI-Dev.git
-cd Secure-Code-AI-Dev
+| Module | Directory | Key Resources |
+|--------|-----------|---------------|
+| Module 01 | [module-01-shift-left/](module-01-shift-left/) | Pre-commit hooks, security policies |
+| Module 02 | [module-02-ghas/](module-02-ghas/) | GHAS setup scripts, scanning configs |
+| Module 03 | [module-03-environment-setup/](module-03-environment-setup/) | Environment setup scripts, VS Code configs |
+| Module 04 | [module-04-copilot/](module-04-copilot/) | Copilot prompts, secure code templates |
+| Module 05 | [module-05-container/](module-05-container/) | Dockerfiles, container security configs |
+| Module 06 | [module-06-agentic/](module-06-agentic/) | AI agent templates, automation workflows |
+| Module 07 | [module-07-multicloud/](module-07-multicloud/) | Multi-cloud Bicep templates, policies |
+| Module 08 | [module-08-sentinel/](module-08-sentinel/) | Sentinel rules, KQL queries, playbooks |
+| Module 09 | [module-09-dashboards/](module-09-dashboards/) | Dashboard templates, monitoring configs |
+| Module 10 | [module-10-advanced/](module-10-advanced/) | Zero-trust templates, advanced patterns |
 
-# Run the deployment script
-./resources/common/scripts/deploy-workshop.sh
-```
+## Quick Access
 
-This script will:
-- Check prerequisites (Azure CLI, Bicep)
-- Create a resource group
-- Deploy all necessary Azure resources
-- Configure post-deployment settings
-- Generate a deployment summary
+### 🚀 Deployment Scripts
+- [Deploy Complete Workshop](common/scripts/deploy-workshop.sh)
+- [Setup Security Environment](module-03-environment-setup/scripts/setup-security-env.sh)
+- [Pre-commit Security Setup](module-01-shift-left/scripts/pre-commit-security.sh)
 
-### Prerequisites
+### 🏗️ Infrastructure Templates
+- [Main Infrastructure](common/bicep/main.bicep)
+- [Security Environment](module-03-environment-setup/bicep/security-environment.bicep)
+- [Multi-Cloud Security](module-07-multicloud/bicep/multicloud-security.bicep)
+- [Zero-Trust Architecture](module-10-advanced/templates/zero-trust-architecture.yaml)
 
-- Azure subscription with appropriate permissions
-- Azure CLI installed and authenticated (`az login`)
-- Bash shell (Linux, macOS, or WSL on Windows)
-- GitHub account with admin access to repositories
+### 🔄 CI/CD Workflows
+- [Secure CI/CD Pipeline](common/workflows/secure-pipeline.yml)
+- [Security Scanning](module-03-environment-setup/workflows/security-scan.yml)
+- [Container Security](module-05-container/workflows/container-security.yml)
 
-## 📋 Common Resources
+### 📋 Configuration Templates
+- [VS Code Settings](module-03-environment-setup/templates/vscode-settings.json)
+- [Copilot Prompts](module-04-copilot/templates/copilot-prompts.md)
+- [Security Dashboard](module-09-dashboards/templates/security-dashboard.json)
 
-### Bicep Templates
+## Usage
 
-| File | Description |
-|------|-------------|
-| `common/bicep/main.bicep` | Main infrastructure template that deploys all workshop resources |
-| `common/bicep/sentinel.bicep` | Microsoft Sentinel configuration and data connectors |
-| `common/bicep/github-integration.bicep` | GitHub webhook integration with Azure Functions |
+1. **For Automated Deployment**:
+   ```bash
+   cd common/scripts
+   ./deploy-workshop.sh
+   ```
 
-### Scripts
+2. **For Manual Setup**:
+   - Navigate to specific module resource directory
+   - Follow the README in each subdirectory
+   - Run scripts or deploy templates as needed
 
-| File | Description |
-|------|-------------|
-| `common/scripts/deploy-workshop.sh` | Main deployment script for the entire workshop |
-| `common/scripts/setup-github-secrets.sh` | Configure GitHub repository secrets |
-| `common/scripts/validate-deployment.sh` | Validate deployment and check resource health |
+3. **For Custom Implementations**:
+   - Copy templates to your project
+   - Modify parameters as needed
+   - Deploy using Azure CLI or GitHub Actions
 
-### Workflows
+## Resource Types
 
-| File | Description |
-|------|-------------|
-| `common/workflows/secure-pipeline.yml` | Secure CI/CD pipeline with GHAS integration |
-| `common/workflows/container-security.yml` | Container scanning and deployment workflow |
-| `common/workflows/sentinel-integration.yml` | GitHub to Sentinel alert forwarding |
+- **Scripts** (`.sh`, `.ps1`) - Automation and setup scripts
+- **Bicep** (`.bicep`) - Azure infrastructure templates
+- **YAML** (`.yml`, `.yaml`) - Workflows and Kubernetes configs
+- **JSON** (`.json`) - Configuration files and dashboards
+- **Markdown** (`.md`) - Documentation and prompt libraries
 
-## 🔧 Module-Specific Resources
+---
 
-### Module 1: Shift-Left Security
-- Pre-commit hooks for security checks
-- Git configuration templates
-- Security policy templates
-
-### Module 2: GitHub Advanced Security
-- GHAS configuration scripts
-- CodeQL custom queries
-- Dependabot configuration examples
-
-### Module 4: Copilot Security
-- Copilot configuration for secure coding
-- Security-focused prompts library
-- Autofix templates
-
-### Module 5: Container Security
-- Secure Dockerfile templates
-- Container scanning policies
-- Kubernetes security manifests
-
-### Module 6: Agentic AI
-- Security agent deployment templates
-- Event-driven automation workflows
-- Self-healing configuration
-
-### Module 7: Multi-Cloud Security
-- Cross-cloud deployment templates
-- Multi-cloud security policies
-- Unified monitoring configuration
-
-### Module 8: Sentinel Integration
-- KQL query library
-- Sentinel workbooks
-- Alert rules and playbooks
-
-### Module 9: Security Dashboards
-- Dashboard templates
-- Visualization queries
-- Report generation scripts
-
-### Module 10: Advanced Scenarios
-- Zero Trust implementation
-- Compliance automation
-- Enterprise scale templates
-
-## 💡 Usage Examples
-
-### Deploy Individual Components
-
-```bash
-# Deploy only Sentinel
-az deployment group create \
-  --resource-group rg-workshop \
-  --template-file resources/common/bicep/sentinel.bicep \
-  --parameters workspaceName=law-workshop location=eastus
-
-# Deploy GitHub integration
-az deployment group create \
-  --resource-group rg-workshop \
-  --template-file resources/common/bicep/github-integration.bicep \
-  --parameters keyVaultName=kv-workshop workspaceName=law-workshop
-```
-
-### Run Module-Specific Setup
-
-```bash
-# Module 2 - Setup GHAS
-./resources/module-02-ghas/scripts/setup-ghas.sh
-
-# Module 5 - Deploy container security
-./resources/module-05-container/scripts/deploy-container-security.sh
-```
-
-## 🔐 Security Considerations
-
-All templates and scripts follow security best practices:
-- No hardcoded secrets or credentials
-- RBAC with least privilege principle
-- Network isolation and security groups
-- Encryption at rest and in transit
-- Managed identities for service authentication
-
-## 📝 Customization
-
-### Modify Deployment Parameters
-
-Edit the parameters in `deploy-workshop.sh` or create a custom parameters file:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "workshopName": {
-      "value": "my-custom-workshop"
-    },
-    "location": {
-      "value": "westus2"
-    },
-    "enableGHAS": {
-      "value": true
-    },
-    "enableDefender": {
-      "value": true
-    }
-  }
-}
-```
-
-### Scale Resources
-
-Modify the SKUs and sizes in the Bicep templates:
-
-```bicep
-// In main.bicep
-resource aksCluster 'Microsoft.ContainerService/managedClusters@2024-01-01' = {
-  // ...
-  properties: {
-    agentPoolProfiles: [
-      {
-        name: 'systempool'
-        count: 3  // Increase node count
-        vmSize: 'Standard_DS3_v2'  // Larger VM size
-        // ...
-      }
-    ]
-  }
-}
-```
-
-## 🆘 Troubleshooting
-
-### Common Issues
-
-1. **Deployment fails with permissions error**
-   - Ensure you have Owner or Contributor role on the subscription
-   - Check that your service principal has necessary permissions
-
-2. **Resource names already exist**
-   - The templates use unique suffixes, but you can customize the base names
-   - Delete existing resources or use a different workshop name
-
-3. **Region not available**
-   - Some services might not be available in all regions
-   - Try using `eastus`, `westus2`, or `westeurope`
-
-### Validation Script
-
-Run the validation script to check deployment health:
-
-```bash
-./resources/common/scripts/validate-deployment.sh
-```
-
-## 📚 Additional Resources
-
-- [Azure Bicep Documentation](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/)
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [Microsoft Sentinel Documentation](https://docs.microsoft.com/en-us/azure/sentinel/)
-
-## 🤝 Contributing
-
-To add new resources:
-
-1. Create the appropriate directory structure
-2. Follow the naming conventions
-3. Include documentation in your templates
-4. Test the deployment thoroughly
-5. Update this README with your additions
-
-## 📄 License
-
-All resources in this directory are part of the Secure Code AI Workshop and are licensed under the MIT License. 
+[← Back to Modules](../modules/) | [Back to Home →](../README.md) 
