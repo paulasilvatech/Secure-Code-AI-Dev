@@ -152,4 +152,4 @@ Hands-on workshop for transforming Figma designs into production-ready code usin
 
 ## 👤 Credits
 
-This Secure Code AI Development Workshop was developed by [Paula Silva](https://github.com/paulanunes85), Developer Productivity [Global Black Belt at Microsoft Americas](https://www.linkedin.com/in/paulanunes/), focusing on empowering developers to build secure applications through AI-powered automation. The workshop provides a comprehensive approach to implementing modern security practices for enterprise software development.
+This Secure Code AI Development Workshop was developed by [Paula Silva](https://github.com/paulanunes85), Developer Productivity [Global Black Belt at Microsoft Americas](https://www.linkedin.com/in/paulanunes/), focusing on empowering developers to build secure applications through AI-powered automation.
