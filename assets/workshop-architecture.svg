@@ -89,52 +89,52 @@
     <text x="865" y="440" text-anchor="middle" font-family="Arial" font-size="12" fill="white">Compliance Status</text>
   </g>
   
-  <!-- Flow Arrows -->
+  <!-- Flow Arrows with smoother curves -->
   <defs>
     <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+      <polygon points="0 0, 10 3.5, 0 7" fill="#666" opacity="0.8"/>
     </marker>
   </defs>
   
-  <!-- Horizontal Flow -->
-  <path d="M 200,200 L 280,200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M 450,200 L 530,200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M 700,200 L 780,200" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Horizontal Flow with curved arrows -->
+  <path d="M 200,200 Q 240,200 280,200" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.8"/>
+  <path d="M 450,200 Q 490,200 530,200" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.8"/>
+  <path d="M 700,200 Q 740,200 780,200" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.8"/>
   
-  <!-- Vertical Flows -->
-  <path d="M 365,250 L 365,350" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M 865,250 L 865,300 L 615,300 L 615,350" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M 450,400 L 530,400" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
-  <path d="M 700,400 L 780,400" stroke="#333" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <!-- Vertical Flows with smooth curves -->
+  <path d="M 365,250 Q 365,300 365,350" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.8"/>
+  <path d="M 865,250 Q 865,300 740,325 Q 615,350 615,350" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.8"/>
+  <path d="M 450,400 Q 490,400 530,400" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.8"/>
+  <path d="M 700,400 Q 740,400 780,400" stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)" opacity="0.8"/>
   
-  <!-- Labels -->
-  <text x="240" y="195" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">commit</text>
-  <text x="490" y="195" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">trigger</text>
-  <text x="740" y="195" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">scan</text>
-  <text x="365" y="295" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">deploy</text>
-  <text x="740" y="295" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">alerts</text>
-  <text x="490" y="395" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">monitor</text>
-  <text x="740" y="395" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">visualize</text>
+  <!-- Labels with better positioning -->
+  <text x="240" y="195" text-anchor="middle" font-family="Arial" font-size="11" fill="#666" font-style="italic">commit</text>
+  <text x="490" y="195" text-anchor="middle" font-family="Arial" font-size="11" fill="#666" font-style="italic">trigger</text>
+  <text x="740" y="195" text-anchor="middle" font-family="Arial" font-size="11" fill="#666" font-style="italic">scan</text>
+  <text x="365" y="295" text-anchor="middle" font-family="Arial" font-size="11" fill="#666" font-style="italic">deploy</text>
+  <text x="740" y="295" text-anchor="middle" font-family="Arial" font-size="11" fill="#666" font-style="italic">alerts</text>
+  <text x="490" y="395" text-anchor="middle" font-family="Arial" font-size="11" fill="#666" font-style="italic">monitor</text>
+  <text x="740" y="395" text-anchor="middle" font-family="Arial" font-size="11" fill="#666" font-style="italic">visualize</text>
   
-  <!-- Security Tools Box -->
+  <!-- Security Tools Box with rounded corners -->
   <g id="tools">
-    <rect x="100" y="520" width="800" height="120" rx="10" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="1"/>
+    <rect x="100" y="520" width="800" height="120" rx="15" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="1" opacity="0.95"/>
     <text x="500" y="545" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold">Integrated Security Tools</text>
     
-    <!-- Tool Categories -->
-    <rect x="120" y="560" width="160" height="60" rx="5" fill="#fff" stroke="#cbd5e1"/>
+    <!-- Tool Categories with improved design -->
+    <rect x="120" y="560" width="160" height="60" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
     <text x="200" y="585" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Code Security</text>
     <text x="200" y="605" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Copilot, GHAS, Trivy</text>
     
-    <rect x="300" y="560" width="160" height="60" rx="5" fill="#fff" stroke="#cbd5e1"/>
+    <rect x="300" y="560" width="160" height="60" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
     <text x="380" y="585" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Container Security</text>
     <text x="380" y="605" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Defender, Falco, OPA</text>
     
-    <rect x="480" y="560" width="160" height="60" rx="5" fill="#fff" stroke="#cbd5e1"/>
+    <rect x="480" y="560" width="160" height="60" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
     <text x="560" y="585" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Cloud Security</text>
     <text x="560" y="605" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Sentinel, Azure Policy</text>
     
-    <rect x="660" y="560" width="160" height="60" rx="5" fill="#fff" stroke="#cbd5e1"/>
+    <rect x="660" y="560" width="160" height="60" rx="8" fill="#fff" stroke="#cbd5e1" stroke-width="1.5"/>
     <text x="740" y="585" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold">Monitoring</text>
     <text x="740" y="605" text-anchor="middle" font-family="Arial" font-size="11" fill="#666">Grafana, Prometheus</text>
   </g>

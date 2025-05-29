@@ -58,8 +58,6 @@ The workshop is organized into progressive modules, allowing you to choose the d
 
 ## 🗺️ Learning Path
 
-![Workshop Learning Path](assets/workshop-learning-path.svg)
-
 ### Module 1: Shift-Left Security Fundamentals
 - Foundation concepts and security-first mindset
 - The cost of late-stage vulnerability fixes
