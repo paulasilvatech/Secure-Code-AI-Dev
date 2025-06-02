@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ChevronRight, Clock, Users, Zap, Check, ExternalLink, Star, Book, Shield, Lock, AlertTriangle, TrendingUp, Menu, X, ShieldCheck, Key, Eye } from 'lucide-react';
+import { ChevronRight, Clock, Users, Zap, Check, ExternalLink, Star, Book, Shield, Lock, AlertTriangle, TrendingUp, Menu, X, ShieldCheck, Key, Eye, Info, Target, Code2, Settings } from 'lucide-react';
 
 // Custom Secure Code Logo with Shield
 const SecureCodeLogo = ({ className = "w-12 h-12" }) => {
@@ -42,9 +42,21 @@ const SecureCodeLogo = ({ className = "w-12 h-12" }) => {
   );
 };
 
+interface Module {
+  id: number;
+  title: string;
+  duration: string;
+  level: string;
+  description: string;
+  objectives: string[];
+  technologies: string[];
+  exercises: string;
+}
+
 const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [selectedModule, setSelectedModule] = useState<Module | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,15 +67,146 @@ const LandingPage = () => {
   }, []);
 
   const modules = [
-    { id: 1, title: "Shift-Left Security Principles", duration: "45 min", level: "Basic" },
-    { id: 2, title: "GitHub Advanced Security (GHAS)", duration: "60 min", level: "Basic" },
-    { id: 3, title: "AI-Powered Secure Coding", duration: "90 min", level: "Intermediate" },
-    { id: 4, title: "Container Security & DevSecOps", duration: "90 min", level: "Intermediate" },
-    { id: 5, title: "Agentic AI Security Workflows", duration: "120 min", level: "Advanced" },
-    { id: 6, title: "Multi-Cloud Security", duration: "90 min", level: "Advanced" },
-    { id: 7, title: "Azure Sentinel & Monitoring", duration: "120 min", level: "Advanced" },
-    { id: 8, title: "Security Dashboards & Metrics", duration: "60 min", level: "Intermediate" },
-    { id: 9, title: "Advanced Security Patterns", duration: "180 min", level: "Advanced" }
+    { 
+      id: 1, 
+      title: "Introduction to Shift-Left Security", 
+      duration: "2 hours", 
+      level: "Basic",
+      description: "Understanding shift-left security concepts and cost implications in modern development",
+      objectives: [
+        "Learn shift-left security principles and cost-benefit analysis",
+        "Understand DevSecOps culture and shared responsibility",
+        "Set up secure development environment with Git and pre-commit hooks"
+      ],
+      technologies: ["Git Security", "Pre-commit Hooks", "SonarQube", "Git Secrets"],
+      exercises: "5+ hands-on exercises including cost analysis and security checklist creation"
+    },
+    { 
+      id: 2, 
+      title: "GitHub Advanced Security Fundamentals", 
+      duration: "2 hours", 
+      level: "Basic",
+      description: "Master GitHub Advanced Security features for comprehensive code protection",
+      objectives: [
+        "Configure GHAS components: CodeQL, Dependabot, Secret Scanning",
+        "Implement automated vulnerability detection and remediation",
+        "Create security policies and vulnerability management workflows"
+      ],
+      technologies: ["GitHub Advanced Security", "CodeQL", "Dependabot", "Secret Scanning"],
+      exercises: "Hands-on GHAS configuration and security dashboard creation"
+    },
+    { 
+      id: 3, 
+      title: "Setting Up Your Security Environment", 
+      duration: "2.5 hours", 
+      level: "Intermediate",
+      description: "Complete security development environment setup with cloud integration",
+      objectives: [
+        "Configure VS Code with security extensions and tools",
+        "Set up local security scanning with Trivy, Semgrep, and Bandit",
+        "Integrate Azure security services and GitHub CLI"
+      ],
+      technologies: ["VS Code Extensions", "Trivy", "Semgrep", "Azure CLI", "Hadolint"],
+      exercises: "Environment setup verification and security pipeline integration"
+    },
+    { 
+      id: 4, 
+      title: "Copilot Autofix and AI-Powered Security", 
+      duration: "2 hours", 
+      level: "Intermediate",
+      description: "Leverage AI for secure coding practices and automated vulnerability fixes",
+      objectives: [
+        "Use GitHub Copilot for secure code generation",
+        "Implement Copilot Autofix for vulnerability remediation",
+        "Create AI-assisted security workflows and measure effectiveness"
+      ],
+      technologies: ["GitHub Copilot", "Copilot Autofix", "AI Security Workflows", "Custom Autofix Rules"],
+      exercises: "AI-powered security testing with vulnerable applications and metrics collection"
+    },
+    { 
+      id: 5, 
+      title: "Container Security with Microsoft Defender", 
+      duration: "2.5 hours", 
+      level: "Intermediate",
+      description: "Comprehensive container security with Microsoft Defender and Kubernetes hardening",
+      objectives: [
+        "Analyze container attack surfaces and implement security best practices",
+        "Configure Microsoft Defender for Containers and AKS security",
+        "Implement runtime threat detection and response"
+      ],
+      technologies: ["Microsoft Defender for Containers", "Azure Container Registry", "AKS", "Kubernetes Security"],
+      exercises: "Secure container building, Defender configuration, and runtime protection setup"
+    },
+    { 
+      id: 6, 
+      title: "Agentic DevOps and Automation", 
+      duration: "2 hours", 
+      level: "Intermediate",
+      description: "Build autonomous security agents and self-healing workflows",
+      objectives: [
+        "Design autonomous security agent architectures",
+        "Implement agent-to-agent communication systems",
+        "Create self-healing security workflows and event-driven responses"
+      ],
+      technologies: ["Azure Service Bus", "Event-driven Architecture", "Security Agents", "Automated Remediation"],
+      exercises: "Security agent development and event-driven pipeline creation"
+    },
+    { 
+      id: 7, 
+      title: "Multi-Cloud Security Architecture", 
+      duration: "3 hours", 
+      level: "Advanced",
+      description: "Design secure multi-cloud architectures with centralized management",
+      objectives: [
+        "Architect secure multi-cloud solutions with unified management",
+        "Implement Azure Arc for cross-cloud security policies",
+        "Configure unified monitoring and incident response"
+      ],
+      technologies: ["Microsoft Defender for Multi-cloud", "Azure Arc", "Cross-cloud Networking", "Unified Policies"],
+      exercises: "Multi-cloud deployment, unified policies, and cross-cloud monitoring"
+    },
+    { 
+      id: 8, 
+      title: "Microsoft Sentinel Integration", 
+      duration: "2.5 hours", 
+      level: "Advanced",
+      description: "Deploy Microsoft Sentinel for SIEM/SOAR capabilities and threat hunting",
+      objectives: [
+        "Configure Sentinel data connectors and analytics rules",
+        "Master KQL for detection and threat hunting",
+        "Build investigation workbooks and automation playbooks"
+      ],
+      technologies: ["Microsoft Sentinel", "KQL", "Data Connectors", "Logic Apps", "SOAR Playbooks"],
+      exercises: "GitHub-to-Sentinel pipeline, detection rules, and automated response creation"
+    },
+    { 
+      id: 9, 
+      title: "Building Security Dashboards", 
+      duration: "2 hours", 
+      level: "Advanced",
+      description: "Create interactive security dashboards for executive and operational use",
+      objectives: [
+        "Design effective security dashboards following best practices",
+        "Build real-time monitoring with custom visualizations",
+        "Create mobile-responsive dashboards for different audiences"
+      ],
+      technologies: ["Azure Monitor Workbooks", "D3.js", "Chart.js", "Real-time Streaming", "Mobile Design"],
+      exercises: "Executive dashboard, real-time SOC display, and custom visualization widgets"
+    },
+    { 
+      id: 10, 
+      title: "Advanced Scenarios and Best Practices", 
+      duration: "2.5 hours", 
+      level: "Advanced",
+      description: "Master zero trust architecture, compliance automation, and enterprise security",
+      objectives: [
+        "Implement Zero Trust architecture principles",
+        "Automate compliance for SOC2, ISO 27001, and HIPAA frameworks",
+        "Design enterprise-scale security and Security Center of Excellence"
+      ],
+      technologies: ["Zero Trust Components", "Compliance Frameworks", "Enterprise Platforms", "APT Detection"],
+      exercises: "Zero Trust implementation, compliance automation, and Security CoE blueprint"
+    }
   ];
 
   const benefits = [
@@ -134,6 +277,108 @@ const LandingPage = () => {
       link: "https://github.com/paulasilvatech/Figma-to-Code-Dev"
     }
   ];
+
+  // Modal Component for Module Details
+  const ModuleModal = ({ module, onClose }: { module: Module; onClose: () => void }) => {
+    if (!module) return null;
+
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={onClose}>
+        <div className="bg-gray-800 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+          <div className="p-6 md:p-8">
+            {/* Header */}
+            <div className="flex justify-between items-start mb-6">
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-3xl font-bold text-gray-600">0{module.id}</span>
+                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    module.level === 'Basic' ? 'bg-green-600/20 text-green-300' :
+                    module.level === 'Intermediate' ? 'bg-yellow-600/20 text-yellow-300' :
+                    'bg-red-600/20 text-red-300'
+                  }`}>
+                    {module.level}
+                  </span>
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-sky-400 mb-2">{module.title}</h2>
+                <div className="flex items-center text-gray-400 text-sm">
+                  <Clock className="w-4 h-4 mr-1" />
+                  <span>{module.duration}</span>
+                </div>
+              </div>
+              <button 
+                onClick={onClose}
+                className="text-gray-400 hover:text-white transition-colors p-2"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* Description */}
+            <div className="mb-6">
+              <p className="text-gray-300 text-lg leading-relaxed">{module.description}</p>
+            </div>
+
+            {/* Learning Objectives */}
+            <div className="mb-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Target className="w-5 h-5 text-sky-400" />
+                <h3 className="text-xl font-semibold text-white">Learning Objectives</h3>
+              </div>
+              <ul className="space-y-2">
+                {module.objectives.map((objective, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300">{objective}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Technologies */}
+            <div className="mb-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Settings className="w-5 h-5 text-sky-400" />
+                <h3 className="text-xl font-semibold text-white">Technologies & Tools</h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {module.technologies.map((tech, index) => (
+                  <span 
+                    key={index} 
+                    className="bg-sky-600/20 text-sky-300 px-3 py-1 rounded-full text-sm font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Exercises */}
+            <div className="mb-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Code2 className="w-5 h-5 text-sky-400" />
+                <h3 className="text-xl font-semibold text-white">Hands-on Exercises</h3>
+              </div>
+              <p className="text-gray-300">{module.exercises}</p>
+            </div>
+
+            {/* Action Button */}
+            <div className="pt-4 border-t border-gray-700">
+              <a 
+                href="https://github.com/paulasilvatech/Secure-Code-AI-Dev" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-sky-600 to-cyan-600 hover:from-sky-700 hover:to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105"
+              >
+                <Book className="w-5 h-5" />
+                <span>Access Module Content</span>
+                <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-sky-900 to-cyan-900 text-white">
@@ -219,11 +464,11 @@ const LandingPage = () => {
           <div className="mt-12 flex flex-wrap justify-center gap-8 text-sm text-gray-400">
             <div className="flex items-center space-x-2">
               <Clock className="w-5 h-5" />
-              <span>90 min - 6+ hours</span>
+              <span>2-24+ hours total</span>
             </div>
             <div className="flex items-center space-x-2">
               <Users className="w-5 h-5" />
-              <span>Beginner to Advanced</span>
+              <span>10 Comprehensive Modules</span>
             </div>
             <div className="flex items-center space-x-2">
               <Shield className="w-5 h-5" />
@@ -347,23 +592,38 @@ const LandingPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {modules.map((module) => (
-              <div key={module.id} className="group bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-800/70 transition-all hover:transform hover:scale-105">
+              <div 
+                key={module.id} 
+                className="group bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 hover:bg-gray-800/70 transition-all hover:transform hover:scale-105 cursor-pointer relative"
+                onClick={() => setSelectedModule(module)}
+              >
                 <div className="flex items-start justify-between mb-4">
                   <span className="text-3xl font-bold text-gray-600">0{module.id}</span>
-                  <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    module.level === 'Basic' ? 'bg-green-600/20 text-green-300' :
-                    module.level === 'Intermediate' ? 'bg-yellow-600/20 text-yellow-300' :
-                    'bg-red-600/20 text-red-300'
-                  }`}>
-                    {module.level}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      module.level === 'Basic' ? 'bg-green-600/20 text-green-300' :
+                      module.level === 'Intermediate' ? 'bg-yellow-600/20 text-yellow-300' :
+                      'bg-red-600/20 text-red-300'
+                    }`}>
+                      {module.level}
+                    </span>
+                    <Info className="w-4 h-4 text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
                 </div>
                 <h3 className="text-xl font-semibold mb-2 group-hover:text-sky-400 transition-colors">
                   {module.title}
                 </h3>
-                <div className="flex items-center text-gray-400 text-sm">
-                  <Clock className="w-4 h-4 mr-1" />
-                  <span>{module.duration}</span>
+                <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+                  {module.description}
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center text-gray-400 text-sm">
+                    <Clock className="w-4 h-4 mr-1" />
+                    <span>{module.duration}</span>
+                  </div>
+                  <span className="text-xs text-sky-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                    Click for details →
+                  </span>
                 </div>
               </div>
             ))}
@@ -517,6 +777,14 @@ const LandingPage = () => {
           </p>
         </div>
       </footer>
+
+      {/* Module Modal */}
+      {selectedModule && (
+        <ModuleModal 
+          module={selectedModule} 
+          onClose={() => setSelectedModule(null)} 
+        />
+      )}
     </div>
   );
 };
