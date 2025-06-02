@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SecureCodeLogo = ({ className = "w-12 h-12" }) => {
   return (
     <svg className={className} viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
