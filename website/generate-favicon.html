@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Generator</title>
+</head>
+<body>
+    <h1>Favicon Generator</h1>
+    <div id="canvases"></div>
+    
+    <script>
+        // SVG do logo otimizado para favicon
+        const svgContent = `
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 4 L23 7 L23 15 C23 20, 19 24, 16 25 C13 24, 9 20, 9 15 L9 7 Z" 
+                fill="url(#skyBlueGradient)" opacity="0.9"/>
+          <g transform="translate(16, 13)">
+            <rect x="-2.5" y="-0.8" width="5" height="4" rx="0.8" fill="#0369a1"/>
+            <path d="M-1.5 -0.8 L-1.5 -2 A 1.5 1.5 0 0 1 1.5 -2 L1.5 -0.8" stroke="#0ea5e9" stroke-width="0.8" fill="none"/>
+            <circle cx="0" cy="1.2" r="0.6" fill="#0ea5e9"/>
+          </g>
+          <text x="6.5" y="22" fill="#0ea5e9" font-size="3.5" font-family="monospace" font-weight="bold">&lt;/&gt;</text>
+          <g transform="translate(23, 5)">
+            <path d="M0 1.5 L0.8 0 L1.5 1.5 L3 2.2 L1.5 3 L0.8 4.5 L0 3 L-1.5 2.2 Z" fill="#38bdf8" opacity="0.9"/>
+          </g>
+          <circle cx="24" cy="21" r="2" fill="#0ea5e9"/>
+          <path d="M22.5 21 L23 21.5 L25.5 19" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="skyBlueGradient" x1="9" y1="4" x2="23" y2="25">
+              <stop offset="0%" stop-color="#e0f2fe"/>
+              <stop offset="50%" stop-color="#7dd3fc"/>
+              <stop offset="100%" stop-color="#0284c7"/>
+            </linearGradient>
+          </defs>
+        </svg>`;
+
+        const sizes = [16, 32, 48, 64, 128, 192, 256, 512];
+        const container = document.getElementById('canvases');
+
+        sizes.forEach(size => {
+            // Criar canvas
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            // Criar imagem do SVG
+            const img = new Image();
+            const svgBlob = new Blob([svgContent], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(svgBlob);
+
+            img.onload = function() {
+                // Desenhar no canvas
+                ctx.drawImage(img, 0, 0, size, size);
+                URL.revokeObjectURL(url);
+
+                // Criar link de download
+                const link = document.createElement('a');
+                link.download = `favicon-${size}x${size}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.textContent = `Download ${size}x${size}`;
+                link.style.display = 'block';
+                link.style.margin = '5px 0';
+
+                container.appendChild(canvas);
+                container.appendChild(link);
+            };
+
+            img.src = url;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "Secure Code AI Development Workshop",
+  "short_name": "Secure Code AI",
+  "description": "Comprehensive secure coding practices using AI-powered tools, GitHub Advanced Security, and modern DevSecOps workflows",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "theme_color": "#0ea5e9",
+  "background_color": "#0f172a",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "scope": "/"
+}

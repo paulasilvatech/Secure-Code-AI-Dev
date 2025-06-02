@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PNG Favicon Generator</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            background: #f0f0f0;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px;
+        }
+        .favicon { 
+            margin: 10px; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            display: inline-block;
+            text-align: center;
+        }
+        canvas { 
+            border: 1px solid #ddd; 
+            margin: 5px;
+        }
+        .download-btn {
+            background: #0ea5e9;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .download-btn:hover {
+            background: #0284c7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ Secure Code AI - Favicon Generator</h1>
+        <p>Generating PNG favicons from the SecureCodeLogo...</p>
+        <div id="favicons"></div>
+        <div id="instructions">
+            <h3>📝 Instructions:</h3>
+            <ol>
+                <li>Download all the generated PNG files</li>
+                <li>Save them in the <code>public/</code> directory</li>
+                <li>Replace existing favicon files</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Logo SVG otimizado para favicon
+        const logoSVG = `
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background circle -->
+          <circle cx="16" cy="16" r="15" fill="url(#bgGradient)" opacity="0.1"/>
+          
+          <!-- Shield with gradient -->
+          <path d="M16 4 L23 7 L23 15 C23 20, 19 24, 16 25 C13 24, 9 20, 9 15 L9 7 Z" 
+                fill="url(#skyBlueGradient)" opacity="0.9"/>
+          
+          <!-- Lock icon in center -->
+          <g transform="translate(16, 13)">
+            <rect x="-2.5" y="-0.8" width="5" height="4" rx="0.8" fill="#0369a1"/>
+            <path d="M-1.5 -0.8 L-1.5 -2 A 1.5 1.5 0 0 1 1.5 -2 L1.5 -0.8" stroke="#0ea5e9" stroke-width="0.8" fill="none"/>
+            <circle cx="0" cy="1.2" r="0.6" fill="#0ea5e9"/>
+          </g>
+          
+          <!-- Code brackets -->
+          <text x="6.5" y="22" fill="#0ea5e9" font-size="3.5" font-family="Consolas,Monaco,monospace" font-weight="bold">&lt;/&gt;</text>
+          
+          <!-- AI sparkle -->
+          <g transform="translate(22, 6)">
+            <path d="M0 1.5 L0.8 0 L1.5 1.5 L3 2.2 L1.5 3 L0.8 4.5 L0 3 L-1.5 2.2 Z" fill="#38bdf8" opacity="0.9"/>
+          </g>
+          
+          <!-- Check mark circle -->
+          <circle cx="24" cy="21" r="2" fill="#0ea5e9"/>
+          <path d="M22.5 21 L23 21.5 L25.5 19" stroke="white" stroke-width="0.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          
+          <defs>
+            <linearGradient id="skyBlueGradient" x1="9" y1="4" x2="23" y2="25">
+              <stop offset="0%" stop-color="#e0f2fe"/>
+              <stop offset="50%" stop-color="#7dd3fc"/>
+              <stop offset="100%" stop-color="#0284c7"/>
+            </linearGradient>
+            <linearGradient id="bgGradient" x1="0" y1="0" x2="32" y2="32">
+              <stop offset="0%" stop-color="#0f172a"/>
+              <stop offset="100%" stop-color="#1e293b"/>
+            </linearGradient>
+          </defs>
+        </svg>`;
+
+        // Tamanhos necessários para favicons
+        const sizes = [
+            { size: 16, name: 'favicon-16x16.png', desc: 'Browser Tab (16x16)' },
+            { size: 32, name: 'favicon-32x32.png', desc: 'Browser Tab (32x32)' },
+            { size: 180, name: 'apple-touch-icon.png', desc: 'Apple Touch Icon (180x180)' },
+            { size: 192, name: 'icon-192.png', desc: 'Android Icon (192x192)' },
+            { size: 512, name: 'icon-512.png', desc: 'Web App Icon (512x512)' }
+        ];
+
+        const container = document.getElementById('favicons');
+
+        function generateFavicon(size, filename, description) {
+            const faviconDiv = document.createElement('div');
+            faviconDiv.className = 'favicon';
+
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+
+            // Fundo para melhor visibilidade
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(0, 0, size, size);
+
+            const img = new Image();
+            const svgBlob = new Blob([logoSVG], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(svgBlob);
+
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, size, size);
+                URL.revokeObjectURL(url);
+
+                const downloadBtn = document.createElement('button');
+                downloadBtn.className = 'download-btn';
+                downloadBtn.textContent = `Download ${filename}`;
+                downloadBtn.onclick = function() {
+                    const link = document.createElement('a');
+                    link.download = filename;
+                    link.href = canvas.toDataURL('image/png');
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                };
+
+                faviconDiv.innerHTML = `
+                    <h4>${description}</h4>
+                    <div>${canvas.outerHTML}</div>
+                    <div>${downloadBtn.outerHTML}</div>
+                `;
+
+                // Re-attach event listener
+                faviconDiv.querySelector('.download-btn').onclick = downloadBtn.onclick;
+            };
+
+            img.src = url;
+            container.appendChild(faviconDiv);
+        }
+
+        // Gerar todos os tamanhos
+        sizes.forEach(({size, name, desc}) => {
+            generateFavicon(size, name, desc);
+        });
+
+        // Adicionar botão para baixar todos
+        setTimeout(() => {
+            const downloadAllBtn = document.createElement('button');
+            downloadAllBtn.className = 'download-btn';
+            downloadAllBtn.style.fontSize = '16px';
+            downloadAllBtn.style.padding = '12px 24px';
+            downloadAllBtn.textContent = '📥 Download All Favicons';
+            downloadAllBtn.onclick = function() {
+                document.querySelectorAll('.download-btn').forEach((btn, index) => {
+                    if (btn !== downloadAllBtn) {
+                        setTimeout(() => btn.click(), index * 200);
+                    }
+                });
+            };
+            container.appendChild(downloadAllBtn);
+        }, 2000);
+    </script>
+</body>
+</html>
